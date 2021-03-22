@@ -26,6 +26,10 @@ public class CourseOffer {
         course = c;
         seatlist = new ArrayList<>();
     }
+
+    public CourseOffer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     public void AssignAsTeacher(FacultyProfile fp) {
@@ -131,6 +135,10 @@ public class CourseOffer {
     
     public void updateRating(){
         rating-=1;
+    }
+
+    public Object getSeatsAvailable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -43,6 +43,10 @@ public class Course {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+
+    public Object getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
