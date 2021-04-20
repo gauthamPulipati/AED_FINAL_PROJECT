@@ -94,16 +94,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Lab Admin"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateLabAdminActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditHospital">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Hospital Details"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditHospitalActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateDoctor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Doctor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateDoctorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

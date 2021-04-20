@@ -7,6 +7,8 @@ package userinterface.HospitalEnterpriseAdmin;
 
 import Business.EcoSystem;
 import Business.Hospital.HospitalDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +20,10 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateHospitalJPanel
      */
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private HospitalDirectory hospitaldirectory;
+    
     public CreateHospitalJPanel(JPanel userProcessContainer, EcoSystem business, HospitalDirectory hospitaldirectory) {
         initComponents();
     }
@@ -71,6 +77,11 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         jLabel3.setText("Lab Doctor:");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +157,17 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        HospitalEnterpriseAdminJPanel hentadjp = (HospitalEnterpriseAdminJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

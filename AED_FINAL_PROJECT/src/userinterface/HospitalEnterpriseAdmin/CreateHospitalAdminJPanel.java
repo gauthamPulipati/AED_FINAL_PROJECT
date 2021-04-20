@@ -5,6 +5,12 @@
  */
 package userinterface.HospitalEnterpriseAdmin;
 
+import Business.EcoSystem;
+import Business.Hospital.HospitalDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JPanel;
+
 /**
  *
  * @author aksha
@@ -14,10 +20,15 @@ public class CreateHospitalAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateHospitalAdminJPanel
      */
-    public CreateHospitalAdminJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private HospitalDirectory hospitaldirectory;
+    
+    public CreateHospitalAdminJPanel(JPanel userProcessContainer, EcoSystem business, HospitalDirectory hospitaldirectory) {
         initComponents();
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +61,11 @@ public class CreateHospitalAdminJPanel extends javax.swing.JPanel {
         jLabel4.setText("Admin Password:");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +159,8 @@ public class CreateHospitalAdminJPanel extends javax.swing.JPanel {
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
-                    .addComponent(btnSubmit)))
+                    .addComponent(btnSubmit))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,6 +171,17 @@ public class CreateHospitalAdminJPanel extends javax.swing.JPanel {
     private void txtAdminNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdminNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAdminNameActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        HospitalEnterpriseAdminJPanel hentadjp = (HospitalEnterpriseAdminJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

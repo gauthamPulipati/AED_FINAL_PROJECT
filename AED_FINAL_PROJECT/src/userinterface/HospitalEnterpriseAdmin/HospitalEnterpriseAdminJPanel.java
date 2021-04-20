@@ -89,10 +89,25 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
 
         btnCreateLabAdmin.setText("Create Lab Admin");
+        btnCreateLabAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateLabAdminActionPerformed(evt);
+            }
+        });
 
         btnEditHospital.setText("Edit Hospital Details");
+        btnEditHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditHospitalActionPerformed(evt);
+            }
+        });
 
         btnCreateDoctor.setText("Create Doctor");
+        btnCreateDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateDoctorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -131,6 +146,10 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateHospAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospAdminActionPerformed
         // TODO add your handling code here:
+        CreateHospitalAdminJPanel addhadmin = new CreateHospitalAdminJPanel(userProcessContainer, business, hospitaldirectory);
+        userProcessContainer.add("CreateNewRestaurant", addhadmin);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateHospAdminActionPerformed
 
     private void btnCreateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospitalActionPerformed
@@ -140,6 +159,30 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateHospitalActionPerformed
+
+    private void btnCreateLabAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLabAdminActionPerformed
+        // TODO add your handling code here:
+        CreateLabAdminJPanel addlabadmin = new CreateLabAdminJPanel(userProcessContainer, business, hospitaldirectory);
+        userProcessContainer.add("CreateNewRestaurant", addlabadmin);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateLabAdminActionPerformed
+
+    private void btnCreateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDoctorActionPerformed
+        // TODO add your handling code here:
+        CreateDoctorJPanel addDoc = new CreateDoctorJPanel(userProcessContainer, business, hospitaldirectory);
+        userProcessContainer.add("CreateNewRestaurant", addDoc);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateDoctorActionPerformed
+
+    private void btnEditHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHospitalActionPerformed
+        // TODO add your handling code here:
+        EditHospitalJPanel edithosp = new EditHospitalJPanel(userProcessContainer, business, hospitaldirectory);
+        userProcessContainer.add("CreateNewRestaurant", edithosp);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnEditHospitalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
