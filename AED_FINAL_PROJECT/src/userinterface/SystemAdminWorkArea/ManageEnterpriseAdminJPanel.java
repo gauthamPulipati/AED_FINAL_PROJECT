@@ -6,6 +6,7 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.UserAccount.UserAccount;
@@ -231,17 +232,19 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
-        //        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
-        //
-        //        String username = usernameJTextField.getText();
-        //        String password = String.valueOf(passwordJPasswordField.getPassword());
-        //        String name = nameJTextField.getText();
-        //
-        //        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-        //        System.out.println(enterprise.getEnterpriseType()+" --- "+enterprise.getName());
+                Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        
+                String username = usernameJTextField.getText();
+                String password = String.valueOf(passwordJPasswordField.getPassword());
+                String name = nameJTextField.getText();
+        
+                Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+                System.out.println(enterprise.getEnterpriseType()+" --- "+enterprise.getName());
+                
+                System.out.println(enterprise.getEnterpriseType());
 
-        ///        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
-        //populateTable();
+                //UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
+                populateTable();
 
     }//GEN-LAST:event_submitJButtonActionPerformed
 
