@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class RetailStoreDirectory {
     private ArrayList<RetailStore> stores;
     
-    public RetailStore createHospital(String name){
+    public RetailStore createRetailStore(String name){
         
         for (RetailStore rstore:stores){
             if(rstore.getStoreName().equals(name)){
@@ -27,7 +27,7 @@ public class RetailStoreDirectory {
         return rstore;
     }
     
-    public void deleteHospital(String name){
+    public void deleteRetailStore(String name){
         for (RetailStore rstore:stores){
             if(rstore.getStoreName().equals(name)){
                 stores.remove(rstore);
@@ -36,7 +36,7 @@ public class RetailStoreDirectory {
         }
     }
 
-    public ArrayList<RetailStore> getHospitals() {
+    public ArrayList<RetailStore> getStores() {
         return stores;
     }
 }
