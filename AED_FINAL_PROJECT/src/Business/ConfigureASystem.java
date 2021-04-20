@@ -22,10 +22,10 @@ public class ConfigureASystem {
         
         
         Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
-        Employee employee1 = system.getEmployeeDirectory().createEmployee("mee");
+        //Employee employee1 = system.getEmployeeDirectory().createEmployee("mee");
         
         UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin1", "sysadmin1", employee, new SystemAdminRole());
-        UserAccount ua1 = system.getUserAccountDirectory().createUserAccount("gautham", "gautham", employee, new SystemAdminRole());
+        //UserAccount ua1 = system.getUserAccountDirectory().createUserAccount("gautham", "gautham", employee, new SystemAdminRole());
         
         return system;
     }

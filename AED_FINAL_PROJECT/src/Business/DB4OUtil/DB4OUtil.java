@@ -66,6 +66,7 @@ public class DB4OUtil {
         EcoSystem system;
         if (systems.size() == 0){
             system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
+            System.out.println("dddddd");
         }
         else{
             system = systems.get(systems.size() - 1);
