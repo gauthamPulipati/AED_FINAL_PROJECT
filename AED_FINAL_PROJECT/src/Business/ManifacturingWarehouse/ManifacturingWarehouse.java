@@ -15,6 +15,15 @@ import java.util.ArrayList;
 public class ManifacturingWarehouse extends Organization {
     
     private String warehouseDetails;
+    private String wareHouseName;
+
+    public String getWareHouseName() {
+        return wareHouseName;
+    }
+
+    public void setWareHouseName(String wareHouseName) {
+        this.wareHouseName = wareHouseName;
+    }
     
     public ManifacturingWarehouse(String warehouseDetails){
         super();

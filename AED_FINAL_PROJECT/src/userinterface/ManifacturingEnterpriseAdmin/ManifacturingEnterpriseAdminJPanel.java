@@ -7,9 +7,14 @@ package userinterface.ManifacturingEnterpriseAdmin;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.ManifacturingWarehouse.ManifacturingWarehouse;
+import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import userinterface.ManifacturingAdmin.ManifacturingAdminJPanel;
 
 /**
  *
@@ -25,17 +30,20 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private Organization organization;
     private Enterprise enterprise;
-    private EcoSystem business;
+    private EcoSystem ecoSystem;
+    private ManufacturingWarehouseDirectory warehouseDirectory;
+    private ManifacturingWarehouse warehouse;
     
-    
-    public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem ecoSystem) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.organization = organization;
-        this.business = business;
+        this.ecoSystem = ecoSystem;
         this.enterprise = enterprise;
+        
+      
     }
 
     /**
@@ -47,19 +55,87 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        jButton1.setText("Create Manufacturing Warehouse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Create Warehouse Admin");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Create Shipping Men");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jButton1)
+                .addGap(28, 28, 28)
+                .addComponent(jButton2)
+                .addGap(32, 32, 32)
+                .addComponent(jButton3)
+                .addContainerGap(179, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ManageManufacturingWarehouseJPanel manageManWareJPanel=new ManageManufacturingWarehouseJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageManufacturingWarehouseJPanel",manageManWareJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ManageWarehouseAdminJPanel wrAdmin =new ManageWarehouseAdminJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageWarehouseAdminJPanel",wrAdmin);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ManageWarehouseShippingMenJPanel wrAdmin =new ManageWarehouseShippingMenJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageWarehouseShippingMenJPanel",wrAdmin);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
+
+    private void populateWarehouseTable() {
+    }
+        
+    
+    
 }
