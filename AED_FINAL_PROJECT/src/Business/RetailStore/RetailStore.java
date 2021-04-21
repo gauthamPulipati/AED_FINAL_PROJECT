@@ -25,6 +25,10 @@ public class RetailStore extends Organization {
     public String getStoreName() {
         return storeName;
     }
+    
+    public String toString(){
+        return this.storeName;
+    }
 
     public ArrayList<Role> getSupportedRole() {
         return null;

@@ -5,8 +5,15 @@
  */
 package userinterface.DistributionEnterpriseAdmin;
 
+import Business.Distribution.Distribution;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Role.RetailDeliveryRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +32,36 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        populateJComboBox();
+    }
+    
+    private void populateJComboBox() {
+        distributionJComboBox.removeAllItems();
+        int i = 0;
+        for (Distribution distribution : enterprise.getDistributionDirectory().getDistributions()) {
+            if (i == 0) {
+                populateTable(distribution);
+                i++;
+                System.out.println(distribution.getDistributionName());
+            }
+            distributionJComboBox.addItem(distribution);
+        }
+    }
+    
+    private void populateTable(Distribution distribution){
+        DefaultTableModel model = (DefaultTableModel) tblHomeDelivery.getModel();
+        model.setRowCount(0);
+
+        String dm = "Retail Delivery Man";
+
+        for (UserAccount us : distribution.getUserAccountDirectory().getUserAccountList()) {
+            if (us.getRole().toString().equals(dm)) {
+                Object[] row = new Object[2];
+                row[0] = us;
+                row[1] = us.getEmployee().getName();
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -36,19 +73,174 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtShipName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtShipUsername = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtShipPassword = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
+        distributionJComboBox = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHomeDelivery = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel3.setText("Username :");
+
+        jLabel4.setText("Password :");
+
+        btnBack.setText("<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        distributionJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        distributionJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        distributionJComboBox.setForeground(new java.awt.Color(48, 60, 108));
+        distributionJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        distributionJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                distributionJComboBoxActionPerformed(evt);
+            }
+        });
+
+        tblHomeDelivery.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Username", "Delivery Man Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblHomeDelivery);
+
+        jLabel1.setText("Distribution Name :");
+
+        jLabel2.setText("Delivery Man Name : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSubmit)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(77, 77, 77)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtShipName, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(txtShipUsername)
+                                    .addComponent(txtShipPassword)
+                                    .addComponent(distributionJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtShipName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtShipUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtShipPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnSubmit))
+                .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DistributionEnterpriseAdminJPanel manetn = (DistributionEnterpriseAdminJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        Distribution distribution = (Distribution) distributionJComboBox.getSelectedItem();
+
+        String username = txtShipUsername.getText();
+        String password = txtShipPassword.getText();
+        String name = txtShipName.getText();
+
+        Employee employee = distribution.getEmployeeDirectory().createEmployee(name);
+        UserAccount ua = distribution.getUserAccountDirectory().createUserAccount(username, password, employee, new RetailDeliveryRole());
+
+        populateTable(distribution);
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void distributionJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributionJComboBoxActionPerformed
+        // TODO add your handling code here:
+        Distribution distribution = (Distribution) distributionJComboBox.getSelectedItem();
+        if (distribution != null) {
+            populateTable(distribution);
+        }
+    }//GEN-LAST:event_distributionJComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox distributionJComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblHomeDelivery;
+    private javax.swing.JTextField txtShipName;
+    private javax.swing.JTextField txtShipPassword;
+    private javax.swing.JTextField txtShipUsername;
     // End of variables declaration//GEN-END:variables
 }

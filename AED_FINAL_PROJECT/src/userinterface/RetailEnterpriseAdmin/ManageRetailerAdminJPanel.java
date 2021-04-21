@@ -5,12 +5,10 @@
  */
 package userinterface.RetailEnterpriseAdmin;
 
-import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.RetailStore.RetailStore;
-import Business.RetailStore.RetailStoreDirectory;
-import Business.Role.RetailEnterpriseAdminRole;
+import Business.Role.StoreAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -67,7 +65,7 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Retailer Name", "Username"
+                "Username", "Retailer Name"
             }
         ));
         jScrollPane1.setViewportView(jreaitler);
@@ -171,7 +169,7 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
         String name = txtAdminName.getText();
         
         Employee employee = rs.getEmployeeDirectory().createEmployee(name);
-        UserAccount ua = rs.getUserAccountDirectory().createUserAccount(username, password, employee, new RetailEnterpriseAdminRole());
+        UserAccount ua = rs.getUserAccountDirectory().createUserAccount(username, password, employee, new StoreAdminRole());
         
         populateTable(rs);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -209,7 +207,7 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
        DefaultTableModel model = (DefaultTableModel)jreaitler.getModel();
         model.setRowCount(0);
         
-        String dm = "Retail Enterprise Admin";
+        String dm = "Store Admin";
         
         for(UserAccount us: rs.getUserAccountDirectory().getUserAccountList()){
             if(us.getRole().toString().equals(dm)){

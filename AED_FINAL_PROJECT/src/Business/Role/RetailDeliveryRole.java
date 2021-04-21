@@ -19,7 +19,7 @@ import userinterface.RetailDelivery.RetailDeliveryManJPanel;
 public class RetailDeliveryRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new RetailDeliveryManJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new RetailDeliveryManJPanel(userProcessContainer,enterprise);
     }
     
     @Override

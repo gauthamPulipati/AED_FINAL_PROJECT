@@ -19,7 +19,7 @@ import userinterface.Store.StoreAdminJPanel;
 public class StoreAdminRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new StoreAdminJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new StoreAdminJPanel(userProcessContainer,enterprise);
     }
     
     @Override

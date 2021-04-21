@@ -27,13 +27,10 @@ public class RetailDeliveryManJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem business;
     
-    public RetailDeliveryManJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public RetailDeliveryManJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.business = business;
         this.enterprise = enterprise;
     }
 

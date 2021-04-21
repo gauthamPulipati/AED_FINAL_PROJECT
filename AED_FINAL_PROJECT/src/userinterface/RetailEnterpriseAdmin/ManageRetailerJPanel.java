@@ -157,7 +157,7 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (RetailStore rs : enterprise.getRetailStoreDirectory().getStores()) {
             Object[] row = new Object[1];
-            row[0] = rs.getStoreName();
+            row[0] = rs;
             model.addRow(row);
         }
     }

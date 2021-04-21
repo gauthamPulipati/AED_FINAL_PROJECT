@@ -27,7 +27,7 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem business;
     
-    public HomeDeliveryManJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public HomeDeliveryManJPanel(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
