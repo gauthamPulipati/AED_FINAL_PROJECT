@@ -36,9 +36,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtHospAdminUserID" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="txtAdminName" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="txtHospAdminPassword" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="txtLabAdminUsername" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="txtLabAdminName" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="txtLabAdminPassword" min="-2" pref="101" max="-2" attributes="0"/>
                                   <Component id="hospitalJComboBox" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -67,17 +67,17 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="txtAdminName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLabAdminName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="txtHospAdminUserID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLabAdminUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="txtHospAdminPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLabAdminPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -98,14 +98,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtAdminName">
+    <Component class="javax.swing.JTextField" name="txtLabAdminName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAdminNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLabAdminNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtHospAdminUserID">
+    <Component class="javax.swing.JTextField" name="txtLabAdminUsername">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtHospAdminPassword">
+    <Component class="javax.swing.JTextField" name="txtLabAdminPassword">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

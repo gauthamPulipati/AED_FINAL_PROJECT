@@ -14,9 +14,13 @@ import java.util.ArrayList;
 public class DistributionDirectory {
     private ArrayList<Distribution> distributions;
     
+    public DistributionDirectory(){
+        distributions = new ArrayList();
+    }
+    
     public Distribution createDistributionUnit(String name){
         for(Distribution distribution: distributions){
-            if(distribution.getName().equals(name)){
+            if(distribution.getDistributionName().equals(name)){
                 return null;
             }
         }

@@ -79,23 +79,11 @@ public abstract class Enterprise extends Organization{
     }
     
     public Hospital createHospital(String name){
-        for(Hospital hos:this.hospitalDirectory.getHospitals()){
-            if(hos.getName().equals(name)){
-                return null;
-            }
-        }
-        Hospital hospital = this.hospitalDirectory.createHospital(name);
-        return hospital;
+        return hospitalDirectory.createHospital(name);
     }
     
     public RetailStore createRetailStore(String name){
-        for(RetailStore ret:this.retailStoreDirectory.getStores()){
-            if(ret.getStoreName().equals(name)){
-                return null;
-            }
-        }
-        RetailStore retailStore = new RetailStore(name);
-        return retailStore;
+        return retailStoreDirectory.createRetailStore(name);
     }
     
     public ManufacturingWarehouse createManifacturingWarehouse(String name){

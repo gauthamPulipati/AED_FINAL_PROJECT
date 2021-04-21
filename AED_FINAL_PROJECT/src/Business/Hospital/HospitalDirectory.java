@@ -15,13 +15,13 @@ public class HospitalDirectory {
     private ArrayList<Hospital> hospitals;
     
     public HospitalDirectory(){
-        this.hospitals = new ArrayList<>();
+        this.hospitals = new ArrayList();
     }
     
     public Hospital createHospital(String name){
         
         for (Hospital hospital:hospitals){
-            if(hospital.getName().equals(name)){
+            if(hospital.getHospitalName().equals(name)){
                 return null;
             }
         }

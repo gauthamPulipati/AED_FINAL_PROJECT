@@ -13,11 +13,15 @@ import java.util.ArrayList;
  */
 public class ManufacturingWarehouseDirectory {
    private ArrayList<ManufacturingWarehouse> warehousedirectory;
+   
+   public ManufacturingWarehouseDirectory(){
+       this.warehousedirectory = new ArrayList();
+   }
     
     public ManufacturingWarehouse createWarehouse(String name){
         
         for (ManufacturingWarehouse warehouse:warehousedirectory){
-            if(warehouse.getName().equals(name)){
+            if(warehouse.getWareHouseName().equals(name)){
                 return null;
             }
         }

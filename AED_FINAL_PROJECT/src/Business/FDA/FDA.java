@@ -20,7 +20,7 @@ public class FDA extends Organization{
         this.name = "FDA";
     }
 
-    public String getName() {
+    public String getFDAName() {
         return name;
     }
     

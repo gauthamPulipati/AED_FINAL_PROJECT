@@ -48,7 +48,13 @@ public abstract class Organization {
     }
     
     public Organization(){
-        
+        this.name = name;
+        workQueue = new WorkQueue();
+        employeeDirectory = new EmployeeDirectory();
+        userAccountDirectory = new UserAccountDirectory();
+        organizationID = counter;
+        ++counter;
+        System.out.print("ooooooo");
     }
 
     public abstract ArrayList<Role> getSupportedRole();

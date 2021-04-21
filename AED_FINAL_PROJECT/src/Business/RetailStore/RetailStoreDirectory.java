@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class RetailStoreDirectory {
     private ArrayList<RetailStore> stores;
     
+    public RetailStoreDirectory(){
+        stores = new ArrayList();
+    }
+    
     public RetailStore createRetailStore(String name){
         
         for (RetailStore rstore:stores){

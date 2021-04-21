@@ -6,8 +6,10 @@
 package userinterface.HospitalEnterpriseAdmin;
 
 
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Hospital.Hospital;
+import Business.Role.LabAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -30,7 +32,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        
+        populateJComboBox();
     }
     
     private void populateJComboBox(){
@@ -38,8 +40,9 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         int i=0;
         for(Hospital hos :enterprise.getHospitalDirectory().getHospitals()){
             if(i==0){
-                populateTable(hos);
+                //populateTable(hos);
                 i++;
+                System.out.println(hos.getHospitalName());
             }
             hospitalJComboBox.addItem(hos);
         }
@@ -48,13 +51,17 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     private void populateTable(Hospital hospital){
         DefaultTableModel model = (DefaultTableModel)tblLabAdmin.getModel();
         model.setRowCount(0);
-        String dm = "Business.Role.LabAdminRole";
+        //String dm = "Business.Role.LabAdminRole";
+        String dm = "Lab Admin";
         
-        for(UserAccount us: enterprise.getUserAccountDirectory().getUserAccountList()){
-            Object[] row = new Object[2];
-            row[0] = us.getEmployee().getName();
-            row[1] = us.getUsername();
-            model.addRow(row);
+        for(UserAccount us: hospital.getUserAccountDirectory().getUserAccountList()){
+            if(us.getRole().toString().equals(dm)){
+                Object[] row = new Object[2];
+                row[0] = us.getEmployee().getName();
+                row[1] = us.getUsername();
+                model.addRow(row);
+            }
+            
         }
     }
 
@@ -69,9 +76,9 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnSubmit = new javax.swing.JButton();
-        txtAdminName = new javax.swing.JTextField();
-        txtHospAdminUserID = new javax.swing.JTextField();
-        txtHospAdminPassword = new javax.swing.JTextField();
+        txtLabAdminName = new javax.swing.JTextField();
+        txtLabAdminUsername = new javax.swing.JTextField();
+        txtLabAdminPassword = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -88,9 +95,9 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtAdminName.addActionListener(new java.awt.event.ActionListener() {
+        txtLabAdminName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAdminNameActionPerformed(evt);
+                txtLabAdminNameActionPerformed(evt);
             }
         });
 
@@ -166,9 +173,9 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtHospAdminUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHospAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLabAdminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLabAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLabAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(110, 110, 110)
@@ -191,15 +198,15 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLabAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHospAdminUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLabAdminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHospAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLabAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
@@ -210,11 +217,22 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+        Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
+        
+        String username = txtLabAdminUsername.getText();
+        String password = txtLabAdminPassword.getText();
+        String name = txtLabAdminName.getText();
+        
+        Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
+        UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAdminRole());
+        System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
+        populateTable(hospital);
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void txtAdminNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdminNameActionPerformed
+    private void txtLabAdminNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabAdminNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdminNameActionPerformed
+    }//GEN-LAST:event_txtLabAdminNameActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -246,8 +264,8 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLabAdmin;
-    private javax.swing.JTextField txtAdminName;
-    private javax.swing.JTextField txtHospAdminPassword;
-    private javax.swing.JTextField txtHospAdminUserID;
+    private javax.swing.JTextField txtLabAdminName;
+    private javax.swing.JTextField txtLabAdminPassword;
+    private javax.swing.JTextField txtLabAdminUsername;
     // End of variables declaration//GEN-END:variables
 }

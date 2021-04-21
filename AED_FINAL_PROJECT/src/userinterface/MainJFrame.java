@@ -8,6 +8,7 @@ import Business.ConfigureASystem;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
 import Business.Network.Network;
 import Business.Organization.Organization;
 
@@ -30,8 +31,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        //system = ConfigureASystem.configure();
-        system = dB4OUtil.retrieveSystem();
+        system = ConfigureASystem.configure();
+        //system = dB4OUtil.retrieveSystem();
         
         this.setSize(1680, 1050);
     }
@@ -155,6 +156,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                break;
                            }
                        }
+                       
                         
                     }
                     else{
@@ -165,8 +167,27 @@ public class MainJFrame extends javax.swing.JFrame {
                         break;
                     }  
                 }
+                
                 if(inEnterprise!=null){
                     break;
+                }
+            }
+        }
+        
+        if(userAccount==null){
+            for(Network network:system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getHospitalDirectory()!=null){
+                        System.out.println(enterprise.getHospitalDirectory().getHospitals());
+                        for(Hospital hospital: enterprise.getHospitalDirectory().getHospitals()){
+                            userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
+                                inEnterprise=enterprise;
+                                inOrganization=null;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
