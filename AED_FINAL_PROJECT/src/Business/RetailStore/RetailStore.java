@@ -5,6 +5,7 @@
  */
 package Business.RetailStore;
 
+import Business.Organization.Organization;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author gauthamrajsimhapulipati
  */
-public class RetailStore {
+public class RetailStore extends Organization {
   
     private String storeName;
     

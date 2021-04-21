@@ -7,10 +7,14 @@ package userinterface;
 import Business.ConfigureASystem;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Distribution.Distribution;
 import Business.Enterprise.Enterprise;
+import Business.FDA.FDA;
 import Business.Hospital.Hospital;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.RetailStore.RetailStore;
 
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -191,6 +195,75 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         }
+        
+        if(userAccount==null){
+            for(Network network:system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getManufacturingWarehouseDirectory()!=null){
+                        System.out.println(enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory());
+                        for(ManufacturingWarehouse hospital: enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()){
+                            userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
+                                inEnterprise=enterprise;
+                                inOrganization=null;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if(userAccount==null){
+            for(Network network:system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getDistributionDirectory()!=null){
+                        for(Distribution hospital: enterprise.getDistributionDirectory().getDistributions()){
+                            userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
+                                inEnterprise=enterprise;
+                                inOrganization=null;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if(userAccount==null){
+            for(Network network:system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getRetailStoreDirectory()!=null){
+                        for(RetailStore hospital: enterprise.getRetailStoreDirectory().getStores()){
+                            userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
+                                inEnterprise=enterprise;
+                                inOrganization=null;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if(userAccount==null){
+            for(Network network:system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    FDA fda = enterprise.getFDAInstance();
+                    userAccount = fda.getUserAccountDirectory().authenticateUser(userName, password);
+                    if(userAccount!=null){
+                                inEnterprise=enterprise;
+                                inOrganization=null;
+                                break;
+                            }
+                }
+            }
+        }
+        
+        
+        
         
         
         if(userAccount==null){

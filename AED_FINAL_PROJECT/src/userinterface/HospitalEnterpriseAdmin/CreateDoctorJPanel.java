@@ -6,11 +6,17 @@
 package userinterface.HospitalEnterpriseAdmin;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
+import Business.Role.ApproveDoctorRole;
+import Business.Role.ConsultDoctorRole;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +34,47 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        populateJComboBox();
+        rbtnApprove.setSelected(true);
+        rbtnConsulting.setSelected(false);
+    }
+    
+    
+    private void populateJComboBox(){
+        hospitalJComboBox.removeAllItems();
+        int i=0;
+        for(Hospital hos :enterprise.getHospitalDirectory().getHospitals()){
+            if(i==0){
+                populateTable(hos);
+                i++;
+                System.out.println(hos.getHospitalName());
+            }
+            hospitalJComboBox.addItem(hos);
+        }
+    }
+    
+    private void populateTable(Hospital hospital){
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+        model.setRowCount(0);
+        //String dm = "Business.Role.LabAdminRole";
+        String dm = "Approve Doctor";
+        String dm2 = "Consulting Doctor";
+        
+        for(UserAccount us: hospital.getUserAccountDirectory().getUserAccountList()){
+            if(us.getRole().toString().equals(dm) || us.getRole().toString().equals(dm2)){
+                Object[] row = new Object[3];
+                row[0] = us;
+                row[1] = us.getEmployee().getName();
+                if(us.getRole().toString().equals(dm)){
+                    row[2] = dm;
+                }
+                else if(us.getRole().toString().equals(dm2)){
+                    row[2] = dm2;
+                }
+                model.addRow(row);
+            }
+            
+        }
     }
 
     
@@ -44,17 +91,19 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         buttonGroup2 = new javax.swing.ButtonGroup();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDoctor = new javax.swing.JTable();
         btnSubmit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        HospitaljComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jRbtnLabDoctor = new javax.swing.JRadioButton();
-        jRbtnConsultingDoctor = new javax.swing.JRadioButton();
+        rbtnApprove = new javax.swing.JRadioButton();
+        rbtnConsulting = new javax.swing.JRadioButton();
         txtDoctorName = new javax.swing.JTextField();
-        txtDoctorCred = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        hospitalJComboBox = new javax.swing.JComboBox();
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +112,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -71,10 +120,18 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Hospital Name", "Address", "Doctor"
+                "Doctor Username", "Name", "Profession"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblDoctor);
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -86,24 +143,44 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Hospital Name:");
 
-        HospitaljComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Doctor's Name:");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Doctor's Credentials:");
+        jLabel3.setText("Username:");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Type:");
 
-        jRbtnLabDoctor.setText("Approving Doctor");
+        rbtnApprove.setText("Approving Doctor");
+        rbtnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnApproveActionPerformed(evt);
+            }
+        });
 
-        jRbtnConsultingDoctor.setText("Consulting Doctor");
+        rbtnConsulting.setText("Consulting Doctor");
+        rbtnConsulting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnConsultingActionPerformed(evt);
+            }
+        });
 
         txtDoctorName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDoctorNameActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Password:");
+
+        hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        hospitalJComboBox.setForeground(new java.awt.Color(48, 60, 108));
+        hospitalJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hospitalJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospitalJComboBoxActionPerformed(evt);
             }
         });
 
@@ -121,32 +198,33 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(HospitaljComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRbtnConsultingDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRbtnLabDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDoctorCred, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                .addComponent(txtPassword)))))
                 .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnConsulting, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,24 +232,28 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HospitaljComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoctorCred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRbtnLabDoctor))
+                    .addComponent(rbtnApprove))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRbtnConsultingDoctor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(rbtnConsulting)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSubmit))
@@ -181,6 +263,29 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+        Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
+        
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String name = txtDoctorName.getText();
+        
+        String type ="";
+        if(rbtnApprove.isSelected()){
+            type="Approve";
+        }
+        else{
+            type="Consulting";
+        }
+        
+        Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
+        if(type.equals("Approve")){
+            UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new ApproveDoctorRole());
+        }
+        else if (type.equals("Consulting")){
+            UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new ConsultDoctorRole());
+        }
+        //System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
+        populateTable(hospital);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtDoctorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoctorNameActionPerformed
@@ -198,22 +303,52 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void hospitalJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalJComboBoxActionPerformed
+        // TODO add your handling code here:
+        Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
+        if(hospital!=null){
+            populateTable(hospital);
+        }
+    }//GEN-LAST:event_hospitalJComboBoxActionPerformed
+
+    private void rbtnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnApproveActionPerformed
+        // TODO add your handling code here:
+        if(rbtnApprove.isSelected()){
+            rbtnConsulting.setSelected(false);
+        }
+        else{
+            rbtnConsulting.setSelected(true);
+        }
+    }//GEN-LAST:event_rbtnApproveActionPerformed
+
+    private void rbtnConsultingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnConsultingActionPerformed
+        // TODO add your handling code here:
+        if(rbtnApprove.isSelected()){
+            rbtnConsulting.setSelected(false);
+        }
+        else{
+            rbtnConsulting.setSelected(true);
+        }
+    }//GEN-LAST:event_rbtnConsultingActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> HospitaljComboBox;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox hospitalJComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRbtnConsultingDoctor;
-    private javax.swing.JRadioButton jRbtnLabDoctor;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtDoctorCred;
+    private javax.swing.JRadioButton rbtnApprove;
+    private javax.swing.JRadioButton rbtnConsulting;
+    private javax.swing.JTable tblDoctor;
     private javax.swing.JTextField txtDoctorName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
