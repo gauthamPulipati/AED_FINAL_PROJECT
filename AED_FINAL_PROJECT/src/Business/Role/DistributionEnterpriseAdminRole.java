@@ -19,7 +19,7 @@ import userinterface.DistributionEnterpriseAdmin.DistributionEnterpriseAdminJPan
 public class DistributionEnterpriseAdminRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new DistributionEnterpriseAdminJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new DistributionEnterpriseAdminJPanel(userProcessContainer,enterprise);
     }
     
     @Override

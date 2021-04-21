@@ -26,7 +26,10 @@ public class Distribution extends Organization{
         return distributionName;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.distributionName;
+    }
 
     @Override
     public ArrayList<Role> getSupportedRole() {

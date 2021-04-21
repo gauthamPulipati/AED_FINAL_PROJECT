@@ -5,10 +5,8 @@
  */
 package userinterface.DistributionEnterpriseAdmin;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
-import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -22,17 +20,11 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
     private Enterprise enterprise;
-    private EcoSystem business;
     
-    public DistributionEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public DistributionEnterpriseAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.business = business;
         this.enterprise = enterprise;
     }
 
@@ -45,19 +37,106 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnManageDistribution = new javax.swing.JButton();
+        btnManageRetail = new javax.swing.JButton();
+        btnManageHome = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        btnManageDistribution.setText("Manage Distribution Units");
+        btnManageDistribution.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDistributionActionPerformed(evt);
+            }
+        });
+
+        btnManageRetail.setText("Manage Retail Delivery Man");
+        btnManageRetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageRetailActionPerformed(evt);
+            }
+        });
+
+        btnManageHome.setText("Manage Home Delivery Man");
+        btnManageHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageHomeActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Manage Manager");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageHome)
+                    .addComponent(btnManageRetail)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageDistribution, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(btnManageDistribution)
+                .addGap(27, 27, 27)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageRetail)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageHome)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageDistributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDistributionActionPerformed
+        // TODO add your handling code here:
+        ManageDistributionUnitJPanel manageDistributionUnitJPanel = new ManageDistributionUnitJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageDistributionUnitJPanel", manageDistributionUnitJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnManageDistributionActionPerformed
+
+    private void btnManageRetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRetailActionPerformed
+        // TODO add your handling code here:
+        ManageRetailDeliveryManJPanel manageRetailDeliveryManJPanel = new ManageRetailDeliveryManJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageRetailDeliveryManJPanel", manageRetailDeliveryManJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageRetailActionPerformed
+
+    private void btnManageHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHomeActionPerformed
+        // TODO add your handling code here:
+        ManageHomeDeliveryJPanel manageHomeDeliveryJPanel = new ManageHomeDeliveryJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageHomeDeliveryJPanel", manageHomeDeliveryJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageHomeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ManageManagerJPanel manageManagerJPanel = new ManageManagerJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageManagerJPanel", manageManagerJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnManageDistribution;
+    private javax.swing.JButton btnManageHome;
+    private javax.swing.JButton btnManageRetail;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
