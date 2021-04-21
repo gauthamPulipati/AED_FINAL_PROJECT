@@ -6,6 +6,7 @@
 package userinterface.RetailEnterpriseAdmin;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.RetailStore.RetailStore;
 import Business.RetailStore.RetailStoreDirectory;
 import java.awt.CardLayout;
@@ -21,16 +22,17 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private RetailStoreDirectory retailStoreDirectory;
+    private Enterprise enterprise;
     /**
      * Creates new form ManageRetailerJPanel
      */
-    public ManageRetailerJPanel() {
+    public ManageRetailerJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        populateRetailerTable();
     }
 
-    ManageRetailerJPanel(JPanel userProcessContainer, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,7 +135,7 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         
         String name = txtRetailerinput.getText();
 
-        RetailStore rs = retailStoreDirectory.createRetailStore(name);
+        RetailStore rs = this.enterprise.createRetailStore(name);
 
         populateRetailerTable();
         
@@ -153,7 +155,7 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRetailerName.getModel();
 
         model.setRowCount(0);
-        for (RetailStore rs : retailStoreDirectory.getStores()) {
+        for (RetailStore rs : enterprise.getRetailStoreDirectory().getStores()) {
             Object[] row = new Object[1];
             row[0] = rs.getStoreName();
             model.addRow(row);

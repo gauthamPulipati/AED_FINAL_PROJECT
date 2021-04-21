@@ -23,21 +23,15 @@ public class RetailEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
     private Enterprise enterprise;
-    private EcoSystem business;
+
     
-    public RetailEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public RetailEnterpriseAdminJPanel(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.business = business;
         this.enterprise = enterprise;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,14 +81,14 @@ public class RetailEnterpriseAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManageRetailerJPanel manageRetJPanel=new ManageRetailerJPanel(userProcessContainer, business);
+        ManageRetailerJPanel manageRetJPanel=new ManageRetailerJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("ManageRetailerJPanel",manageRetJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManageRetailerAdminJPanel manageRetAdminJPanel=new ManageRetailerAdminJPanel(userProcessContainer, business);
+        ManageRetailerAdminJPanel manageRetAdminJPanel=new ManageRetailerAdminJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("ManageRetailerAdminJPanel",manageRetAdminJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

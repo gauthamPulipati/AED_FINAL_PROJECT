@@ -20,7 +20,7 @@ public class RetailEnterpriseAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new RetailEnterpriseAdminJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new RetailEnterpriseAdminJPanel(userProcessContainer,enterprise);
     }
     
     @Override
