@@ -6,7 +6,7 @@
 package userinterface.ManifacturingEnterpriseAdmin;
 
 import Business.EcoSystem;
-import Business.ManifacturingWarehouse.ManifacturingWarehouse;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Network.Network;
 import javax.swing.JPanel;
@@ -114,7 +114,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         String name = txtwarehouseName.getText();
 
-        ManifacturingWarehouse ware = warehouseDirectory.createWarehouse(name);
+        ManufacturingWarehouse ware = warehouseDirectory.createWarehouse(name);
 
         populateWarehouseTable();
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -138,7 +138,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblwareHouse.getModel();
 
         model.setRowCount(0);
-        for ( ManifacturingWarehouse ware : warehouseDirectory.getWarehousedirectory()) {
+        for ( ManufacturingWarehouse ware : warehouseDirectory.getWarehousedirectory()) {
             Object[] row = new Object[1];
             row[0] = ware.getWareHouseName();
             model.addRow(row);

@@ -5,9 +5,17 @@
  */
 package Business.Enterprise;
 
+import Business.Distribution.Distribution;
+import Business.Distribution.DistributionDirectory;
+import Business.FDA.FDA;
+import Business.Hospital.Hospital;
+import Business.Hospital.HospitalDirectory;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
+import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import java.util.ArrayList;
+import Business.RetailStore.RetailStore;
+import Business.RetailStore.RetailStoreDirectory;
 
 /**
  *
@@ -17,6 +25,11 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    private HospitalDirectory hospitalDirectory;
+    private ManufacturingWarehouseDirectory manufacturingWarehouseDirectory;
+    private RetailStoreDirectory retailStoreDirectory;
+    private DistributionDirectory distributionDirectory;
+    private FDA fdaInstance = new FDA();
     
 
     public OrganizationDirectory getOrganizationDirectory() {
@@ -57,6 +70,38 @@ public abstract class Enterprise extends Organization{
         super(name);
         this.enterpriseType=type;
         organizationDirectory=new OrganizationDirectory();
+    }
+    
+    public Hospital createHospital(String name){
+        for(Hospital hos:this.hospitalDirectory.getHospitals()){
+            if(hos.getName().equals(name)){
+                return null;
+            }
+        }
+        Hospital hospital = this.hospitalDirectory.createHospital(name);
+        return hospital;
+    }
+    
+    public RetailStore createRetailStore(String name){
+        for(RetailStore ret:this.retailStoreDirectory.getStores()){
+            if(ret.getStoreName().equals(name)){
+                return null;
+            }
+        }
+        RetailStore retailStore = new RetailStore(name);
+        return retailStore;
+    }
+    
+    public ManufacturingWarehouse createManifacturingWarehouse(String name){
+        return manufacturingWarehouseDirectory.createWarehouse(name);
+    }
+    
+    public Distribution createDustributionUnit(String name){
+        return distributionDirectory.createDistributionUnit(name);
+    }
+    
+    public FDA getFDAInstance(){
+        return fdaInstance;
     }
     
     

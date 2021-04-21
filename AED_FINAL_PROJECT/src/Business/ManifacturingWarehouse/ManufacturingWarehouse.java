@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author gauthamrajsimhapulipati
  */
-public class ManifacturingWarehouse extends Organization {
+public class ManufacturingWarehouse extends Organization {
     
     private String warehouseDetails;
     private String wareHouseName;
@@ -25,7 +25,7 @@ public class ManifacturingWarehouse extends Organization {
         this.wareHouseName = wareHouseName;
     }
     
-    public ManifacturingWarehouse(String warehouseDetails){
+    public ManufacturingWarehouse(String warehouseDetails){
         super();
         this.warehouseDetails = warehouseDetails;
         

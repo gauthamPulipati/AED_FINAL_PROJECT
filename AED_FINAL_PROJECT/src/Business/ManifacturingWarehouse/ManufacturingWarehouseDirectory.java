@@ -12,23 +12,23 @@ import java.util.ArrayList;
  * @author aksha
  */
 public class ManufacturingWarehouseDirectory {
-   private ArrayList<ManifacturingWarehouse> warehousedirectory;
+   private ArrayList<ManufacturingWarehouse> warehousedirectory;
     
-    public ManifacturingWarehouse createWarehouse(String name){
+    public ManufacturingWarehouse createWarehouse(String name){
         
-        for (ManifacturingWarehouse warehouse:warehousedirectory){
+        for (ManufacturingWarehouse warehouse:warehousedirectory){
             if(warehouse.getName().equals(name)){
                 return null;
             }
         }
         
-        ManifacturingWarehouse warehouse = new ManifacturingWarehouse(name);
+        ManufacturingWarehouse warehouse = new ManufacturingWarehouse(name);
         this.warehousedirectory.add(warehouse);
         return warehouse;
     }
     
     public void deleteWarehouse(String name){
-        for (ManifacturingWarehouse warehouse:warehousedirectory){
+        for (ManufacturingWarehouse warehouse:warehousedirectory){
             if(warehouse.getWarehouseDetails().equals(name)){
                 warehousedirectory.remove(warehouse);
                 break;
@@ -36,7 +36,7 @@ public class ManufacturingWarehouseDirectory {
         }
     }
 
-    public ArrayList<ManifacturingWarehouse> getWarehousedirectory() {
+    public ArrayList<ManufacturingWarehouse> getWarehousedirectory() {
         return warehousedirectory;
     } 
     

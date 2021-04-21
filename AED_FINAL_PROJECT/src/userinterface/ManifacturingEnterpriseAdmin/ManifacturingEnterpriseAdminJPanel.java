@@ -7,7 +7,7 @@ package userinterface.ManifacturingEnterpriseAdmin;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.ManifacturingWarehouse.ManifacturingWarehouse;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -32,7 +32,7 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem ecoSystem;
     private ManufacturingWarehouseDirectory warehouseDirectory;
-    private ManifacturingWarehouse warehouse;
+    private ManufacturingWarehouse warehouse;
     
     public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem ecoSystem) {
         initComponents();

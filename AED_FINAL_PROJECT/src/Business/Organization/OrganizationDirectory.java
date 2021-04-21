@@ -23,50 +23,50 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type){
+    public Organization createOrganization(String name, Type type){
         Organization organization = null;
         if (type.getValue().equals(Type.DoctorApprove.getValue())){
-            organization = new ApprovingDoctorOrganization(String.valueOf(type));
+            organization = new ApprovingDoctorOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.DoctorConsult.getValue())){
-            organization = new ConsultingDoctorOrganization(String.valueOf(type));
+            organization = new ConsultingDoctorOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.FDAClinicalApproval.getValue())){
-            organization = new FDAClinicalOrganization(String.valueOf(type));
+            organization = new FDAClinicalOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.HomeDelivery.getValue())){
-            organization = new HomeDeliveryOrganization(String.valueOf(type));
+            organization = new HomeDeliveryOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.LaboratoryAdmin.getValue())){
-            organization = new LaboratoryAdminOrganization(String.valueOf(type));
+            organization = new LaboratoryAdminOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Manager.getValue())){
-            organization = new ManagerOrganization(String.valueOf(type));
+            organization = new ManagerOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ManifacturingAdmin.getValue())){
-            organization = new ManifacturingAdminOrganization(String.valueOf(type));
+            organization = new ManifacturingAdminOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.RetailDelivery.getValue())){
-            organization = new RetailDeliveryOrganization(String.valueOf(type));
+            organization = new RetailDeliveryOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ShippingMan.getValue())){
-            organization = new ShippingOrganization(String.valueOf(type));
+            organization = new ShippingOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.StoreAdmin.getValue())){
-            organization = new StoreAdminOrganziation(String.valueOf(type));
+            organization = new StoreAdminOrganziation(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Technician.getValue())){
-            organization = new TechnicianOrganization(String.valueOf(type));
+            organization = new TechnicianOrganization(name);
             organizationList.add(organization);
         }
         return organization;
