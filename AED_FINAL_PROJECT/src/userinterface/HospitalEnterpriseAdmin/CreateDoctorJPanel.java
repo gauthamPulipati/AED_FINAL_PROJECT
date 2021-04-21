@@ -57,7 +57,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
         model.setRowCount(0);
         //String dm = "Business.Role.LabAdminRole";
-        String dm = "Approve Doctor";
+        String dm = "Approving Doctor";
         String dm2 = "Consulting Doctor";
         
         for(UserAccount us: hospital.getUserAccountDirectory().getUserAccountList()){
@@ -232,7 +232,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -271,14 +271,14 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         
         String type ="";
         if(rbtnApprove.isSelected()){
-            type="Approve";
+            type="Approving";
         }
         else{
             type="Consulting";
         }
         
         Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
-        if(type.equals("Approve")){
+        if(type.equals("Approving")){
             UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new ApproveDoctorRole());
         }
         else if (type.equals("Consulting")){
