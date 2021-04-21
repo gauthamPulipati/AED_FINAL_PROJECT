@@ -5,11 +5,10 @@
  */
 package userinterface.HospitalEnterpriseAdmin;
 
-
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Hospital.Hospital;
-import Business.Role.LabAdminRole;
+import Business.Role.TechnicianRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -20,15 +19,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aksha
  */
-public class CreateLabAdminJPanel extends javax.swing.JPanel {
+public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateLabAdminJPanel
+     * Creates new form CreateLabTechnicianJPanel
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     
-    public CreateLabAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public CreateLabTechnicianJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -49,10 +48,10 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     }
     
     private void populateTable(Hospital hospital){
-        DefaultTableModel model = (DefaultTableModel)tblLabAdmin.getModel();
+        DefaultTableModel model = (DefaultTableModel)tblTechnicians.getModel();
         model.setRowCount(0);
         //String dm = "Business.Role.LabAdminRole";
-        String dm = "Lab Admin";
+        String dm = "Technician";
         
         for(UserAccount us: hospital.getUserAccountDirectory().getUserAccountList()){
             if(us.getRole().toString().equals(dm)){
@@ -65,7 +64,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         }
     }
 
-  
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,43 +74,27 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSubmit = new javax.swing.JButton();
-        txtLabAdminName = new javax.swing.JTextField();
-        txtLabAdminUsername = new javax.swing.JTextField();
-        txtLabAdminPassword = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLabAdmin = new javax.swing.JTable();
+        tblTechnicians = new javax.swing.JTable();
+        btnSubmit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtTechnicianName = new javax.swing.JTextField();
+        txtTechnicianUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         hospitalJComboBox = new javax.swing.JComboBox();
 
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-
-        txtLabAdminName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLabAdminNameActionPerformed(evt);
-            }
-        });
-
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Lab Admin Name:");
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Hospital Name:");
+        jLabel2.setText("Technician Name:");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Lab Admin User Id:");
+        jLabel3.setText("Technician Username:");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Lab Admin Password:");
+        jLabel4.setText("Password:");
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +103,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblLabAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        tblTechnicians.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -128,7 +111,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Admin Username", "Admin Name"
+                "Technician Username", "Technicain Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -139,7 +122,23 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblLabAdmin);
+        jScrollPane1.setViewportView(tblTechnicians);
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel1.setText("Hospital Name:");
+
+        txtTechnicianName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTechnicianNameActionPerformed(evt);
+            }
+        });
 
         hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -158,34 +157,36 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(110, 110, 110)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(486, 486, 486)
                         .addComponent(btnSubmit))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLabAdminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLabAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLabAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 86, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtTechnicianName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTechnicianUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -198,20 +199,20 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLabAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTechnicianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLabAdminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTechnicianUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLabAdminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(btnSubmit))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,20 +220,20 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
         
-        String username = txtLabAdminUsername.getText();
-        String password = txtLabAdminPassword.getText();
-        String name = txtLabAdminName.getText();
+        String username = txtTechnicianUsername.getText();
+        String password = txtPassword.getText();
+        String name = txtTechnicianName.getText();
         
         Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
-        UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAdminRole());
+        UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new TechnicianRole());
         //System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
         populateTable(hospital);
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void txtLabAdminNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabAdminNameActionPerformed
+    private void txtTechnicianNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTechnicianNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLabAdminNameActionPerformed
+    }//GEN-LAST:event_txtTechnicianNameActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -263,9 +264,9 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblLabAdmin;
-    private javax.swing.JTextField txtLabAdminName;
-    private javax.swing.JTextField txtLabAdminPassword;
-    private javax.swing.JTextField txtLabAdminUsername;
+    private javax.swing.JTable tblTechnicians;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtTechnicianName;
+    private javax.swing.JTextField txtTechnicianUsername;
     // End of variables declaration//GEN-END:variables
 }

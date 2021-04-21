@@ -9,7 +9,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,7 +30,6 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.enterprise = enterprise;
-        populatetable();
     }
 
     /**
@@ -43,27 +41,12 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableHospitalEnterprise = new javax.swing.JTable();
         btnCreateHospAdmin = new javax.swing.JButton();
         btnCreateHospital = new javax.swing.JButton();
         btnCreateLabAdmin = new javax.swing.JButton();
         btnCreateDoctor = new javax.swing.JButton();
 
-        tableHospitalEnterprise.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tableHospitalEnterprise);
-
-        btnCreateHospAdmin.setText("Create Hospital Admin");
+        btnCreateHospAdmin.setText("Create Lab Technician");
         btnCreateHospAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateHospAdminActionPerformed(evt);
@@ -97,21 +80,17 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnCreateHospital, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateLabAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateHospAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateDoctor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCreateHospital, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateLabAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateHospAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateDoctor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(462, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(195, 195, 195)
                 .addComponent(btnCreateHospital)
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateHospAdmin)
@@ -125,7 +104,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateHospAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospAdminActionPerformed
         // TODO add your handling code here:
-        CreateHospitalAdminJPanel addhadmin = new CreateHospitalAdminJPanel(userProcessContainer,enterprise);
+        CreateLabTechnicianJPanel addhadmin = new CreateLabTechnicianJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("CreateNewRestaurant", addhadmin);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -161,12 +140,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateHospAdmin;
     private javax.swing.JButton btnCreateHospital;
     private javax.swing.JButton btnCreateLabAdmin;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableHospitalEnterprise;
     // End of variables declaration//GEN-END:variables
 
-    private void populatetable() {
-        DefaultTableModel dtm = (DefaultTableModel) tableHospitalEnterprise.getModel();
-        dtm.setRowCount(0);
-    }
+
 }
