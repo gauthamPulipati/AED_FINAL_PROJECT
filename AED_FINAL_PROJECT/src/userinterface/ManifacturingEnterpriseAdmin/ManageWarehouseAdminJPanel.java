@@ -9,7 +9,7 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
-import Business.Role.ManifacturingAdminRole;
+import Business.Role.ManufacturingAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -62,15 +62,23 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
 
         tblwarehouseAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Warehouse Name", "Admin Name", "User Name"
+                "Username", "Warehouse Admin Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblwarehouseAdmin);
 
         jLabel3.setText("Admin User Name : ");
@@ -178,7 +186,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         String name = txtAdminName.getText();
         
         Employee employee = warehouse.getEmployeeDirectory().createEmployee(name);
-        UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ManifacturingAdminRole());
+        UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturingAdminRole());
         
         populateTable(warehouse);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -227,7 +235,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)tblwarehouseAdmin.getModel();
         model.setRowCount(0);
         
-        String dm = "Manifacturing Admin";
+        String dm = "Manufacturing Admin";
         
         for(UserAccount us: wrhs.getUserAccountDirectory().getUserAccountList()){
             if(us.getRole().toString().equals(dm)){

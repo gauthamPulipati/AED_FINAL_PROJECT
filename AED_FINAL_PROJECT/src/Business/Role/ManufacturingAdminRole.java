@@ -16,7 +16,7 @@ import userinterface.ManifacturingAdmin.ManifacturingAdminJPanel;
  *
  * @author gauthamrajsimhapulipati
  */
-public class ManifacturingAdminRole extends Role{
+public class ManufacturingAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
@@ -25,6 +25,6 @@ public class ManifacturingAdminRole extends Role{
     
     @Override
     public String toString(){
-        return "Manifacturing Admin";
+        return "Manufacturing Admin";
     }
 }

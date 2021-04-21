@@ -71,7 +71,15 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             new String [] {
                 "Hospital Name", "Address"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblHospital);
 
         txtHospitalName.addActionListener(new java.awt.event.ActionListener() {

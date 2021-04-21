@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class ManufacturingWarehouse extends Organization {
     
-    private String warehouseDetails;
     private String wareHouseName;
 
     public String getWareHouseName() {
@@ -25,13 +24,15 @@ public class ManufacturingWarehouse extends Organization {
         this.wareHouseName = wareHouseName;
     }
     
-    public ManufacturingWarehouse(String warehouseDetails){
+    public ManufacturingWarehouse(String warehouseName){
         super();
-        this.warehouseDetails = warehouseDetails;
+        this.wareHouseName = warehouseName;
         
     }
-    public String getWarehouseDetails() {
-        return warehouseDetails;
+    
+    @Override
+    public String toString(){
+        return this.wareHouseName;
     }
 
     @Override

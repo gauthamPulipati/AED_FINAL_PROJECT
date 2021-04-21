@@ -59,13 +59,13 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
 
         tblShippingManWarehouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Warehouse Name", "Delivery Men Name", "User Name"
+                "Username", "Shipping Man Name"
             }
         ));
         jScrollPane1.setViewportView(tblShippingManWarehouse);

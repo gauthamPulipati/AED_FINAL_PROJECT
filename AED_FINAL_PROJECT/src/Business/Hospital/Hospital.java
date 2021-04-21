@@ -35,6 +35,7 @@ public class Hospital extends Organization{
         this.address = address;
     }
     
+    @Override
     public String toString(){
         return this.hospitalName;
     }

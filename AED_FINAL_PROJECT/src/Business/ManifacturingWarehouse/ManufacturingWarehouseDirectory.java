@@ -33,7 +33,7 @@ public class ManufacturingWarehouseDirectory {
     
     public void deleteWarehouse(String name){
         for (ManufacturingWarehouse warehouse:warehousedirectory){
-            if(warehouse.getWarehouseDetails().equals(name)){
+            if(warehouse.getWareHouseName().equals(name)){
                 warehousedirectory.remove(warehouse);
                 break;
             }

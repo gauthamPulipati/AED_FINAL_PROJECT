@@ -10,6 +10,8 @@ import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Network.Network;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,7 +60,15 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
             new String [] {
                 "WareHouse Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblwareHouse);
 
         jLabel1.setText("Manufacturing Warehouse Name: ");
@@ -70,6 +80,11 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("< back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +140,11 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtwarehouseNameActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
@@ -143,6 +163,8 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         for ( ManufacturingWarehouse warehouse : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
             Object[] row = new Object[1];
             row[0] = warehouse;
+            System.out.println(warehouse.getWareHouseName()+" ---- name");
+            System.out.println(warehouse+" ----- obj");
             model.addRow(row);
         }
     }

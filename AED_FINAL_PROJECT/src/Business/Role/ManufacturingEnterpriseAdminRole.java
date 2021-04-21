@@ -16,7 +16,7 @@ import userinterface.ManifacturingEnterpriseAdmin.ManifacturingEnterpriseAdminJP
  *
  * @author gauthamrajsimhapulipati
  */
-public class ManifacturingEnterpriseAdminRole extends Role {
+public class ManufacturingEnterpriseAdminRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         return new ManifacturingEnterpriseAdminJPanel(userProcessContainer, enterprise);

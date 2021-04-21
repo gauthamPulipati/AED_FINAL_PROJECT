@@ -12,7 +12,7 @@ import Business.Network.Network;
 import Business.Role.DistributionEnterpriseAdminRole;
 import Business.Role.FDAEnterpriseAdminRole;
 import Business.Role.HospitalEnterpriseAdminRole;
-import Business.Role.ManifacturingEnterpriseAdminRole;
+import Business.Role.ManufacturingEnterpriseAdminRole;
 import Business.Role.RetailEnterpriseAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -250,7 +250,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                     UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalEnterpriseAdminRole());
                 }
                 else if(enterprise.getEnterpriseType().getValue().equals("Manifacturing Unit")){
-                    UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManifacturingEnterpriseAdminRole());
+                    UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturingEnterpriseAdminRole());
                 }
                 else if(enterprise.getEnterpriseType().getValue().equals("Distribution Unit")){
                     UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DistributionEnterpriseAdminRole());
