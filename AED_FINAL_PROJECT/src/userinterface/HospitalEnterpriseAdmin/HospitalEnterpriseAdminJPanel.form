@@ -24,7 +24,6 @@
                       <Component id="btnCreateHospital" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnCreateLabAdmin" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnCreateHospAdmin" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnEditHospital" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnCreateDoctor" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -45,9 +44,7 @@
               <Component id="btnCreateLabAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCreateDoctor" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnEditHospital" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="126" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,14 +93,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateLabAdminActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnEditHospital">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Hospital Details"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditHospitalActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateDoctor">

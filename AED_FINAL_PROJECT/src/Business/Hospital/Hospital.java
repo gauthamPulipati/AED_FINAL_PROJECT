@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Hospital extends Organization{
     
     private String hospitalName;
+    private String address;
     
     public Hospital(String hospitalName){
         super();
@@ -25,6 +26,20 @@ public class Hospital extends Organization{
     public String getHospitalName() {
         return hospitalName;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    public String toString(){
+        return this.hospitalName;
+    }
+    
+    
 
     @Override
     public ArrayList<Role> getSupportedRole() {

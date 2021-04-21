@@ -6,6 +6,7 @@
 package userinterface.HospitalEnterpriseAdmin;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Hospital.HospitalDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -21,11 +22,12 @@ public class CreateHospitalAdminJPanel extends javax.swing.JPanel {
      * Creates new form CreateHospitalAdminJPanel
      */
     private JPanel userProcessContainer;
-    private EcoSystem business;
-    private HospitalDirectory hospitaldirectory;
+    private Enterprise enterprise;
     
-    public CreateHospitalAdminJPanel(JPanel userProcessContainer, EcoSystem business, HospitalDirectory hospitaldirectory) {
+    public CreateHospitalAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
    

@@ -31,6 +31,18 @@ public abstract class Enterprise extends Organization{
     private DistributionDirectory distributionDirectory;
     private FDA fdaInstance = new FDA();
     
+    
+    public Enterprise(String name,EnterpriseType type){
+        super(name);
+        this.enterpriseType=type;
+        organizationDirectory=new OrganizationDirectory();
+        hospitalDirectory = new HospitalDirectory();
+        manufacturingWarehouseDirectory = new ManufacturingWarehouseDirectory();
+        retailStoreDirectory = new RetailStoreDirectory();
+        distributionDirectory = new DistributionDirectory();
+        
+    }
+    
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
@@ -53,9 +65,9 @@ public abstract class Enterprise extends Organization{
             return value;
         }
         @Override
-        public String toString(){
-        return value;
-    }
+            public String toString(){
+            return value;
+        }
     }
 
     public EnterpriseType getEnterpriseType() {
@@ -64,12 +76,6 @@ public abstract class Enterprise extends Organization{
 
     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
-    }
-    
-    public Enterprise(String name,EnterpriseType type){
-        super(name);
-        this.enterpriseType=type;
-        organizationDirectory=new OrganizationDirectory();
     }
     
     public Hospital createHospital(String name){
@@ -102,6 +108,22 @@ public abstract class Enterprise extends Organization{
     
     public FDA getFDAInstance(){
         return fdaInstance;
+    }
+
+    public HospitalDirectory getHospitalDirectory() {
+        return hospitalDirectory;
+    }
+
+    public ManufacturingWarehouseDirectory getManufacturingWarehouseDirectory() {
+        return manufacturingWarehouseDirectory;
+    }
+
+    public RetailStoreDirectory getRetailStoreDirectory() {
+        return retailStoreDirectory;
+    }
+
+    public DistributionDirectory getDistributionDirectory() {
+        return distributionDirectory;
     }
     
     

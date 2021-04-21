@@ -7,10 +7,6 @@ package userinterface.HospitalEnterpriseAdmin;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Hospital.HospitalDirectory;
-import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,19 +22,13 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
-    private OrganizationDirectory directory;
     private Enterprise enterprise;
     private EcoSystem business;
-    private HospitalDirectory hospitaldirectory;
     
-    public HospitalEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public HospitalEnterpriseAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
         this.business = business;
         this.enterprise = enterprise;
         populatetable();
@@ -58,7 +48,6 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         btnCreateHospAdmin = new javax.swing.JButton();
         btnCreateHospital = new javax.swing.JButton();
         btnCreateLabAdmin = new javax.swing.JButton();
-        btnEditHospital = new javax.swing.JButton();
         btnCreateDoctor = new javax.swing.JButton();
 
         tableHospitalEnterprise.setModel(new javax.swing.table.DefaultTableModel(
@@ -95,13 +84,6 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnEditHospital.setText("Edit Hospital Details");
-        btnEditHospital.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditHospitalActionPerformed(evt);
-            }
-        });
-
         btnCreateDoctor.setText("Create Doctor");
         btnCreateDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +103,6 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                         .addComponent(btnCreateHospital, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCreateLabAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCreateHospAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEditHospital, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCreateDoctor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -138,15 +119,13 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnCreateLabAdmin)
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateDoctor)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditHospital)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateHospAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospAdminActionPerformed
         // TODO add your handling code here:
-        CreateHospitalAdminJPanel addhadmin = new CreateHospitalAdminJPanel(userProcessContainer, business, hospitaldirectory);
+        CreateHospitalAdminJPanel addhadmin = new CreateHospitalAdminJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("CreateNewRestaurant", addhadmin);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -154,7 +133,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospitalActionPerformed
         // TODO add your handling code here:
-        CreateHospitalJPanel addhosp = new CreateHospitalJPanel(userProcessContainer, business, hospitaldirectory);
+        CreateHospitalJPanel addhosp = new CreateHospitalJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("CreateNewRestaurant", addhosp);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -162,7 +141,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateLabAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLabAdminActionPerformed
         // TODO add your handling code here:
-        CreateLabAdminJPanel addlabadmin = new CreateLabAdminJPanel(userProcessContainer, business, hospitaldirectory);
+        CreateLabAdminJPanel addlabadmin = new CreateLabAdminJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("CreateNewRestaurant", addlabadmin);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -170,19 +149,11 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDoctorActionPerformed
         // TODO add your handling code here:
-        CreateDoctorJPanel addDoc = new CreateDoctorJPanel(userProcessContainer, business, hospitaldirectory);
+        CreateDoctorJPanel addDoc = new CreateDoctorJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("CreateNewRestaurant", addDoc);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateDoctorActionPerformed
-
-    private void btnEditHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHospitalActionPerformed
-        // TODO add your handling code here:
-        EditHospitalJPanel edithosp = new EditHospitalJPanel(userProcessContainer, business, hospitaldirectory);
-        userProcessContainer.add("CreateNewRestaurant", edithosp);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnEditHospitalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -190,7 +161,6 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateHospAdmin;
     private javax.swing.JButton btnCreateHospital;
     private javax.swing.JButton btnCreateLabAdmin;
-    private javax.swing.JButton btnEditHospital;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableHospitalEnterprise;
     // End of variables declaration//GEN-END:variables
