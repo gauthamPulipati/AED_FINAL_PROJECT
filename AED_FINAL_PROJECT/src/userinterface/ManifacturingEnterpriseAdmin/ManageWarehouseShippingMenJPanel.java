@@ -6,7 +6,15 @@
 package userinterface.ManifacturingEnterpriseAdmin;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
+import Business.Role.ShippingManRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,15 +22,17 @@ import javax.swing.JPanel;
  */
 public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+
     /**
      * Creates new form ManageWarehouseShippingMen
      */
-    public ManageWarehouseShippingMenJPanel() {
+    public ManageWarehouseShippingMenJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-    }
-
-    ManageWarehouseShippingMenJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        populateJComboBox();
     }
 
     /**
@@ -35,44 +45,62 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblShippingManWarehouse = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtShipName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtShipUsername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtShipPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        warehouseJComboBox = new javax.swing.JComboBox();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblShippingManWarehouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Warehouse Name", "Delivery Men Name", "User Name", "Title 4"
+                "Warehouse Name", "Delivery Men Name", "User Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblShippingManWarehouse);
 
         jLabel1.setText("Warehouse Name :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Delivery Man Name : ");
+        jLabel2.setText("Shipping Man Name : ");
 
         jLabel3.setText("Username :");
 
         jLabel4.setText("Password :");
 
         jButton1.setText("<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        warehouseJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        warehouseJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        warehouseJComboBox.setForeground(new java.awt.Color(48, 60, 108));
+        warehouseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        warehouseJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warehouseJComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,10 +125,10 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel4))
                                 .addGap(77, 77, 77)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, 161, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3))))))
+                                    .addComponent(txtShipName, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(txtShipUsername)
+                                    .addComponent(txtShipPassword)
+                                    .addComponent(warehouseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,22 +136,22 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(warehouseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtShipName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtShipUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtShipPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -132,19 +160,79 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void warehouseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseJComboBoxActionPerformed
+        // TODO add your handling code here:
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+        if (warehouse != null) {
+            populateTable(warehouse);
+        }
+    }//GEN-LAST:event_warehouseJComboBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+
+        String username = txtShipUsername.getText();
+        String password = txtShipPassword.getText();
+        String name = txtShipName.getText();
+
+        Employee employee = warehouse.getEmployeeDirectory().createEmployee(name);
+        UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ShippingManRole());
+
+        populateTable(warehouse);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManifacturingEnterpriseAdminJPanel manetn = (ManifacturingEnterpriseAdminJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tblShippingManWarehouse;
+    private javax.swing.JTextField txtShipName;
+    private javax.swing.JTextField txtShipPassword;
+    private javax.swing.JTextField txtShipUsername;
+    private javax.swing.JComboBox warehouseJComboBox;
     // End of variables declaration//GEN-END:variables
+
+    private void populateJComboBox() {
+        warehouseJComboBox.removeAllItems();
+        int i = 0;
+        for (ManufacturingWarehouse wrhs : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
+            if (i == 0) {
+                populateTable(wrhs);
+                i++;
+                System.out.println(wrhs.getWareHouseName());
+            }
+            warehouseJComboBox.addItem(wrhs);
+        }
+    }
+
+    private void populateTable(ManufacturingWarehouse wrhs) {
+        DefaultTableModel model = (DefaultTableModel) tblShippingManWarehouse.getModel();
+        model.setRowCount(0);
+
+        String dm = "Shipping Man";
+
+        for (UserAccount us : wrhs.getUserAccountDirectory().getUserAccountList()) {
+            if (us.getRole().toString().equals(dm)) {
+                Object[] row = new Object[2];
+                row[0] = us;
+                row[1] = us.getEmployee().getName();
+                model.addRow(row);
+            }
+        }
+    }
 }

@@ -19,7 +19,7 @@ import userinterface.Shipping.ShippingManJPanel;
 public class ShippingManRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ShippingManJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new ShippingManJPanel(userProcessContainer,enterprise);
     }
     
     @Override

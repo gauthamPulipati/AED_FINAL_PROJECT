@@ -25,25 +25,19 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManifacturingEnterpriseAdminJPanel
      */
-    
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
     private Enterprise enterprise;
-    private EcoSystem ecoSystem;
-    private ManufacturingWarehouseDirectory warehouseDirectory;
-    private ManufacturingWarehouse warehouse;
-    
-    public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem ecoSystem) {
+
+    public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.ecoSystem = ecoSystem;
         this.enterprise = enterprise;
-        
-      
+
+    }
+
+    public ManifacturingEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -106,23 +100,23 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManageManufacturingWarehouseJPanel manageManWareJPanel=new ManageManufacturingWarehouseJPanel(userProcessContainer, ecoSystem);
-        userProcessContainer.add("ManageManufacturingWarehouseJPanel",manageManWareJPanel);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        ManageManufacturingWarehouseJPanel manageManWareJPanel = new ManageManufacturingWarehouseJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageManufacturingWarehouseJPanel", manageManWareJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManageWarehouseAdminJPanel wrAdmin =new ManageWarehouseAdminJPanel(userProcessContainer, ecoSystem);
-        userProcessContainer.add("ManageWarehouseAdminJPanel",wrAdmin);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        ManageWarehouseAdminJPanel wrAdmin = new ManageWarehouseAdminJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageWarehouseAdminJPanel", wrAdmin);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ManageWarehouseShippingMenJPanel wrAdmin =new ManageWarehouseShippingMenJPanel(userProcessContainer, ecoSystem);
-        userProcessContainer.add("ManageWarehouseShippingMenJPanel",wrAdmin);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        ManageWarehouseShippingMenJPanel wrAdmin = new ManageWarehouseShippingMenJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageWarehouseShippingMenJPanel", wrAdmin);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -133,9 +127,4 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 
-    private void populateWarehouseTable() {
-    }
-        
-    
-    
 }

@@ -6,6 +6,7 @@
 package userinterface.ManifacturingEnterpriseAdmin;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Network.Network;
@@ -19,15 +20,16 @@ import javax.swing.table.DefaultTableModel;
 public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
 
     private ManufacturingWarehouseDirectory warehouseDirectory;
+    private Enterprise enterprise;
+    private JPanel userProcessContainer;
     /**
      * Creates new form CreateManufacturingWarehouseJPanel
      */
-    public ManageManufacturingWarehouseJPanel() {
+    public ManageManufacturingWarehouseJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-    }
-
-    ManageManufacturingWarehouseJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        populateWarehouseTable();
     }
 
     /**
@@ -114,7 +116,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         String name = txtwarehouseName.getText();
 
-        ManufacturingWarehouse ware = warehouseDirectory.createWarehouse(name);
+        ManufacturingWarehouse ware = this.enterprise.createManifacturingWarehouse(name);
 
         populateWarehouseTable();
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -136,11 +138,11 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     private void populateWarehouseTable() {
         
         DefaultTableModel model = (DefaultTableModel) tblwareHouse.getModel();
-
         model.setRowCount(0);
-        for ( ManufacturingWarehouse ware : warehouseDirectory.getWarehousedirectory()) {
+        
+        for ( ManufacturingWarehouse warehouse : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
             Object[] row = new Object[1];
-            row[0] = ware.getWareHouseName();
+            row[0] = warehouse;
             model.addRow(row);
         }
     }
