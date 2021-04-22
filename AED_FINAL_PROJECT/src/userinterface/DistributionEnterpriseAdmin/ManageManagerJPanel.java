@@ -13,6 +13,7 @@ import Business.Role.ManagerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.ManifacturingEnterpriseAdmin.ManifacturingEnterpriseAdminJPanel;
@@ -87,6 +88,8 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         tblManager = new javax.swing.JTable();
         txtManagerName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         jLabel1.setText("Distribution Name");
 
@@ -141,41 +144,62 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Manager Name :");
 
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(88, 88, 88)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtManagerName)
-                            .addComponent(txtUsername)
-                            .addComponent(txtPassword)
-                            .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSubmit))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSubmit))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnModify)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDelete)))
                 .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtManagerName)
+                    .addComponent(txtUsername)
+                    .addComponent(txtPassword)
+                    .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelete)
+                    .addComponent(btnModify))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,11 +218,11 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSubmit))
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,10 +241,57 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         String password = txtPassword.getText();
         String name = txtManagerName.getText();
 
+        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return;
+        }
+        boolean isValid ; 
+        
+        isValid = name.matches("^[a-zA-Z]+$");
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtManagerName.setText("");
+            return;
+        }
+        if(distribution.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
+            JOptionPane.showMessageDialog(this, "User name taken, try another one");
+            txtUsername.setText("");
+            txtPassword.setText("");
+            return;
+        }
+        
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtUsername.setText("");
+            return;
+        }
+        
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtPassword.setText("");
+            return;
+        }
+
+        if(password.length()<6){
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtPassword.setText("");
+            return;
+        }
+
         Employee employee = distribution.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = distribution.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
 
         populateTable(distribution);
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtManagerName.setText("");
+        btnDelete.setEnabled(true);
+        btnModify.setEnabled(true);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -234,9 +305,52 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        // TODO add your handling code here:
+        //btnCreate.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+        btnSubmit.setEnabled(true);
+        Distribution dist = (Distribution)distributionJComboBox.getSelectedItem();
+        int selectedRowIndex = tblManager.getSelectedRow();
+
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Please select a row to Modify", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModify.setEnabled(true);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblManager.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+        txtManagerName.setText(us.getEmployee().getName());
+        txtPassword.setText(us.getPassword());
+        txtUsername.setText(us.getUsername());
+        dist.getUserAccountDirectory().removeUser(us);
+        //this.enterprise.getDistributionDirectory().deleteDistributionUnit(dist);
+    }//GEN-LAST:event_btnModifyActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        Distribution dist = (Distribution)distributionJComboBox.getSelectedItem();
+        int selectedRowIndex = tblManager.getSelectedRow();
+
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Please select a row to Modify", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModify.setEnabled(true);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblManager.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+
+        dist.getEmployeeDirectory().deleteEmployee(us.getEmployee());
+        dist.getUserAccountDirectory().removeUser(us);
+        populateTable(dist);
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox distributionJComboBox;
     private javax.swing.JLabel jLabel1;

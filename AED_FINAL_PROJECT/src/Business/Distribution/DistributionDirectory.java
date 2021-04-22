@@ -29,15 +29,19 @@ public class DistributionDirectory {
         return distribution;
     }
     
-    public void deleteDistributionUnit(String name){
-        for(Distribution distribution: distributions){
-            if(distribution.getName().equals(name)){
-                distributions.remove(name);
-                break;
-            }
-        }
+    //public void deleteDistributionUnit(String name){
+      //  for(Distribution distribution: distributions){
+        //    if(distribution.getDistributionName().equals(name)){
+          //      distributions.remove(name);
+            //    break;
+            //}
+        //}
+    //}
+    
+    public void deleteDistributionUnit(Distribution dist){
+        distributions.remove(dist);
     }
-
+    
     public ArrayList<Distribution> getDistributions() {
         return distributions;
     }
