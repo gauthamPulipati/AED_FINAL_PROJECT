@@ -52,51 +52,70 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jButton1.setText("Create Manufacturing Warehouse");
+        setBackground(new java.awt.Color(131, 197, 190));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 109, 119));
+        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jButton1.setText(" Warehouse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 182, 95));
 
-        jButton2.setText("Create Warehouse Admin");
+        jButton2.setBackground(new java.awt.Color(0, 109, 119));
+        jButton2.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jButton2.setText("Warehouse Admin");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, 95));
 
-        jButton3.setText("Create Shipping Men");
+        jButton3.setBackground(new java.awt.Color(0, 109, 119));
+        jButton3.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jButton3.setText(" Shipping Men");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 182, 95));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(129, Short.MAX_VALUE))
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jLabel1.setText("Choose option to Manage :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, 24));
+
+        jPanel1.setBackground(new java.awt.Color(0, 109, 119));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 255, 204), 10, true));
+
+        jLabel2.setBackground(new java.awt.Color(0, 109, 119));
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 3, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Manufacturing Warehouse");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jButton1)
-                .addGap(28, 28, 28)
-                .addComponent(jButton2)
-                .addGap(32, 32, 32)
-                .addComponent(jButton3)
-                .addContainerGap(179, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel2)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 640, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -125,6 +144,9 @@ public class ManifacturingEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
 }

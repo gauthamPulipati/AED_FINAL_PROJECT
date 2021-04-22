@@ -54,12 +54,19 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         txtShipUsername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtShipPassword = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         warehouseJComboBox = new javax.swing.JComboBox();
         btnModify = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(131, 197, 190));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblShippingManWarehouse.setBackground(new java.awt.Color(131, 197, 190));
+        tblShippingManWarehouse.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 204), 3, true));
         tblShippingManWarehouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -73,27 +80,36 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblShippingManWarehouse);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, 157));
+
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel1.setText("Warehouse Name :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, 20));
 
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel2.setText("Shipping Man Name : ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+        add(txtShipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 161, -1));
 
+        jLabel3.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel3.setText("Username :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
+        add(txtShipUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 161, -1));
 
+        jLabel4.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel4.setText("Password :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
+        add(txtShipPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 161, -1));
 
-        jButton1.setText("<Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        btnSubmit.setBackground(new java.awt.Color(0, 109, 119));
+        btnSubmit.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 100, 40));
 
         warehouseJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         warehouseJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -104,89 +120,66 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
                 warehouseJComboBoxActionPerformed(evt);
             }
         });
+        add(warehouseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 161, -1));
 
+        btnModify.setBackground(new java.awt.Color(0, 109, 119));
+        btnModify.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModifyActionPerformed(evt);
             }
         });
+        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 120, 40));
 
+        btnDelete.setBackground(new java.awt.Color(0, 109, 119));
+        btnDelete.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 249, 120, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnModify)
-                                    .addComponent(btnDelete)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSubmit)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtShipName, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                    .addComponent(txtShipUsername)
-                                    .addComponent(txtShipPassword)
-                                    .addComponent(warehouseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(68, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(0, 109, 119));
+
+        jLabel5.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Shipping Men Details");
+
+        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jButton1.setText("<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(120, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btnModify)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnDelete)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(warehouseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtShipName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtShipUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtShipPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnSubmit))
-                .addGap(21, 21, 21))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 870, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void warehouseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseJComboBoxActionPerformed
@@ -314,6 +307,8 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblShippingManWarehouse;
     private javax.swing.JTextField txtShipName;
