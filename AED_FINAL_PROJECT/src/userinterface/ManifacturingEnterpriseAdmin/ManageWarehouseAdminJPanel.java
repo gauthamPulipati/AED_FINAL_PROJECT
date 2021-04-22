@@ -207,56 +207,16 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_warehouseJComboBoxActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-       
-        
-        
+ 
         ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
         
         String username = txtAdminUsername.getText();
         String password = txtAdminPassword.getText();
         String name = txtAdminName.getText();
         
-        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        boolean isValid  = validateFields(username,password,name,warehouse);
         
-            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
-            return;
-        }
-        boolean isValid ; 
-        
-        isValid = name.matches("^[a-zA-Z]+$");
-        if(!isValid) {
-            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
-            txtAdminName.setText("");
-            return;
-        }
-        if(warehouse.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
-            JOptionPane.showMessageDialog(this, "user name taken, try another one");
-            txtAdminUsername.setText("");
-            txtAdminPassword.setText("");
-            return;
-        }
-        
-        isValid = username.matches("^[a-zA-Z0-9]+$");
-        
-        if(!isValid) {
-            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
-            txtAdminUsername.setText("");
-            return;
-        }
-        
-        isValid = password.matches("^[a-zA-Z0-9]+$$");
-        
-        if(!isValid) {
-            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
-            txtAdminPassword.setText("");
-            return;
-        }
-
-        if(password.length()<6){
-            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
-            txtAdminPassword.setText("");
-            return;
-        }
+        if(!isValid){return;}
         
         Employee employee = warehouse.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturingAdminRole());
@@ -365,20 +325,50 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         
     }
     
-    private void populateTable(){
-    DefaultTableModel model = (DefaultTableModel)tblwarehouseAdmin.getModel();
-    model.setRowCount(0);
-    String dm = "Manufacturing Admin";
-        
-        for(UserAccount us: this.enterprise.getUserAccountDirectory().getUserAccountList()){
-            if(us.getRole().toString().equals(dm)){
-                Object[] row = new Object[2];
-                row[0] = us;
-                row[1] = us.getEmployee().getName();
-                model.addRow(row);
-            }
-            
-        }
+    private boolean validateFields(String username, String password,String name,ManufacturingWarehouse warehouse){
     
+        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return false;
+        }
+        boolean isValid ; 
+        
+        isValid = name.matches("^[a-zA-Z]+$");
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtAdminName.setText("");
+            return false;
+        }
+        if(warehouse.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
+            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            txtAdminUsername.setText("");
+            txtAdminPassword.setText("");
+            return false;
+        }
+        
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtAdminUsername.setText("");
+            return false;
+        }
+        
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtAdminPassword.setText("");
+            return false;
+        }
+
+        if(password.length()<6){
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtAdminPassword.setText("");
+            return false;
+        }
+        
+        return true;
     }
 }

@@ -11,6 +11,7 @@ import Business.RetailStore.RetailStore;
 import Business.RetailStore.RetailStoreDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,7 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private RetailStoreDirectory retailStoreDirectory;
+    private RetailStore retailStore;
     private Enterprise enterprise;
     /**
      * Creates new form ManageRetailerJPanel
@@ -48,7 +50,10 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtRetailerinput = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
 
         tblRetailerName.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,10 +80,31 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
             }
         });
 
@@ -89,35 +115,46 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSubmit))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(jLabel1)
-                                .addGap(55, 55, 55)
-                                .addComponent(txtRetailerinput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(93, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(85, 85, 85))))
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addGap(47, 47, 47)
+                        .addComponent(txtRetailerinput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCreate)
+                    .addComponent(btnModify)
+                    .addComponent(btnDelete))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(btnModify)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnDelete)))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(txtRetailerinput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(46, 46, 46)
+                    .addComponent(btnCreate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(btnSubmit))
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,20 +168,79 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         
         String name = txtRetailerinput.getText();
+        
+        if(name.length()<1){
+            JOptionPane.showMessageDialog(null, "Retailer Store Name cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        retailStore.setStoreName(name);
+        btnSubmit.setEnabled(false);
+        btnModify.setEnabled(true);
+        btnCreate.setEnabled(true);
+        btnDelete.setEnabled(true);
+        
+        populateRetailerTable();
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRow = tblRetailerName.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        RetailStore rs = (RetailStore) tblRetailerName.getValueAt(selectedRow, 0);
+
+        this.enterprise.getRetailStoreDirectory().deleteRetailerStore(rs);
+
+        populateRetailerTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+         String name = txtRetailerinput.getText();
+        
+        if(name.length()<1){
+            JOptionPane.showMessageDialog(null, "Retail Store Name cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         RetailStore rs = this.enterprise.createRetailStore(name);
 
         populateRetailerTable();
+        txtRetailerinput.setText(" ");
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        btnCreate.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+        btnSubmit.setEnabled(true);
+        int selectedRow = tblRetailerName.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModify.setEnabled(true);
+            return;
+        }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblRetailerName.getModel();
+        RetailStore rs = (RetailStore)model.getValueAt(selectedRow, 0);
+        
+        txtRetailerinput.setText(rs.getStoreName());
+        retailStore =rs;
+    }//GEN-LAST:event_btnModifyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRetailerName;

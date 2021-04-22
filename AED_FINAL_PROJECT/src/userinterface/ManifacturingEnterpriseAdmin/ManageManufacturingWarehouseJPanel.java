@@ -272,8 +272,6 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         for (ManufacturingWarehouse warehouse : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
             Object[] row = new Object[1];
             row[0] = warehouse;
-            System.out.println(warehouse.getWareHouseName() + " ---- name");
-            System.out.println(warehouse + " ----- obj");
             model.addRow(row);
         }
     }

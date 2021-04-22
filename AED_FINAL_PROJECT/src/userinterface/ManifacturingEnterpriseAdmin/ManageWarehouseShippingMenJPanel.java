@@ -218,7 +218,7 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
             return;
         }
         if(warehouse.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
-            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            JOptionPane.showMessageDialog(this, "User name taken, try another one");
             txtShipUsername.setText("");
             txtShipPassword.setText("");
             return;
@@ -300,6 +300,8 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         
         warehouse.getEmployeeDirectory().deleteEmployee(us.getEmployee());
         warehouse.getUserAccountDirectory().removeUser(us);
+        
+        populateTable(warehouse);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 

@@ -12,6 +12,7 @@ import Business.Role.StoreAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,11 +30,10 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
      */
     public ManageRetailerAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         populateComboBox();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,9 +53,13 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JTextField();
         retailerComboBox = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtAdminName = new javax.swing.JTextField();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jreaitler.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,13 +74,21 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jreaitler);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 75, -1, 145));
+
         jLabel1.setText("Retailer Name :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 259, -1, -1));
 
         jLabel2.setText("Retailer Username : ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 364, -1, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 354, 130, -1));
 
         jLabel3.setText("Password : ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 411, -1, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 406, 130, -1));
 
         retailerComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(retailerComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 255, 130, -1));
 
         jButton1.setText("<< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,71 +96,35 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 456, -1, -1));
 
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 456, -1, -1));
 
         jLabel4.setText("Admin Name : ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 318, -1, -1));
+        add(txtAdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 313, 130, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(76, 76, 76))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(retailerComboBox, 0, 130, Short.MAX_VALUE)
-                    .addComponent(txtUserName)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(txtAdminName))
-                .addGap(163, 163, 163))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(retailerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(36, 36, 36))
-        );
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, -1, -1));
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -161,23 +137,71 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         RetailStore rs = (RetailStore) retailerComboBox.getSelectedItem();
-        
+
         String username = txtUserName.getText();
         String password = txtPassword.getText();
         String name = txtAdminName.getText();
-        
+
+        boolean isValid = validateFields(username, password, name, rs);
+
+        if (!isValid) {
+            return;
+        }
+
         Employee employee = rs.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = rs.getUserAccountDirectory().createUserAccount(username, password, employee, new StoreAdminRole());
-        
+
         populateTable(rs);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        txtUserName.setText("");
+        txtPassword.setText("");
+        txtAdminName.setText("");
+        btnDelete.setEnabled(true);
+        btnModify.setEnabled(true);
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        RetailStore rs = (RetailStore) retailerComboBox.getSelectedItem();
+        int selectedRowIndex = jreaitler.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to Modify");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jreaitler.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+        txtUserName.setText(us.getUsername());
+        txtPassword.setText(us.getPassword());
+        txtAdminName.setText(us.getEmployee().getName());
+        rs.getUserAccountDirectory().removeUser(us);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+    }//GEN-LAST:event_btnModifyActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        RetailStore rs = (RetailStore) retailerComboBox.getSelectedItem();
+
+        int selectedRow = jreaitler.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jreaitler.getModel();
+
+        UserAccount us = (UserAccount) model.getValueAt(selectedRow, 0);
+
+        rs.getEmployeeDirectory().deleteEmployee(us.getEmployee());
+        rs.getUserAccountDirectory().removeUser(us);
+        populateTable(rs);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -192,9 +216,9 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
 
     private void populateComboBox() {
         retailerComboBox.removeAllItems();
-        int i=0;
-        for(RetailStore rs :enterprise.getRetailStoreDirectory().getStores()){
-            if(i==0){
+        int i = 0;
+        for (RetailStore rs : enterprise.getRetailStoreDirectory().getStores()) {
+            if (i == 0) {
                 populateTable(rs);
                 i++;
                 System.out.println(rs.getStoreName());
@@ -204,19 +228,66 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable(RetailStore rs) {
-       DefaultTableModel model = (DefaultTableModel)jreaitler.getModel();
+        DefaultTableModel model = (DefaultTableModel) jreaitler.getModel();
         model.setRowCount(0);
-        
+
         String dm = "Store Admin";
-        
-        for(UserAccount us: rs.getUserAccountDirectory().getUserAccountList()){
-            if(us.getRole().toString().equals(dm)){
+
+        for (UserAccount us : rs.getUserAccountDirectory().getUserAccountList()) {
+            if (us.getRole().toString().equals(dm)) {
                 Object[] row = new Object[2];
                 row[0] = us;
                 row[1] = us.getEmployee().getName();
                 model.addRow(row);
             }
-            
+
         }
+    }
+
+    private boolean validateFields(String username, String password, String name, RetailStore rs) {
+
+        if (username.isEmpty() || name.isEmpty() || password.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return false;
+        }
+        boolean isValid;
+
+        isValid = name.matches("^[a-zA-Z]+$");
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtAdminName.setText("");
+            return false;
+        }
+        if (rs.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false) {
+            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            txtUserName.setText("");
+            txtPassword.setText("");
+            return false;
+        }
+
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtUserName.setText("");
+            return false;
+        }
+
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtPassword.setText("");
+            return false;
+        }
+
+        if (password.length() < 6) {
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtPassword.setText("");
+            return false;
+        }
+
+        return true;
     }
 }

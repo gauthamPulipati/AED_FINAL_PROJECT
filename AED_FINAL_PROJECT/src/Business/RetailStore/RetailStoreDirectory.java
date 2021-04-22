@@ -31,13 +31,17 @@ public class RetailStoreDirectory {
         return rstore;
     }
     
-    public void deleteRetailStore(String name){
-        for (RetailStore rstore:stores){
-            if(rstore.getStoreName().equals(name)){
-                stores.remove(rstore);
-                break;
-            }
-        }
+//    public void deleteRetailStore(String name){
+//        for (RetailStore rstore:stores){
+//            if(rstore.getStoreName().equals(name)){
+//                stores.remove(rstore);
+//                break;
+//            }
+//        }
+//    }
+    
+    public void deleteRetailerStore(RetailStore rs){
+        stores.remove(rs);
     }
 
     public ArrayList<RetailStore> getStores() {
