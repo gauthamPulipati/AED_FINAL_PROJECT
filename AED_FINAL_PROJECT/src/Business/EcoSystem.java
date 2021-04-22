@@ -6,14 +6,11 @@
 package Business;
 
 
-import Business.Employee.Employee;
-import Business.Employee.EmployeeDirectory;
+import Business.Customer.CustomerDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.UserAccount.UserAccount;
-import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +21,7 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
+    private CustomerDirectory customerDirectory;
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -45,7 +43,14 @@ public class EcoSystem extends Organization{
     private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
+        customerDirectory = new CustomerDirectory();
     }
+
+    public CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
+    }
+    
+    
 
     public ArrayList<Network> getNetworkList() {
         return networkList;
