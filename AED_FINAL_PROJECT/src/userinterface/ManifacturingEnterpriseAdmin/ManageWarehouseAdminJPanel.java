@@ -295,7 +295,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         
         warehouse.getEmployeeDirectory().deleteEmployee(us.getEmployee());
         warehouse.getUserAccountDirectory().removeUser(us);
-      
+        populateTable(warehouse);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed

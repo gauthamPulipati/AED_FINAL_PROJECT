@@ -18,17 +18,17 @@ import javax.swing.JPanel;
  */
 
 
-public class ManagerJPanel extends javax.swing.JPanel {
+public class ManagerWorkJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManagerJPanel
+     * Creates new form ManagerWorkJPanel
      */
     
     private JPanel userProcessContainer;
     private UserAccount useraccount;
     private ArrayList<Enterprise> warehouseEnterprises;
     
-    public ManagerJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
+    public ManagerWorkJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;

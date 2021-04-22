@@ -12,7 +12,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import userinterface.Manager.ManagerJPanel;
+import userinterface.Manager.ManagerWorkJPanel;
 
 /**
  *
@@ -43,7 +43,7 @@ public class ManagerRole extends Role{
                 warehouseEnterprises.add(ent);
             }
         }
-        return new ManagerJPanel(userProcessContainer, account, warehouseEnterprises);
+        return new ManagerWorkJPanel(userProcessContainer, account, warehouseEnterprises);
     }
     
     @Override
