@@ -31,17 +31,21 @@ public class ManufacturingWarehouseDirectory {
         return warehouse;
     }
     
-    public void deleteWarehouse(String name){
-        for (ManufacturingWarehouse warehouse:warehousedirectory){
-            if(warehouse.getWareHouseName().equals(name)){
-                warehousedirectory.remove(warehouse);
-                break;
-            }
-        }
-    }
+//    public void deleteWarehouse(String name){
+//        for (ManufacturingWarehouse warehouse:warehousedirectory){
+//            if(warehouse.getWareHouseName().equals(name)){
+//                warehousedirectory.remove(warehouse);
+//                break;
+//            }
+//        }
+//    }
 
     public ArrayList<ManufacturingWarehouse> getWarehousedirectory() {
         return warehousedirectory;
     } 
+
+    public void deleteWarehouse(ManufacturingWarehouse warehouse) {
+        warehousedirectory.remove(warehouse);
+    }
     
 }

@@ -12,6 +12,7 @@ import Business.ManifacturingWarehouse.ManufacturingWarehouseDirectory;
 import Business.Network.Network;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +25,8 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     private ManufacturingWarehouseDirectory warehouseDirectory;
     private Enterprise enterprise;
     private JPanel userProcessContainer;
+    private ManufacturingWarehouse warehouse;
+
     /**
      * Creates new form CreateManufacturingWarehouseJPanel
      */
@@ -49,6 +52,9 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         txtwarehouseName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
+        btnModiffy = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
 
         tblwareHouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +99,27 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnModiffy.setText("Modify");
+        btnModiffy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModiffyActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,18 +136,31 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtwarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnModiffy)
+                    .addComponent(btnDelete)
+                    .addComponent(btnCreate))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(btnModiffy)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete)))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtwarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                    .addComponent(txtwarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnSubmit))
@@ -129,10 +169,20 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        
         String name = txtwarehouseName.getText();
-
-        ManufacturingWarehouse ware = this.enterprise.createManifacturingWarehouse(name);
-
+        
+        if(name.length()<1){
+            JOptionPane.showMessageDialog(null, "Warehouse Name cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        warehouse.setWareHouseName(name);
+        btnSubmit.setEnabled(false);
+        btnModiffy.setEnabled(true);
+        btnCreate.setEnabled(true);
+        btnDelete.setEnabled(true);
+        
         populateWarehouseTable();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -151,8 +201,61 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRow = tblwareHouse.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) tblwareHouse.getValueAt(selectedRow, 0);
+
+        this.enterprise.getManufacturingWarehouseDirectory().deleteWarehouse(warehouse);
+
+        populateWarehouseTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnModiffyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModiffyActionPerformed
+        
+        btnCreate.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnModiffy.setEnabled(false);
+        btnSubmit.setEnabled(true);
+        int selectedRow = tblwareHouse.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModiffy.setEnabled(true);
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblwareHouse.getModel();
+        ManufacturingWarehouse wr = (ManufacturingWarehouse)model.getValueAt(selectedRow, 0);
+        
+        txtwarehouseName.setText(wr.getWareHouseName());
+        warehouse =wr;
+ 
+    }//GEN-LAST:event_btnModiffyActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        String name = txtwarehouseName.getText();
+        
+        if(name.length()<1){
+            JOptionPane.showMessageDialog(null, "Warehouse Name cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        ManufacturingWarehouse ware = this.enterprise.createManifacturingWarehouse(name);
+
+        populateWarehouseTable();
+        txtwarehouseName.setText(" ");
+    }//GEN-LAST:event_btnCreateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModiffy;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -162,15 +265,15 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateWarehouseTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) tblwareHouse.getModel();
         model.setRowCount(0);
-        
-        for ( ManufacturingWarehouse warehouse : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
+
+        for (ManufacturingWarehouse warehouse : enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()) {
             Object[] row = new Object[1];
             row[0] = warehouse;
-            System.out.println(warehouse.getWareHouseName()+" ---- name");
-            System.out.println(warehouse+" ----- obj");
+            System.out.println(warehouse.getWareHouseName() + " ---- name");
+            System.out.println(warehouse + " ----- obj");
             model.addRow(row);
         }
     }
