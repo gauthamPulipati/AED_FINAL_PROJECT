@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Business.ManifacturingWarehouse;
+import Business.Order.Order;
 import Business.Organization.Organization;
+import Business.Products.ProductDirectory;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 public class ManufacturingWarehouse extends Organization {
     
     private String wareHouseName;
+    private ProductDirectory productDirectory;
+    private ArrayList<Order> orders;
 
     public String getWareHouseName() {
         return wareHouseName;
@@ -27,7 +31,20 @@ public class ManufacturingWarehouse extends Organization {
     public ManufacturingWarehouse(String warehouseName){
         super();
         this.wareHouseName = warehouseName;
-        
+        this.productDirectory = new ProductDirectory();
+        this.orders = new ArrayList();
+    }
+
+    public ProductDirectory getProductDirectory() {
+        return productDirectory;
+    }
+    
+    public void addOrder(Order order){
+        this.orders.add(order);
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
     
     @Override

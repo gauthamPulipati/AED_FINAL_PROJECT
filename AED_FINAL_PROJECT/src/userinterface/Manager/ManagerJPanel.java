@@ -5,16 +5,18 @@
  */
 package userinterface.Manager;
 
-import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
  *
  * @author gauthamrajsimhapulipati
  */
+
+
 public class ManagerJPanel extends javax.swing.JPanel {
 
     /**
@@ -22,16 +24,16 @@ public class ManagerJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private UserAccount useraccount;
+    private ArrayList<ManufacturingWarehouse> mws;
     
-    public ManagerJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public ManagerJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<ManufacturingWarehouse> mws) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.useraccount = useraccount;
+        this.mws = mws;
+        
     }
 
     /**
@@ -43,124 +45,65 @@ public class ManagerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        rbtnRetailDMan = new javax.swing.JRadioButton();
-        rbtnHomeDMan = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnAssign = new javax.swing.JButton();
-        btnSubmit = new javax.swing.JButton();
-        btnSchedule = new javax.swing.JButton();
+        btnShippingOrder = new javax.swing.JButton();
+        btnDeliveryMan = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Test Kit", "Quantity", "Order Type", "Delivery Address", "Delivery Man", "Delivery Status"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel1.setText("Delivery Man Type:");
-
-        rbtnRetailDMan.setText("Retail Delivery Man");
-
-        rbtnHomeDMan.setText("Home Delivery Man");
-
-        jLabel2.setText("Select Delivery Man:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnAssign.setText("Assign");
-
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+        btnShippingOrder.setText("Place Shipping order");
+        btnShippingOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
+                btnShippingOrderActionPerformed(evt);
             }
         });
 
-        btnSchedule.setText("Ship");
+        btnDeliveryMan.setText("Assign Delivery man");
+        btnDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliveryManActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnHomeDMan)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rbtnRetailDMan, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnSubmit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnAssign)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                        .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(118, 118, 118)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnShippingOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {rbtnHomeDMan, rbtnRetailDMan});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnRetailDMan, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnHomeDMan)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign)
-                    .addComponent(btnSubmit)
-                    .addComponent(btnSchedule))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addComponent(btnShippingOrder)
+                .addGap(37, 37, 37)
+                .addComponent(btnDeliveryMan)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {rbtnHomeDMan, rbtnRetailDMan});
-
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+    private void btnShippingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingOrderActionPerformed
         // TODO add your handling code here:
+        ManagerOrderJPanel managerOrderJPanel = new ManagerOrderJPanel(userProcessContainer,useraccount,mws);
+        userProcessContainer.add("ManagerOrderJPanel", managerOrderJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
-    }//GEN-LAST:event_btnSubmitActionPerformed
+    }//GEN-LAST:event_btnShippingOrderActionPerformed
+
+    private void btnDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryManActionPerformed
+        // TODO add your handling code here:
+        ManagerAssignDeliveryJPanel managerAssignDeliveryJPanel = new ManagerAssignDeliveryJPanel(userProcessContainer,useraccount,mws);
+        userProcessContainer.add("ManagerAssignDeliveryJPanel", managerAssignDeliveryJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnDeliveryManActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnSchedule;
-    private javax.swing.JButton btnSubmit;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JRadioButton rbtnHomeDMan;
-    private javax.swing.JRadioButton rbtnRetailDMan;
+    private javax.swing.JButton btnDeliveryMan;
+    private javax.swing.JButton btnShippingOrder;
     // End of variables declaration//GEN-END:variables
 }

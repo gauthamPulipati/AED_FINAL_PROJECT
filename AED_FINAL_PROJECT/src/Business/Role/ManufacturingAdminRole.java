@@ -7,10 +7,11 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.ManifacturingAdmin.ManifacturingAdminJPanel;
+import userinterface.ManufacturingAdmin.ManufacturingAdminJPanel;
 
 /**
  *
@@ -20,7 +21,22 @@ public class ManufacturingAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ManifacturingAdminJPanel(userProcessContainer, account, organization, enterprise, business);
+        ManufacturingWarehouse manufacturingWarehouse =  null;
+        int fl=0;
+        for(ManufacturingWarehouse mw:enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()){
+            
+            for(UserAccount ua:mw.getUserAccountDirectory().getUserAccountList()){
+                if(ua.getUsername().equals(account.getUsername())){
+                    manufacturingWarehouse = mw;
+                    fl=1;
+                    break;
+                }
+            }
+            if(fl==1){
+                break;
+            }
+        }
+        return new ManufacturingAdminJPanel(userProcessContainer, account, manufacturingWarehouse);
     }
     
     @Override

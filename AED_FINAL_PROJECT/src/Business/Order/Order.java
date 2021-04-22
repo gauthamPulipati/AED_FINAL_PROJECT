@@ -7,6 +7,8 @@ package Business.Order;
 
 import Business.Products.Product;
 import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,55 +16,52 @@ import Business.WorkQueue.WorkRequest;
  */
 public class Order extends WorkRequest {
   
-    private String orderID;
-    private String orderStatus;
-    //private String DeliveryMan;
-    private double quantity;
-    private Product product;
-    private boolean assign;
-
-    public String getOrderID() {
-        return orderID;
+    private String id;
+    private ArrayList<Product> items;
+    private int quantity;
+    private int price;
+    
+    public Order(){
+        items = new ArrayList();
+        Random random = new Random();
+        this.id = String.valueOf(random.nextInt(99999));
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
+    public int getPrice() {
+        return price;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public void setPrice(int price) {
+        this.price = price;
     }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    
+    
+    
+    public String getId() {
+        return id;
     }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
+    
+    
+    public void addItem(Product product, int quantity){
+        this.items.add(product);
         this.quantity = quantity;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public boolean isAssign() {
-        return assign;
-    }
-
-    public void setAssign(boolean assign) {
-        this.assign = assign;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
-   @Override
-    public String toString() {
-        return orderID;
+
+    public ArrayList<Product> getItems() {
+        return items;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    @Override
+    public String toString(){
+        return this.id;
     } 
 }

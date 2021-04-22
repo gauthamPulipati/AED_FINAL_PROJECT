@@ -14,7 +14,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.ManifacturingAdmin.ManifacturingAdminJPanel;
+import userinterface.ManufacturingAdmin.AssignOrderJPanel;
 
 /**
  *

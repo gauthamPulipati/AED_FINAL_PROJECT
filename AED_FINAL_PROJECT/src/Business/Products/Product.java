@@ -13,12 +13,22 @@ public class Product {
     
     private String productName;
     private double price;
+    private int quantity;
     
-    public Product(String productname, double price){
+    public Product(String productname, double price, int quantity){
         this.productName = productname;
         this.price = price;
+        this.quantity = quantity;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
     public String getProductName() {
         return productName;
     }

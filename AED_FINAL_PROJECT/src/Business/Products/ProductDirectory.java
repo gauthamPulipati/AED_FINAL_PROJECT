@@ -26,8 +26,8 @@ public class ProductDirectory {
         this.products = products;
     }
     
-    public Product newProduct(String productname, double price){
-        Product prod = new Product(productname, price);
+    public Product newProduct(String productname, double price, int quantity){
+        Product prod = new Product(productname, price, quantity);
         products.add(prod);
         return prod;
     }
