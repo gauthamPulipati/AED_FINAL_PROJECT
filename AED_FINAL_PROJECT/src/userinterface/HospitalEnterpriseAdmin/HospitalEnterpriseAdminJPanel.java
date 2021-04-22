@@ -48,7 +48,8 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 112));
+        setBackground(new java.awt.Color(0, 106, 200));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCreateHospAdmin.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateHospAdmin.setText("Create Lab Technician");
@@ -57,6 +58,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnCreateHospAdminActionPerformed(evt);
             }
         });
+        add(btnCreateHospAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 357, -1, 107));
 
         btnCreateHospital.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateHospital.setText("Create Hospital");
@@ -65,6 +67,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnCreateHospitalActionPerformed(evt);
             }
         });
+        add(btnCreateHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 195, 227, 107));
 
         btnCreateLabAdmin.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateLabAdmin.setText("Create Lab Admin");
@@ -73,6 +76,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnCreateLabAdminActionPerformed(evt);
             }
         });
+        add(btnCreateLabAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 357, 216, 107));
 
         btnCreateDoctor.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateDoctor.setText("Create Doctor");
@@ -81,12 +85,13 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnCreateDoctorActionPerformed(evt);
             }
         });
+        add(btnCreateDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 195, 216, 107));
 
-        jPanel1.setBackground(new java.awt.Color(69, 114, 160));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(121, 83, 210), 10, true));
+        jPanel1.setBackground(new java.awt.Color(121, 83, 210));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 39, 160), 10, true));
 
         jLabel3.setBackground(new java.awt.Color(69, 39, 160));
-        jLabel3.setFont(new java.awt.Font("Devanagari MT", 3, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Hospital Admin");
 
@@ -104,40 +109,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateHospAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateLabAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
-                .addGap(0, 38, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateDoctor)
-                    .addComponent(btnCreateHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateLabAdmin)
-                    .addComponent(btnCreateHospAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCreateDoctor, btnCreateHospAdmin, btnCreateLabAdmin});
-
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateHospAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospAdminActionPerformed
