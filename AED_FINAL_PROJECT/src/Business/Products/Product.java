@@ -5,6 +5,7 @@
  */
 package Business.Products;
 
+import Business.Customer.Customer;
 import Business.Distribution.Distribution;
 
 /**
@@ -17,12 +18,23 @@ public class Product {
     private double price;
     private int quantity;
     private Distribution distribution;
+    private Customer customer;
     
     public Product(String productname, double price, int quantity){
         this.productName = productname;
         this.price = price;
         this.quantity = quantity;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    
+    
 
     public int getQuantity() {
         return quantity;

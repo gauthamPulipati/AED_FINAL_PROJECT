@@ -5,8 +5,16 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Order.Order;
+import Business.Products.Product;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +27,38 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public CustomerViewOrdersJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount useraccount;
+    Customer customer;
+    public CustomerViewOrdersJPanel(JPanel userProcessContainer, UserAccount useraccount,EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.useraccount = useraccount;
+        this.customer = customer;
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        
+        model.setRowCount(0);
+        ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList();
+        
+        for(int i=wr.size()-1; i>=0;i--){
+            
+            CustomerOrderWorkRequest lt = (CustomerOrderWorkRequest)wr.get(i);
+            Order order = lt.getOrder();
+            for(Product product:order.getItems()){
+                Object[] row = new Object[5];
+                row[0] = product;
+                row[1] = product.getDistribution();
+                row[2] = product.getQuantity();
+                row[3] = product.getPrice();
+                row[4] = lt.getStatus();
+                model.addRow(row);
+            }
+        }
+        
     }
 
     /**
@@ -35,39 +71,29 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProducts = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblWorkRequest = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
-        tblProducts.setModel(new javax.swing.table.DefaultTableModel(
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Unit", "Status"
+                "Message", "Unit", "Quantity", "Price", "Status"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblProducts);
-
-        jButton1.setText("View Results");
+        jScrollPane1.setViewportView(tblWorkRequest);
 
         jButton2.setText("Send Testing");
 
@@ -78,10 +104,7 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(58, 58, 58)
-                        .addComponent(jButton1))
+                    .addComponent(jButton2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
@@ -90,19 +113,16 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton2)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblProducts;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }
