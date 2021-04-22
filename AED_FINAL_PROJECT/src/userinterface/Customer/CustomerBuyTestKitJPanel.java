@@ -5,8 +5,21 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
+import Business.Distribution.Distribution;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Order.Order;
+import Business.Products.Product;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerOrderWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import userinterface.Manager.ManagerWorkJPanel;
 
 /**
  *
@@ -19,10 +32,36 @@ public class CustomerBuyTestKitJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public CustomerBuyTestKitJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount useraccount;
+    Customer customer;
+    public CustomerBuyTestKitJPanel(JPanel userProcessContainer, UserAccount useraccount,EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.useraccount = useraccount;
+        this.customer = customer;
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblProducts.getModel();
+        model.setRowCount(0);
+        
+        for(Network network:ecosystem.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getDistributionDirectory()!=null){
+                        for(Distribution distribution: enterprise.getDistributionDirectory().getDistributions()){
+                            for(Product product:distribution.getProductDirectory().getProducts()){
+                                Object[] row = new Object[3];
+                                row[0] = product;
+                                row[1] = product.getPrice();
+                                row[2] = product.getPrice();
+                                model.addRow(row);
+                            }
+                        }
+                    }
+                }
+            }
     }
 
     /**
@@ -34,19 +73,260 @@ public class CustomerBuyTestKitJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProducts = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        btnAddToCart = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblOrder = new javax.swing.JTable();
+        txtMessage = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnPlaceOrder = new javax.swing.JButton();
+        txtTotal = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        tblProducts.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Test Kit", "Available Quantity", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblProducts);
+
+        jLabel1.setText("Quantity:");
+
+        txtQuantity.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtQuantity.setText("1");
+
+        btnAddToCart.setText("Add to cart");
+        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToCartActionPerformed(evt);
+            }
+        });
+
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Test Kit", "Selected Quantity", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblOrder);
+
+        jLabel5.setText("Message");
+
+        btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceOrderActionPerformed(evt);
+            }
+        });
+
+        txtTotal.setText("0");
+
+        jLabel2.setText("Total Price");
+
+        jButton1.setText("back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(34, 34, 34)
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtQuantity)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddToCart, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 343, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddToCart))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
+                .addComponent(btnPlaceOrder)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblProducts.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row to add");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+        Product product = (Product) model.getValueAt(selectedRowIndex, 0);
+        DefaultTableModel model1 = (DefaultTableModel) tblOrder.getModel();
+
+        if(product.getQuantity()< Integer.parseInt(txtQuantity.getText())){
+            JOptionPane.showMessageDialog(this, "Product unavailable");
+            return;
+        }
+
+        Object[] row = new Object[3];
+        row[0] = product;
+        row[1] = Integer.parseInt(txtQuantity.getText());
+        row[2] = Integer.parseInt(txtQuantity.getText())*product.getPrice();
+        model1.addRow(row);
+
+        txtQuantity.setText("1");
+        double total = Double.parseDouble(txtTotal.getText()) + Integer.parseInt(txtQuantity.getText())*product.getPrice();
+        txtTotal.setText(String.valueOf(total));
+    }//GEN-LAST:event_btnAddToCartActionPerformed
+
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // TODO add your handling code here:
+        String message = txtMessage.getText();
+        
+        Order order = new Order();
+
+        DefaultTableModel model = (DefaultTableModel) tblOrder.getModel();
+        int noOfRows = model.getRowCount();
+        for(int i=0;i<noOfRows;i++){
+            Product product = (Product) model.getValueAt(i, 0);
+            Distribution distribution = product.getDistribution();
+            Integer quant = (Integer) model.getValueAt(i, 1);
+            System.out.println(product.getProductName());
+            order.addItem(product, quant);
+            order.setPrice(product.getPrice()*quant);
+            order.setType("Home");
+            CustomerOrderWorkRequest request = new CustomerOrderWorkRequest();
+            request.setMessage(message);
+            request.setSender(useraccount);
+            request.setStatus("Customer order placed");
+            request.setOrders(order);
+            request.setCustomer(customer);
+            request.setDistribution(distribution);
+            distribution.addOrder(order);
+            distribution.getWorkQueue().getWorkRequestList().add(request);
+            useraccount.getWorkQueue().getWorkRequestList().add(request);
+        }
+   
+
+//        manufacturingWarehouse.addOrder(order);
+//
+//        if(manufacturingWarehouse ==null){
+//            System.out.println("nonono");
+//        }
+//        else{
+//            manufacturingWarehouse.getWorkQueue().getWorkRequestList().add(request);
+//            useraccount.getWorkQueue().getWorkRequestList().add(request);
+//        }
+        model.setRowCount(0);
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManagerWorkJPanel hentadjp = (ManagerWorkJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddToCart;
+    private javax.swing.JButton btnPlaceOrder;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblOrder;
+    private javax.swing.JTable tblProducts;
+    private javax.swing.JTextField txtMessage;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

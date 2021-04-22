@@ -5,6 +5,8 @@
  */
 package Business.Products;
 
+import Business.Distribution.Distribution;
+
 /**
  *
  * @author aksha
@@ -14,6 +16,7 @@ public class Product {
     private String productName;
     private double price;
     private int quantity;
+    private Distribution distribution;
     
     public Product(String productname, double price, int quantity){
         this.productName = productname;
@@ -44,6 +47,16 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    public void setDistribution(Distribution distribution) {
+        this.distribution = distribution;
+    }
+    
+    
     
     @Override
     public String toString(){

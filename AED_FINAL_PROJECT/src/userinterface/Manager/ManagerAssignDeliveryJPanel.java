@@ -139,7 +139,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                     .addComponent(btnAssign)
                     .addComponent(btnSubmit)
                     .addComponent(btnSchedule))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {rbtnHomeDMan, rbtnRetailDMan});

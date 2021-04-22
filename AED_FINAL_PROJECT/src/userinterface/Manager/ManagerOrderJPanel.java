@@ -5,6 +5,7 @@
  */
 package userinterface.Manager;
 
+import Business.Distribution.Distribution;
 import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Order.Order;
@@ -30,13 +31,15 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount useraccount;
     private ArrayList<Enterprise> warehouseEnterprises;
+    private Distribution distribution;
     
-    public ManagerOrderJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
+    public ManagerOrderJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises, Distribution distribution) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.useraccount = useraccount;
         this.warehouseEnterprises = warehouseEnterprises;
+        this.distribution = distribution;
         txtQuantity.setText("1");
         txtTotal.setText("0");
         DefaultTableModel model1 = (DefaultTableModel) tblOrder.getModel();
@@ -359,6 +362,7 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
         request.setSender(useraccount);
         request.setStatus("Order placed");
         request.setOrders(order);
+        request.setDistribution(distribution);
         
         manufacturingWarehouse.addOrder(order);
         

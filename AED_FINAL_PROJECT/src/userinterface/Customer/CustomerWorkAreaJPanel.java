@@ -5,7 +5,9 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,11 +20,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CustomerWorkAreaJPanel
      */
-    JPanel userProcessContainer;
-    EcoSystem ecosystem;
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount account;
+    public CustomerWorkAreaJPanel(JPanel userProcessContainer,UserAccount account,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.account = account;
         this.ecosystem=ecosystem;
     }
 
@@ -137,7 +141,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnBuyTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyTestActionPerformed
         // TODO add your handling code here:
-        CustomerBuyTestKitJPanel customerBuyTestKitJPanel = new CustomerBuyTestKitJPanel(userProcessContainer,ecosystem);
+        Customer customer=null;
+        for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
+            if(c.getEmployee() == account.getEmployee()){
+                customer = c;
+            }
+        }
+        CustomerBuyTestKitJPanel customerBuyTestKitJPanel = new CustomerBuyTestKitJPanel(userProcessContainer, account,ecosystem, customer);
         userProcessContainer.add("CustomerBuyTestKitJPanel", customerBuyTestKitJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

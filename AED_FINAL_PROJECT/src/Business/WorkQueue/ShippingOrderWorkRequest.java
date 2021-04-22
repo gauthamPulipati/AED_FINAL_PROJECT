@@ -5,9 +5,9 @@
  */
 package Business.WorkQueue;
 
+import Business.Distribution.Distribution;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Order.Order;
-import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +17,7 @@ public class ShippingOrderWorkRequest extends WorkRequest{
     private Order orders;
     private ManufacturingWarehouse manufacturingWarehouse;
     private String message;
+    private Distribution distribution;
 
     public Order getOrders() {
         return orders;
@@ -25,6 +26,16 @@ public class ShippingOrderWorkRequest extends WorkRequest{
     public void setOrders(Order orders) {
         this.orders = orders;
     }
+
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    public void setDistribution(Distribution distribution) {
+        this.distribution = distribution;
+    }
+    
+    
     
     public String getMessage() {
         return message;

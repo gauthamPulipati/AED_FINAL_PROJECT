@@ -5,6 +5,7 @@
  */
 package userinterface.Shipping;
 
+import Business.Products.Product;
 import Business.WorkQueue.ShippingOrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -112,6 +113,10 @@ public class ProcessShippingOrderJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         request.setMessage(txtMessage.getText());
         request.setStatus("Completed");
+        for(Product product:request.getOrders().getItems()){
+            request.getDistribution().getProductDirectory().newProduct(product.getProductName(),product.getPrice(), request.getOrders().getQuantity());
+            product.setDistribution(request.getDistribution());
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 

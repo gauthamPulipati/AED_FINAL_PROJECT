@@ -20,6 +20,7 @@ public class Order extends WorkRequest {
     private ArrayList<Product> items;
     private int quantity;
     private double price;
+    private String type;
     
     public Order(){
         items = new ArrayList();
@@ -33,6 +34,14 @@ public class Order extends WorkRequest {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
     

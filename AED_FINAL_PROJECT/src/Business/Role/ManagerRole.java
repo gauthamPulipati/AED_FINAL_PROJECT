@@ -5,6 +5,7 @@
  */
 package Business.Role;
 
+import Business.Distribution.Distribution;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -22,6 +23,22 @@ public class ManagerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+        Distribution distribution = null;
+        int fl2=0;
+        
+        for(Distribution dis:enterprise.getDistributionDirectory().getDistributions()){
+            
+            for(UserAccount ua:dis.getUserAccountDirectory().getUserAccountList()){
+                if(ua.getUsername().equals(account.getUsername())){
+                    distribution = dis;
+                    fl2=1;
+                    break;
+                }
+            }
+            if(fl2==1){
+                break;
+            }
+        }
         
         ArrayList<Enterprise> warehouseEnterprises = new ArrayList();
         Network net = null;
@@ -43,7 +60,7 @@ public class ManagerRole extends Role{
                 warehouseEnterprises.add(ent);
             }
         }
-        return new ManagerWorkJPanel(userProcessContainer, account, warehouseEnterprises);
+        return new ManagerWorkJPanel(userProcessContainer, account, warehouseEnterprises, distribution);
     }
     
     @Override

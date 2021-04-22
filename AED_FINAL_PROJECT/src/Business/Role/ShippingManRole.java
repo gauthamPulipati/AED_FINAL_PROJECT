@@ -5,6 +5,7 @@
  */
 package Business.Role;
 
+import Business.Distribution.Distribution;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;

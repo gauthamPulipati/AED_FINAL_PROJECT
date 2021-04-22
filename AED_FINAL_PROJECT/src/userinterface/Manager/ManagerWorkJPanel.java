@@ -5,6 +5,7 @@
  */
 package userinterface.Manager;
 
+import Business.Distribution.Distribution;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShippingOrderWorkRequest;
@@ -29,13 +30,15 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount useraccount;
     private ArrayList<Enterprise> warehouseEnterprises;
+    private Distribution distribution;
     
-    public ManagerWorkJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
+    public ManagerWorkJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises, Distribution distribution) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.useraccount = useraccount;
         this.warehouseEnterprises = warehouseEnterprises;
+        this.distribution = distribution;
         
         populateTable();
     }
@@ -142,15 +145,15 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnShippingOrder)
-                .addGap(37, 37, 37)
+                .addGap(61, 61, 61)
                 .addComponent(btnDeliveryMan)
-                .addGap(69, 69, 69))
+                .addGap(45, 45, 45))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShippingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingOrderActionPerformed
         // TODO add your handling code here:
-        ManagerOrderJPanel managerOrderJPanel = new ManagerOrderJPanel(userProcessContainer,useraccount,warehouseEnterprises);
+        ManagerOrderJPanel managerOrderJPanel = new ManagerOrderJPanel(userProcessContainer,useraccount,warehouseEnterprises,distribution);
         userProcessContainer.add("ManagerOrderJPanel", managerOrderJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
