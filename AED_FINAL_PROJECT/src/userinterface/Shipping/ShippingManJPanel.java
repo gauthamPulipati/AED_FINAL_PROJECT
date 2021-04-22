@@ -10,6 +10,7 @@ import Business.Products.Product;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShippingOrderWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -194,6 +195,32 @@ public class ShippingManJPanel extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to process this order");
+            return;
+        }
+        
+        ShippingOrderWorkRequest request = (ShippingOrderWorkRequest)tblWorkRequest.getValueAt(selectedRow, 0);
+        
+        if(!request.getStatus().equals("On the way")){
+            if(request.getStatus().equals("Processing")){
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "This order has been processed before");
+                return;
+            }
+            
+        }
+     
+        request.setStatus("Processing");
+        
+        ProcessShippingOrderJPanel pocessShippingOrderJPanel = new ProcessShippingOrderJPanel(userProcessContainer, request);
+        userProcessContainer.add("ProcessShippingOrderJPanel", pocessShippingOrderJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnProcessActionPerformed
 
 

@@ -6,6 +6,8 @@
 package userinterface.Shipping;
 
 import Business.WorkQueue.ShippingOrderWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -27,6 +29,8 @@ public class ProcessShippingOrderJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.request = request;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,19 +41,84 @@ public class ProcessShippingOrderJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        brnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtMessage = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
+
+        brnBack.setText("back");
+        brnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brnBackActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Delivery Message");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(brnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel1)
+                        .addGap(45, 45, 45)
+                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(149, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSubmit)
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(brnBack)
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(btnSubmit)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void brnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ShippingManJPanel hentadjp = (ShippingManJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_brnBackActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        request.setMessage(txtMessage.getText());
+        request.setStatus("Completed");
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton brnBack;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 }
