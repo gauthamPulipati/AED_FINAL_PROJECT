@@ -41,6 +41,7 @@ public abstract class Enterprise extends Organization{
         retailStoreDirectory = new RetailStoreDirectory();
         distributionDirectory = new DistributionDirectory();
         
+        
     }
     
 

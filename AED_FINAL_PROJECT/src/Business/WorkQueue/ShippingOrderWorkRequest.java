@@ -42,6 +42,10 @@ public class ShippingOrderWorkRequest extends WorkRequest{
         this.manufacturingWarehouse = manufacturingWarehouse;
     }
     
+    @Override
+    public String toString(){
+        return this.message;
+    }
     
     
     

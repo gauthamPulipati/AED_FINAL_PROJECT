@@ -203,6 +203,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         System.out.println(enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory());
                         for(ManufacturingWarehouse hospital: enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()){
                             userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            System.out.println(enterprise.getName());
                             if(userAccount!=null){
                                 inEnterprise=enterprise;
                                 inOrganization=null;
@@ -220,6 +221,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     if(enterprise.getDistributionDirectory()!=null){
                         for(Distribution hospital: enterprise.getDistributionDirectory().getDistributions()){
                             userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            System.out.println(enterprise.getName());
                             if(userAccount!=null){
                                 inEnterprise=enterprise;
                                 inOrganization=null;

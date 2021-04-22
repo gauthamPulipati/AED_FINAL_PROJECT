@@ -25,14 +25,14 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount useraccount;
-    private ArrayList<ManufacturingWarehouse> mws;
+    private ArrayList<Enterprise> warehouseEnterprises;
     
-    public ManagerAssignDeliveryJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<ManufacturingWarehouse> mws) {
+    public ManagerAssignDeliveryJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.useraccount = useraccount;
-        this.mws = mws;
+        this.warehouseEnterprises = warehouseEnterprises;
     }
 
     /**

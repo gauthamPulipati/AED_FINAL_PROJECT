@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -19,7 +20,22 @@ import userinterface.Shipping.ShippingManJPanel;
 public class ShippingManRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ShippingManJPanel(userProcessContainer,enterprise);
+        ManufacturingWarehouse manufacturingWarehouse =  null;
+        int fl=0;
+        for(ManufacturingWarehouse mw:enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory()){
+            
+            for(UserAccount ua:mw.getUserAccountDirectory().getUserAccountList()){
+                if(ua.getUsername().equals(account.getUsername())){
+                    manufacturingWarehouse = mw;
+                    fl=1;
+                    break;
+                }
+            }
+            if(fl==1){
+                break;
+            }
+        }
+        return new ShippingManJPanel(userProcessContainer, account, manufacturingWarehouse);
     }
     
     @Override

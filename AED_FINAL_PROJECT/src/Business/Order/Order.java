@@ -19,7 +19,7 @@ public class Order extends WorkRequest {
     private String id;
     private ArrayList<Product> items;
     private int quantity;
-    private int price;
+    private double price;
     
     public Order(){
         items = new ArrayList();
@@ -27,11 +27,11 @@ public class Order extends WorkRequest {
         this.id = String.valueOf(random.nextInt(99999));
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     

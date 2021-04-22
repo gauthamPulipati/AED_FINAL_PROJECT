@@ -5,6 +5,7 @@
  */
 package userinterface.Manager;
 
+import Business.Enterprise.Enterprise;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -25,14 +26,14 @@ public class ManagerJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount useraccount;
-    private ArrayList<ManufacturingWarehouse> mws;
+    private ArrayList<Enterprise> warehouseEnterprises;
     
-    public ManagerJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<ManufacturingWarehouse> mws) {
+    public ManagerJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.useraccount = useraccount;
-        this.mws = mws;
+        this.warehouseEnterprises = warehouseEnterprises;
         
     }
 
@@ -86,7 +87,7 @@ public class ManagerJPanel extends javax.swing.JPanel {
 
     private void btnShippingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingOrderActionPerformed
         // TODO add your handling code here:
-        ManagerOrderJPanel managerOrderJPanel = new ManagerOrderJPanel(userProcessContainer,useraccount,mws);
+        ManagerOrderJPanel managerOrderJPanel = new ManagerOrderJPanel(userProcessContainer,useraccount,warehouseEnterprises);
         userProcessContainer.add("ManagerOrderJPanel", managerOrderJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -95,7 +96,7 @@ public class ManagerJPanel extends javax.swing.JPanel {
 
     private void btnDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryManActionPerformed
         // TODO add your handling code here:
-        ManagerAssignDeliveryJPanel managerAssignDeliveryJPanel = new ManagerAssignDeliveryJPanel(userProcessContainer,useraccount,mws);
+        ManagerAssignDeliveryJPanel managerAssignDeliveryJPanel = new ManagerAssignDeliveryJPanel(userProcessContainer,useraccount,warehouseEnterprises);
         userProcessContainer.add("ManagerAssignDeliveryJPanel", managerAssignDeliveryJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -50,6 +50,11 @@ public class ManufacturingAdminJPanel extends javax.swing.JPanel {
         });
 
         btnCreateProduct.setText("Create Product");
+        btnCreateProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateProductActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,6 +85,14 @@ public class ManufacturingAdminJPanel extends javax.swing.JPanel {
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAssignOrderActionPerformed
+
+    private void btnCreateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateProductActionPerformed
+        // TODO add your handling code here:
+        CreateProductJPanel createProductJPanel = new CreateProductJPanel(userProcessContainer,useraccount,manufacturingWarehouse);
+        userProcessContainer.add("CreateProductJPanel", createProductJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateProductActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

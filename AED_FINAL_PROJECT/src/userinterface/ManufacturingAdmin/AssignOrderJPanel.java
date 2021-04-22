@@ -38,12 +38,15 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         this.manufacturingWarehouse = manufacturingWarehouse;
         
         populateOrderTable();
+        populateDeliveryJComboBox();
     }
+    
+    
     
     private void populateDeliveryJComboBox(){
         shippingManJComboBox.removeAllItems();
         
-        String del = "Business.Role.ShippingManRole";
+        String del = "Shipping Man";
         
         for(UserAccount ua:manufacturingWarehouse.getUserAccountDirectory().getUserAccountList()){
             if(ua.getRole().toString().equals(del)){
@@ -62,11 +65,10 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
             
             ShippingOrderWorkRequest lt = (ShippingOrderWorkRequest)wr.get(i);
             Order order = lt.getOrders();
-                Object[] row = new Object[4];
-                WorkRequest req = wr.get(i);
-                row[0] = req;
+                Object[] row = new Object[5];
+                row[0] = lt;
                 row[1] = order.getId();
-                row[2] = wr.get(i).getStatus();
+                row[2] = lt.getStatus();
                 row[3] = order.getPrice();
                 row[4] = order.getQuantity();
                 model.addRow(row);
@@ -224,7 +226,7 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         }
         
         WorkRequest request = (WorkRequest) tblOrder.getValueAt(selectedRow, 0);
-        if(request.getStatus().equals("Order Placed")){
+        if(request.getStatus().equals("Order placed")){
             request.setStatus("Accepted");
         }
         else{
@@ -258,7 +260,7 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) tblOrder.getValueAt(selectedRow, 0);
+        ShippingOrderWorkRequest request = (ShippingOrderWorkRequest) tblOrder.getValueAt(selectedRow, 0);
         if(request.getStatus().equals("Accepted")){
             UserAccount ua1 = (UserAccount)shippingManJComboBox.getSelectedItem();
             request.setReceiver(ua1);
