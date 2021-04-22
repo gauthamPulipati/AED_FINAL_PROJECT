@@ -50,12 +50,12 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         tblwareHouse = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtwarehouseName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         btnModiffy = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(131, 197, 190));
@@ -98,16 +98,6 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         });
         add(txtwarehouseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 195, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 109, 119));
-        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
-        jButton1.setText("< back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
         btnSubmit.setBackground(new java.awt.Color(0, 109, 119));
         btnSubmit.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
         btnSubmit.setText("Submit");
@@ -149,9 +139,17 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 120, 40));
 
         jPanel1.setBackground(new java.awt.Color(0, 109, 119));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 204), 10, true));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 204), 5, true));
 
-        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jButton1.setText("< back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Warehouse Details");
 
@@ -159,17 +157,24 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jButton1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel2))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jButton1))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 260, 100));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 130));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
