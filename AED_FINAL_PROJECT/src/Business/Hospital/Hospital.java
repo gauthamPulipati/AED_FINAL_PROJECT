@@ -26,6 +26,10 @@ public class Hospital extends Organization{
     public String getHospitalName() {
         return hospitalName;
     }
+    
+    public void setHospitalName(String hospitalname) {
+        this.hospitalName = hospitalName;
+    }
 
     public String getAddress() {
         return address;

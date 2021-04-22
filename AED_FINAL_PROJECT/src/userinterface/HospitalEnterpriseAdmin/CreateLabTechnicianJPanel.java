@@ -12,6 +12,7 @@ import Business.Role.TechnicianRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,6 +87,8 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
         txtTechnicianUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         hospitalJComboBox = new javax.swing.JComboBox();
+        btnDelete = new javax.swing.JButton();
+        btnModify = new javax.swing.JButton();
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Technician Name:");
@@ -150,15 +153,26 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btnBack)
@@ -184,14 +198,26 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
                                             .addComponent(txtTechnicianUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModify)
+                            .addComponent(btnDelete))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnModify)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDelete))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,10 +250,58 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
         String password = txtPassword.getText();
         String name = txtTechnicianName.getText();
         
+        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return;
+        }
+        boolean isValid ; 
+        
+        isValid = name.matches("^[a-zA-Z]+$");
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtTechnicianName.setText("");
+            return;
+        }
+        if(hospital.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
+            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            txtTechnicianUsername.setText("");
+            txtPassword.setText("");
+            return;
+        }
+        
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtTechnicianUsername.setText("");
+            return;
+        }
+        
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtPassword.setText("");
+            return;
+        }
+
+        if(password.length()<6){
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtPassword.setText("");
+            return;
+        }
+        
         Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new TechnicianRole());
         //System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
         populateTable(hospital);
+        
+        txtTechnicianUsername.setText("");
+        txtPassword.setText("");
+        txtTechnicianName.setText("");
+        btnDelete.setEnabled(true);
+        btnModify.setEnabled(true);
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -254,9 +328,46 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_hospitalJComboBoxActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        Hospital hosp = (Hospital) hospitalJComboBox.getSelectedItem();
+
+        int selectedRow = tblTechnicians.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblTechnicians.getModel();
+
+        UserAccount us = (UserAccount) model.getValueAt(selectedRow, 0);
+
+        hosp.getEmployeeDirectory().deleteEmployee(us.getEmployee());
+        hosp.getUserAccountDirectory().removeUser(us);
+        populateTable(hosp);
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        Hospital hosp = (Hospital) hospitalJComboBox.getSelectedItem();
+        int selectedRowIndex = tblTechnicians.getSelectedRow();
+
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row to Modify");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblTechnicians.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+        txtTechnicianUsername.setText(us.getUsername());
+        txtPassword.setText(us.getPassword());
+        txtTechnicianName.setText(us.getEmployee().getName());
+        hosp.getUserAccountDirectory().removeUser(us);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+    }//GEN-LAST:event_btnModifyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox hospitalJComboBox;
     private javax.swing.JLabel jLabel1;

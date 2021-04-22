@@ -33,7 +33,7 @@ public class HospitalDirectory {
     
     public void deleteHospital(String name){
         for (Hospital hospital:hospitals){
-            if(hospital.getName().equals(name)){
+            if(hospital.getHospitalName().equals(name)){
                 hospitals.remove(hospital);
                 break;
             }
