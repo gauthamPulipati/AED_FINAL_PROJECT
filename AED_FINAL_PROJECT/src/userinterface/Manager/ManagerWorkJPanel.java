@@ -7,6 +7,7 @@ package userinterface.Manager;
 
 import Business.Distribution.Distribution;
 import Business.Enterprise.Enterprise;
+import Business.Products.Product;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShippingOrderWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -41,6 +42,10 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         this.distribution = distribution;
         
         populateTable();
+        
+        for(Product product:distribution.getProductDirectory().getProducts()){
+            System.out.println(product.getDistribution());
+        }
     }
     
     private void populateTable(){
@@ -162,7 +167,7 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
 
     private void btnDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryManActionPerformed
         // TODO add your handling code here:
-        ManagerAssignDeliveryJPanel managerAssignDeliveryJPanel = new ManagerAssignDeliveryJPanel(userProcessContainer,useraccount,warehouseEnterprises);
+        ManagerAssignDeliveryJPanel managerAssignDeliveryJPanel = new ManagerAssignDeliveryJPanel(userProcessContainer,useraccount,warehouseEnterprises,distribution);
         userProcessContainer.add("ManagerAssignDeliveryJPanel", managerAssignDeliveryJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

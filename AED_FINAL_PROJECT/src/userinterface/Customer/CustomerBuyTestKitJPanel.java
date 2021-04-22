@@ -40,7 +40,10 @@ public class CustomerBuyTestKitJPanel extends javax.swing.JPanel {
         this.ecosystem=ecosystem;
         this.useraccount = useraccount;
         this.customer = customer;
+        DefaultTableModel model = (DefaultTableModel)tblOrder.getModel();
+        model.setRowCount(0);
         populateTable();
+        
     }
     
     private void populateTable(){
@@ -56,6 +59,7 @@ public class CustomerBuyTestKitJPanel extends javax.swing.JPanel {
                                 row[0] = product;
                                 row[1] = product.getPrice();
                                 row[2] = product.getPrice();
+                                System.out.println(product.getDistribution().getDistributionName()+" ----iiii");
                                 model.addRow(row);
                             }
                         }

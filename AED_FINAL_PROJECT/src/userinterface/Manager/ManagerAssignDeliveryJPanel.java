@@ -5,13 +5,16 @@
  */
 package userinterface.Manager;
 
-import Business.EcoSystem;
+import Business.Distribution.Distribution;
 import Business.Enterprise.Enterprise;
-import Business.ManifacturingWarehouse.ManufacturingWarehouse;
-import Business.Organization.Organization;
+import Business.Order.Order;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,13 +29,50 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount useraccount;
     private ArrayList<Enterprise> warehouseEnterprises;
+    private Distribution distribution;
     
-    public ManagerAssignDeliveryJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises) {
+    public ManagerAssignDeliveryJPanel(JPanel userProcessContainer, UserAccount useraccount, ArrayList<Enterprise> warehouseEnterprises, Distribution distribution) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.useraccount = useraccount;
         this.warehouseEnterprises = warehouseEnterprises;
+        this.distribution = distribution;
+        
+        populateTable();
+        populateJComboBox();
+    }
+    
+    private void populateJComboBox(){
+        homeDeliveryManJComboBox.removeAllItems();
+        
+        String del = "Home Delivery Man";
+        
+        for(UserAccount ua:distribution.getUserAccountDirectory().getUserAccountList()){
+            if(ua.getRole().toString().equals(del)){
+                homeDeliveryManJComboBox.addItem(ua);
+            }
+        }
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblOrder.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<WorkRequest> wr = distribution.getWorkQueue().getWorkRequestList();
+        
+        for(int i=wr.size()-1; i>=0;i--){
+            
+            CustomerOrderWorkRequest lt = (CustomerOrderWorkRequest)wr.get(i);
+            Order order = lt.getOrder();
+                Object[] row = new Object[5];
+                row[0] = lt;
+                row[1] = order.getId();
+                row[2] = order.getQuantity();
+                row[3] = order.getPrice();
+                row[4] = lt.getStatus();
+                model.addRow(row);
+        }
     }
 
     /**
@@ -44,124 +84,187 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        rbtnRetailDMan = new javax.swing.JRadioButton();
-        rbtnHomeDMan = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnAssign = new javax.swing.JButton();
-        btnSubmit = new javax.swing.JButton();
-        btnSchedule = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrder = new javax.swing.JTable();
+        btnAccept = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
+        homeDeliveryManJComboBox = new javax.swing.JComboBox();
+        AssignShipping = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel2.setText("Select Home Delivery Man:");
+
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Test Kit", "Quantity", "Order Type", "Delivery Address", "Delivery Man", "Delivery Status"
+                "Message", "Order ID", "Quantity", "Price", "Order Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jLabel1.setText("Delivery Man Type:");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblOrder);
 
-        rbtnRetailDMan.setText("Retail Delivery Man");
-
-        rbtnHomeDMan.setText("Home Delivery Man");
-
-        jLabel2.setText("Select Delivery Man:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnAssign.setText("Assign");
-
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
+                btnAcceptActionPerformed(evt);
             }
         });
 
-        btnSchedule.setText("Ship");
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+
+        homeDeliveryManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
+        homeDeliveryManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
+        homeDeliveryManJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        homeDeliveryManJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeDeliveryManJComboBoxActionPerformed(evt);
+            }
+        });
+
+        AssignShipping.setText("Assign Delivery Man");
+        AssignShipping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssignShippingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnHomeDMan)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rbtnRetailDMan, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnSubmit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnAssign)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                        .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAccept, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnReject, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(homeDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AssignShipping, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(109, 109, 109))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {rbtnHomeDMan, rbtnRetailDMan});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAccept)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReject)
+                        .addGap(55, 55, 55)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnRetailDMan, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnHomeDMan)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign)
-                    .addComponent(btnSubmit)
-                    .addComponent(btnSchedule))
-                .addContainerGap(268, Short.MAX_VALUE))
+                    .addComponent(homeDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(AssignShipping)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {rbtnHomeDMan, rbtnRetailDMan});
-
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnSubmitActionPerformed
+        int selectedRow = tblOrder.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to accept");
+            return;
+        }
+
+        WorkRequest request = (WorkRequest) tblOrder.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Customer order placed")){
+            request.setStatus("Customer Order Accepted");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Request has been previously accepted/ rejected");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblOrder.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to reject the order");
+            return;
+        }
+
+        WorkRequest request = (WorkRequest) tblOrder.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Sent")){
+            request.setStatus("Rejected");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Request has been previously accepted/ rejected");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void homeDeliveryManJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeDeliveryManJComboBoxActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_homeDeliveryManJComboBoxActionPerformed
+
+    private void AssignShippingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignShippingActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblOrder.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+
+        CustomerOrderWorkRequest request = (CustomerOrderWorkRequest) tblOrder.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Customer Order Accepted")){
+            
+            UserAccount ua1 = (UserAccount)homeDeliveryManJComboBox.getSelectedItem();
+            request.setReceiver(ua1);
+            request.setStatus("On the way");
+            populateTable();
+        }
+        else{
+            if(request.getStatus().equals("Sent")){
+                JOptionPane.showMessageDialog(this, "Please accept this request to assign");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Request has been previously assigned/ rejected");
+            }
+        }
+    }//GEN-LAST:event_AssignShippingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnSchedule;
-    private javax.swing.JButton btnSubmit;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton AssignShipping;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JComboBox homeDeliveryManJComboBox;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JRadioButton rbtnHomeDMan;
-    private javax.swing.JRadioButton rbtnRetailDMan;
+    private javax.swing.JTable tblOrder;
     // End of variables declaration//GEN-END:variables
 }

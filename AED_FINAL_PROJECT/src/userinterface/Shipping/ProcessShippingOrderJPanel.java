@@ -114,8 +114,9 @@ public class ProcessShippingOrderJPanel extends javax.swing.JPanel {
         request.setMessage(txtMessage.getText());
         request.setStatus("Completed");
         for(Product product:request.getOrders().getItems()){
-            request.getDistribution().getProductDirectory().newProduct(product.getProductName(),product.getPrice(), request.getOrders().getQuantity());
-            product.setDistribution(request.getDistribution());
+            Product pro = request.getDistribution().getProductDirectory().newProduct(product.getProductName(),product.getPrice(), request.getOrders().getQuantity());
+            System.out.println(request.getDistribution().getDistributionName()+" ---0000000");
+            pro.setDistribution(request.getDistribution());
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
