@@ -13,6 +13,7 @@ import Business.Role.ShippingManRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,8 +55,10 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtShipPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         warehouseJComboBox = new javax.swing.JComboBox();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         tblShippingManWarehouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,10 +88,10 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -102,6 +105,20 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,11 +129,16 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnModify)
+                                    .addComponent(btnDelete)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(btnSubmit)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
@@ -129,13 +151,20 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
                                     .addComponent(txtShipUsername)
                                     .addComponent(txtShipPassword)
                                     .addComponent(warehouseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(btnModify)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnDelete)))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -155,7 +184,7 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnSubmit))
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -168,18 +197,66 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_warehouseJComboBoxActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
 
         String username = txtShipUsername.getText();
         String password = txtShipPassword.getText();
         String name = txtShipName.getText();
+        
+        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return;
+        }
+        boolean isValid ; 
+        
+        isValid = name.matches("^[a-zA-Z]+$");
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtShipName.setText("");
+            return;
+        }
+        if(warehouse.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
+            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            txtShipUsername.setText("");
+            txtShipPassword.setText("");
+            return;
+        }
+        
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtShipUsername.setText("");
+            return;
+        }
+        
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtShipPassword.setText("");
+            return;
+        }
+
+        if(password.length()<6){
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtShipPassword.setText("");
+            return;
+        }
 
         Employee employee = warehouse.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ShippingManRole());
 
         populateTable(warehouse);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        txtShipUsername.setText("");
+        txtShipPassword.setText("");
+        txtShipName.setText("");
+        btnDelete.setEnabled(true);
+        btnModify.setEnabled(true);
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         userProcessContainer.remove(this);
@@ -191,10 +268,46 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+        int selectedRowIndex = tblShippingManWarehouse.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row to Modify");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblShippingManWarehouse.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+        txtShipUsername.setText(us.getUsername());
+        txtShipPassword.setText(us.getPassword());
+        txtShipName.setText(us.getEmployee().getName());
+        warehouse.getUserAccountDirectory().removeUser(us);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+    }//GEN-LAST:event_btnModifyActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+        
+        int selectedRow = tblShippingManWarehouse.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblShippingManWarehouse.getModel();
+        
+        UserAccount us = (UserAccount) model.getValueAt(selectedRow, 0);
+        
+        warehouse.getEmployeeDirectory().deleteEmployee(us.getEmployee());
+        warehouse.getUserAccountDirectory().removeUser(us);
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

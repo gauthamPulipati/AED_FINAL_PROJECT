@@ -13,6 +13,7 @@ import Business.Role.ManufacturingAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,8 +54,10 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtAdminPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         warehouseJComboBox = new javax.swing.JComboBox();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         jLabel1.setText("Warehouse Name :");
 
@@ -92,10 +95,10 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -106,6 +109,20 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         warehouseJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 warehouseJComboBoxActionPerformed(evt);
+            }
+        });
+
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -134,15 +151,26 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                                .addComponent(btnSubmit))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModify)
+                            .addComponent(btnDelete))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(btnModify)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDelete)))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -165,7 +193,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnSubmit))
                 .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -178,18 +206,69 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_warehouseJComboBoxActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+       
+        
+        
         ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
         
         String username = txtAdminUsername.getText();
         String password = txtAdminPassword.getText();
         String name = txtAdminName.getText();
         
+        if(username.isEmpty() || name.isEmpty() || password.isEmpty() ){
+        
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory");
+            return;
+        }
+        boolean isValid ; 
+        
+        isValid = name.matches("^[a-zA-Z]+$");
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Name must contains only alphabets");
+            txtAdminName.setText("");
+            return;
+        }
+        if(warehouse.getUserAccountDirectory().checkIfUsernameIsUnique(username) == false){
+            JOptionPane.showMessageDialog(this, "user name taken, try another one");
+            txtAdminUsername.setText("");
+            txtAdminPassword.setText("");
+            return;
+        }
+        
+        isValid = username.matches("^[a-zA-Z0-9]+$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Username must be Alphanumeric");
+            txtAdminUsername.setText("");
+            return;
+        }
+        
+        isValid = password.matches("^[a-zA-Z0-9]+$$");
+        
+        if(!isValid) {
+            JOptionPane.showMessageDialog(null, "Password must be Alphanumeric");
+            txtAdminPassword.setText("");
+            return;
+        }
+
+        if(password.length()<6){
+            JOptionPane.showMessageDialog(this, "Password too weak, choose a password with a minimum length of 6");
+            txtAdminPassword.setText("");
+            return;
+        }
+        
         Employee employee = warehouse.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = warehouse.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturingAdminRole());
         
         populateTable(warehouse);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        txtAdminUsername.setText("");
+        txtAdminPassword.setText("");
+        txtAdminName.setText("");
+        btnDelete.setEnabled(true);
+        btnModify.setEnabled(true);
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -202,10 +281,47 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+        
+        int selectedRow = tblwarehouseAdmin.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblwarehouseAdmin.getModel();
+        
+        UserAccount us = (UserAccount) model.getValueAt(selectedRow, 0);
+        
+        warehouse.getEmployeeDirectory().deleteEmployee(us.getEmployee());
+        warehouse.getUserAccountDirectory().removeUser(us);
+      
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        ManufacturingWarehouse warehouse = (ManufacturingWarehouse) warehouseJComboBox.getSelectedItem();
+        int selectedRowIndex = tblwarehouseAdmin.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row to Modify");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblwarehouseAdmin.getModel();
+        UserAccount us = (UserAccount) model.getValueAt(selectedRowIndex, 0);
+        txtAdminUsername.setText(us.getUsername());
+        txtAdminPassword.setText(us.getPassword());
+        txtAdminName.setText(us.getEmployee().getName());
+        warehouse.getUserAccountDirectory().removeUser(us);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+    }//GEN-LAST:event_btnModifyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,5 +363,22 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
             
         }
         
+    }
+    
+    private void populateTable(){
+    DefaultTableModel model = (DefaultTableModel)tblwarehouseAdmin.getModel();
+    model.setRowCount(0);
+    String dm = "Manufacturing Admin";
+        
+        for(UserAccount us: this.enterprise.getUserAccountDirectory().getUserAccountList()){
+            if(us.getRole().toString().equals(dm)){
+                Object[] row = new Object[2];
+                row[0] = us;
+                row[1] = us.getEmployee().getName();
+                model.addRow(row);
+            }
+            
+        }
+    
     }
 }
