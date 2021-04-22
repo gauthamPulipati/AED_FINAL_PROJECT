@@ -99,7 +99,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         add(txtwarehouseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 195, -1));
 
         btnSubmit.setBackground(new java.awt.Color(0, 109, 119));
-        btnSubmit.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        btnSubmit.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
 
         btnModiffy.setBackground(new java.awt.Color(0, 109, 119));
-        btnModiffy.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        btnModiffy.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnModiffy.setText("Modify");
         btnModiffy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         add(btnModiffy, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 120, 40));
 
         btnDelete.setBackground(new java.awt.Color(0, 109, 119));
-        btnDelete.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 120, 40));
 
         btnCreate.setBackground(new java.awt.Color(0, 109, 119));
-        btnCreate.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        btnCreate.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +141,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 109, 119));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 204), 5, true));
 
-        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jButton1.setText("< back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
