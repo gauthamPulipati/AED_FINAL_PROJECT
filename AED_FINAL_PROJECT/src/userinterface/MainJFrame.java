@@ -36,8 +36,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        system = ConfigureASystem.configure();
-        //system = dB4OUtil.retrieveSystem();
+        //system = ConfigureASystem.configure();
+        system = dB4OUtil.retrieveSystem();
         
         this.setSize(1680, 1050);
     }
@@ -295,6 +295,7 @@ public class MainJFrame extends javax.swing.JFrame {
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
+        btnSignUp.setEnabled(false);
        
     }//GEN-LAST:event_loginJButtonActionPerformed
 
@@ -303,6 +304,7 @@ public class MainJFrame extends javax.swing.JFrame {
         userNameJTextField.setEnabled(true);
         passwordField.setEnabled(true);
         loginJButton.setEnabled(true);
+        btnSignUp.setEnabled(true);
 
         userNameJTextField.setText("");
         passwordField.setText("");

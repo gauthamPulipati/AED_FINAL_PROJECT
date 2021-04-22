@@ -6,6 +6,7 @@
 package userinterface.Customer;
 
 import Business.EcoSystem;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -34,19 +35,145 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnConsultDocor = new javax.swing.JButton();
+        btnSearchStore = new javax.swing.JButton();
+        btnBuyTest = new javax.swing.JButton();
+        btnOrders = new javax.swing.JButton();
+        btnViewResults = new javax.swing.JButton();
+        btnSendStoreSample = new javax.swing.JButton();
+
+        btnConsultDocor.setText("Consult Doctor");
+        btnConsultDocor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultDocorActionPerformed(evt);
+            }
+        });
+
+        btnSearchStore.setText("Search for stores");
+        btnSearchStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchStoreActionPerformed(evt);
+            }
+        });
+
+        btnBuyTest.setText("Buy a Test Kit");
+        btnBuyTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyTestActionPerformed(evt);
+            }
+        });
+
+        btnOrders.setText("View Orders");
+        btnOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdersActionPerformed(evt);
+            }
+        });
+
+        btnViewResults.setText("View Results");
+        btnViewResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewResultsActionPerformed(evt);
+            }
+        });
+
+        btnSendStoreSample.setText("Send Store Sample");
+        btnSendStoreSample.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendStoreSampleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSearchStore, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(btnConsultDocor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuyTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(btnSendStoreSample)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addComponent(btnViewResults)
+                .addGap(18, 18, 18)
+                .addComponent(btnOrders)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuyTest)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearchStore)
+                    .addComponent(btnSendStoreSample))
+                .addGap(18, 18, 18)
+                .addComponent(btnConsultDocor)
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnViewResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResultsActionPerformed
+        // TODO add your handling code here:
+        CustomerViewResultsJPanel customerViewResultsJPanel = new CustomerViewResultsJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerViewResultsJPanel", customerViewResultsJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewResultsActionPerformed
+
+    private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
+        // TODO add your handling code here:
+        CustomerViewOrdersJPanel customerViewOrdersJPanel = new CustomerViewOrdersJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerViewOrdersJPanel", customerViewOrdersJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnOrdersActionPerformed
+
+    private void btnBuyTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyTestActionPerformed
+        // TODO add your handling code here:
+        CustomerBuyTestKitJPanel customerBuyTestKitJPanel = new CustomerBuyTestKitJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerBuyTestKitJPanel", customerBuyTestKitJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBuyTestActionPerformed
+
+    private void btnSearchStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchStoreActionPerformed
+        // TODO add your handling code here:
+        CustomerFindStoreJPanel customerFindStoreJPanel = new CustomerFindStoreJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerFindStoreJPanel", customerFindStoreJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnSearchStoreActionPerformed
+
+    private void btnConsultDocorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultDocorActionPerformed
+        // TODO add your handling code here:
+        CustomerConsultDoctorJPanel customerConsultDoctorJPanel = new CustomerConsultDoctorJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerConsultDoctorJPanel", customerConsultDoctorJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnConsultDocorActionPerformed
+
+    private void btnSendStoreSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendStoreSampleActionPerformed
+        // TODO add your handling code here:
+        CustomerStoreSampleJPanel customerStoreSampleJPanel = new CustomerStoreSampleJPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("CustomerStoreSampleJPanel", customerStoreSampleJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnSendStoreSampleActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuyTest;
+    private javax.swing.JButton btnConsultDocor;
+    private javax.swing.JButton btnOrders;
+    private javax.swing.JButton btnSearchStore;
+    private javax.swing.JButton btnSendStoreSample;
+    private javax.swing.JButton btnViewResults;
     // End of variables declaration//GEN-END:variables
 }

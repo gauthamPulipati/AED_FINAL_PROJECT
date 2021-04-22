@@ -84,8 +84,6 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("First Name");
 
-        txtFirstName.setText("jTextField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

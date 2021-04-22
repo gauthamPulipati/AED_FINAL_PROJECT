@@ -6,11 +6,13 @@
 package userinterface.Manager;
 
 import Business.Enterprise.Enterprise;
-import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ShippingOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,6 +37,25 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         this.useraccount = useraccount;
         this.warehouseEnterprises = warehouseEnterprises;
         
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        
+        model.setRowCount(0);
+        
+        ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList();
+        
+        for (int i=wr.size()-1; i>=0;i--){
+            ShippingOrderWorkRequest req = (ShippingOrderWorkRequest)wr.get(i);
+            Object[] row = new Object[4];
+            row[0] = req;
+            row[1] = req.getReceiver();
+            row[2] = req.getManufacturingWarehouse();
+            row[3] = req.getStatus();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -48,6 +69,9 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
 
         btnShippingOrder = new javax.swing.JButton();
         btnDeliveryMan = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblWorkRequest = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
 
         btnShippingOrder.setText("Place Shipping order");
         btnShippingOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -63,25 +87,64 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Receiver", "Warehouse", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblWorkRequest);
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnShippingOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRefresh)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(150, 150, 150)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnShippingOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(43, 43, 43)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(btnRefresh)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(btnShippingOrder)
                 .addGap(37, 37, 37)
                 .addComponent(btnDeliveryMan)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,9 +165,17 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDeliveryManActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeliveryMan;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnShippingOrder;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }
