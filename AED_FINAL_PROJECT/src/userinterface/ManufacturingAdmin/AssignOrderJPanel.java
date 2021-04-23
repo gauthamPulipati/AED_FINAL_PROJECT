@@ -96,6 +96,7 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(237, 246, 249));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,7 +136,7 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
                 AssignShippingActionPerformed(evt);
             }
         });
-        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 431, -1, -1));
+        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
 
         shippingManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         shippingManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -188,7 +189,7 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(197, 197, 197)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,6 +205,16 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 903, -1));
+
+        btnRefresh.setBackground(new java.awt.Color(131, 197, 190));
+        btnRefresh.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void shippingManJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingManJComboBoxActionPerformed
@@ -282,11 +293,17 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_AssignShippingActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateOrderTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AssignShipping;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

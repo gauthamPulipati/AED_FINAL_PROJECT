@@ -125,13 +125,14 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        AssignRetail1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 236, 179));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Select Home Delivery Man:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 358, -1, 27));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, 27));
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,7 +183,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 homeDeliveryManJComboBoxActionPerformed(evt);
             }
         });
-        add(homeDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 357, 111, 30));
+        add(homeDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 111, 30));
 
         AssignShipping.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         AssignShipping.setText("Assign Home Delivery Man");
@@ -191,7 +192,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 AssignShippingActionPerformed(evt);
             }
         });
-        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 413, -1, 40));
+        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, 40));
 
         retailDeliveryManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         retailDeliveryManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -201,11 +202,11 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 retailDeliveryManJComboBoxActionPerformed(evt);
             }
         });
-        add(retailDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 357, 105, 30));
+        add(retailDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 105, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Select Retail Delivery Man:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 358, -1, 27));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, 27));
 
         AssignRetail.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         AssignRetail.setText("Assign Retail Delivery Man");
@@ -214,7 +215,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 AssignRetailActionPerformed(evt);
             }
         });
-        add(AssignRetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 413, -1, 40));
+        add(AssignRetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, 40));
 
         jPanel1.setBackground(new java.awt.Color(203, 186, 131));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
@@ -254,6 +255,15 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
+
+        AssignRetail1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        AssignRetail1.setText("Refresh");
+        AssignRetail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssignRetail1ActionPerformed(evt);
+            }
+        });
+        add(AssignRetail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 100, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -362,9 +372,15 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void AssignRetail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignRetail1ActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_AssignRetail1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AssignRetail;
+    private javax.swing.JButton AssignRetail1;
     private javax.swing.JButton AssignShipping;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnBack;
