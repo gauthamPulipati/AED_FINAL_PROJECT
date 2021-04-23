@@ -93,7 +93,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 106, 200));
+        setBackground(new java.awt.Color(155, 231, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -114,25 +114,25 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         add(txtLabAdminUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 449, 140, 21));
         add(txtLabAdminPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 499, 140, 21));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Lab Admin Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 393, 121, 32));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 393, 160, 32));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Hospital Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 343, 121, 32));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 343, 160, 32));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Lab Admin User Id:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 443, 121, 32));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 443, 160, 32));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Lab Admin Password:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 493, 121, 32));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 493, 160, 32));
 
         tblLabAdmin.setBackground(new java.awt.Color(204, 204, 255));
         tblLabAdmin.setModel(new javax.swing.table.DefaultTableModel(
@@ -207,7 +207,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 21, 90, 33));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 150));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

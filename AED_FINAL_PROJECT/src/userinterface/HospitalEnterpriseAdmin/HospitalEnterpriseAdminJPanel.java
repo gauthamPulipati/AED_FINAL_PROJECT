@@ -48,7 +48,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 106, 200));
+        setBackground(new java.awt.Color(155, 231, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCreateHospAdmin.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
@@ -99,7 +99,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

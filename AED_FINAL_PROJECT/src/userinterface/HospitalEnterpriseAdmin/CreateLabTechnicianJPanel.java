@@ -92,26 +92,26 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 106, 200));
+        setBackground(new java.awt.Color(155, 231, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Technician Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 392, 118, 32));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 392, 170, 32));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Technician Username:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 442, 118, 32));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 442, 170, 32));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Password:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 492, 118, 32));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 492, 170, 32));
 
         tblTechnicians.setBackground(new java.awt.Color(204, 204, 255));
         tblTechnicians.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,10 +148,10 @@ public class CreateLabTechnicianJPanel extends javax.swing.JPanel {
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 100, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Hospital Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 342, 118, 32));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 342, 170, 32));
 
         txtTechnicianName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
