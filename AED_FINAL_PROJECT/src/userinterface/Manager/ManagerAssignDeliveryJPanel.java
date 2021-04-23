@@ -127,9 +127,11 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 236, 179));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Select Home Delivery Man:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 358, -1, 27));
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,6 +154,8 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrder);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 133, 640, 175));
+
         btnAccept.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +163,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 btnAcceptActionPerformed(evt);
             }
         });
+        add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 133, 100, 40));
 
         btnReject.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnReject.setText("Reject");
@@ -167,6 +172,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 btnRejectActionPerformed(evt);
             }
         });
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 268, 100, 40));
 
         homeDeliveryManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         homeDeliveryManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -176,6 +182,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 homeDeliveryManJComboBoxActionPerformed(evt);
             }
         });
+        add(homeDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 357, 111, 30));
 
         AssignShipping.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         AssignShipping.setText("Assign Home Delivery Man");
@@ -184,6 +191,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 AssignShippingActionPerformed(evt);
             }
         });
+        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 413, -1, 40));
 
         retailDeliveryManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         retailDeliveryManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -193,9 +201,11 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 retailDeliveryManJComboBoxActionPerformed(evt);
             }
         });
+        add(retailDeliveryManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 357, 105, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Select Retail Delivery Man:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 358, -1, 27));
 
         AssignRetail.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         AssignRetail.setText("Assign Retail Delivery Man");
@@ -204,6 +214,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
                 AssignRetailActionPerformed(evt);
             }
         });
+        add(AssignRetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 413, -1, 40));
 
         jPanel1.setBackground(new java.awt.Color(203, 186, 131));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
@@ -216,7 +227,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         jLabel1.setText("Process Order & Assign Delivery Man");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,86 +237,23 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(retailDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(AssignRetail)))
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(homeDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(AssignShipping)
-                                .addGap(18, 18, 18))))
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReject))
-                .addGap(50, 50, 50))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAccept, btnReject});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReject))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(homeDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(retailDeliveryManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AssignShipping, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AssignRetail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(123, 123, 123))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAccept, btnReject});
-
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed

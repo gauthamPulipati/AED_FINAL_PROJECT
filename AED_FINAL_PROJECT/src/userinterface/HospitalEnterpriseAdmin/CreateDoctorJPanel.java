@@ -112,6 +112,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(155, 231, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDoctor.setBackground(new java.awt.Color(204, 204, 255));
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
@@ -135,6 +136,8 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDoctor);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 136, 513, 177));
+
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -142,22 +145,27 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 585, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Hospital Name:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 341, 113, 32));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Doctor's Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 379, 113, 32));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Username:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 417, 113, 32));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Type:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 505, 113, 32));
 
         rbtnApprove.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         rbtnApprove.setText("Approving Doctor");
@@ -166,6 +174,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 rbtnApproveActionPerformed(evt);
             }
         });
+        add(rbtnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 510, 131, -1));
 
         rbtnConsulting.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         rbtnConsulting.setText("Consulting Doctor");
@@ -174,16 +183,21 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 rbtnConsultingActionPerformed(evt);
             }
         });
+        add(rbtnConsulting, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 544, -1, -1));
 
         txtDoctorName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDoctorNameActionPerformed(evt);
             }
         });
+        add(txtDoctorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 386, 140, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 424, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("Password:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 467, 113, 32));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 474, 140, -1));
 
         hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -194,6 +208,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 hospitalJComboBoxActionPerformed(evt);
             }
         });
+        add(hospitalJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 347, 140, -1));
 
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
@@ -202,6 +217,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 btnModifyActionPerformed(evt);
             }
         });
+        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 136, 100, 40));
 
         btnDelete.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
@@ -210,6 +226,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 273, 100, 40));
 
         jPanel1.setBackground(new java.awt.Color(121, 83, 210));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 39, 160), 10, true));
@@ -250,90 +267,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
                 .addGap(25, 25, 25))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSubmit)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(rbtnApprove, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rbtnConsulting, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {hospitalJComboBox, txtDoctorName, txtPassword, txtUsername});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, btnModify, btnSubmit});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelete)))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnApprove))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbtnConsulting)
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addGap(43, 43, 43))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDelete, btnModify, btnSubmit});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5});
-
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

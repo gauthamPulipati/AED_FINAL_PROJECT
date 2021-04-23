@@ -81,20 +81,29 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequest = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
-        btnShippingOrder.setText("Place Shipping order");
+        setBackground(new java.awt.Color(255, 236, 179));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnShippingOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        btnShippingOrder.setText("Place Shipping Order");
         btnShippingOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShippingOrderActionPerformed(evt);
             }
         });
+        add(btnShippingOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 426, -1, 60));
 
-        btnDeliveryMan.setText("Assign Delivery man");
+        btnDeliveryMan.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        btnDeliveryMan.setText("Assign Delivery Man");
         btnDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeliveryManActionPerformed(evt);
             }
         });
+        add(btnDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 426, 191, 60));
 
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,44 +126,27 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequest);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 174, 588, 208));
+
+        btnRefresh.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 126, 106, 37));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRefresh)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnShippingOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(43, 43, 43)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(btnRefresh)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnShippingOrder)
-                .addGap(61, 61, 61)
-                .addComponent(btnDeliveryMan)
-                .addGap(45, 45, 45))
-        );
+        jPanel1.setBackground(new java.awt.Color(203, 186, 131));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("ITF Devanagari", 1, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Manager Process");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 374, 40));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 698, 100));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShippingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingOrderActionPerformed
@@ -184,6 +176,8 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDeliveryMan;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnShippingOrder;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables

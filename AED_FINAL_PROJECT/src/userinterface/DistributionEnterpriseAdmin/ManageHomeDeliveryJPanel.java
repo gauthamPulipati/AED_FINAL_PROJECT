@@ -93,6 +93,7 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 111, 96));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblHomeDelivery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,6 +116,8 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblHomeDelivery);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 118, 546, 157));
+
         distributionJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         distributionJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         distributionJComboBox.setForeground(new java.awt.Color(48, 60, 108));
@@ -124,6 +127,7 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
                 distributionJComboBoxActionPerformed(evt);
             }
         });
+        add(distributionJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 161, -1));
 
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -132,18 +136,26 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 486, 100, 40));
+        add(txtShipPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 417, 161, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Password :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 419, -1, -1));
+        add(txtShipUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 377, 161, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Username :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 377, -1, -1));
+        add(txtShipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 339, 161, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Delivery Man Name :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 341, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Distribution Name :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 306, -1, -1));
 
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
@@ -152,6 +164,7 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
                 btnModifyActionPerformed(evt);
             }
         });
+        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 100, 40));
 
         btnDelete.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
@@ -160,6 +173,7 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 235, 100, 40));
 
         jPanel1.setBackground(new java.awt.Color(171, 0, 13));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 57, 53), 4));
@@ -179,76 +193,7 @@ public class ManageHomeDeliveryJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 92, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(325, 325, 325)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(246, 246, 246)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtShipName, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtShipUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtShipPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(distributionJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtShipName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtShipUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtShipPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(49, 49, 49)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 100));
     }// </editor-fold>//GEN-END:initComponents
 
     private void distributionJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributionJComboBoxActionPerformed
