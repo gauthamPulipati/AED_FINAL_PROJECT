@@ -87,6 +87,11 @@ public class TechnicianJPanel extends javax.swing.JPanel {
         btnSendResults = new javax.swing.JButton();
         doctorJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(197, 222, 221));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,19 +114,29 @@ public class TechnicianJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRequests);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 215, 514, 202));
+
+        btnPerformTest.setBackground(new java.awt.Color(40, 75, 99));
+        btnPerformTest.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnPerformTest.setForeground(new java.awt.Color(255, 255, 255));
         btnPerformTest.setText("Perform Test");
         btnPerformTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerformTestActionPerformed(evt);
             }
         });
+        add(btnPerformTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 292, -1, 55));
 
+        btnSendResults.setBackground(new java.awt.Color(40, 75, 99));
+        btnSendResults.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnSendResults.setForeground(new java.awt.Color(255, 255, 255));
         btnSendResults.setText("Send Result to Doctor");
         btnSendResults.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendResultsActionPerformed(evt);
             }
         });
+        add(btnSendResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 455, 154, 42));
 
         doctorJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         doctorJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -131,45 +146,37 @@ public class TechnicianJPanel extends javax.swing.JPanel {
                 doctorJComboBoxActionPerformed(evt);
             }
         });
+        add(doctorJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 461, 184, 30));
 
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel1.setText("Select Doctor");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 467, 97, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(doctorJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151)
-                        .addComponent(btnSendResults))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnPerformTest)))
-                .addContainerGap(41, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(40, 75, 99));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 204), 3, true));
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Technician Process (Test)");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnPerformTest)))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSendResults)
-                    .addComponent(doctorJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(237, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel2)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 742, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerformTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerformTestActionPerformed
@@ -239,6 +246,8 @@ public class TechnicianJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSendResults;
     private javax.swing.JComboBox doctorJComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRequests;
     // End of variables declaration//GEN-END:variables

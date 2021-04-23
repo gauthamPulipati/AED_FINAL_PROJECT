@@ -44,53 +44,33 @@ public class PerformTestJPanel extends javax.swing.JPanel {
         txtResult = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
 
-        brnBack.setText("back");
+        setBackground(new java.awt.Color(197, 222, 221));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        brnBack.setBackground(new java.awt.Color(40, 75, 99));
+        brnBack.setForeground(new java.awt.Color(255, 255, 255));
+        brnBack.setText("< Back");
         brnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 brnBackActionPerformed(evt);
             }
         });
+        add(brnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 30, -1, -1));
 
-        jLabel1.setText("Result");
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jLabel1.setText("Result :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 158, -1, -1));
+        add(txtResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 147, 188, 47));
 
+        btnSubmit.setBackground(new java.awt.Color(40, 75, 99));
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSubmit)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(143, 143, 143)
-                            .addComponent(jLabel1)
-                            .addGap(45, 45, 45)
-                            .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(brnBack)))
-                .addContainerGap(207, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(brnBack)
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
-                .addGap(81, 81, 81))
-        );
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 287, 133, 56));
     }// </editor-fold>//GEN-END:initComponents
 
     private void brnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnBackActionPerformed
