@@ -267,19 +267,19 @@ public class MainJFrame extends javax.swing.JFrame {
         if(userAccount==null){
             for(Network network:system.getNetworkList()){
                 for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
-                    FDA fda = enterprise.getFDAInstance();
-                    userAccount = fda.getUserAccountDirectory().authenticateUser(userName, password);
-                    if(userAccount!=null){
+                    if(enterprise.getFdas()!=null){
+                        for(FDA fda: enterprise.getFdas().getFDA()){
+                            userAccount = fda.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
                                 inEnterprise=enterprise;
                                 inOrganization=null;
                                 break;
                             }
+                        }
+                    }
                 }
             }
         }
-        
-        
-        
         
         
         if(userAccount==null){

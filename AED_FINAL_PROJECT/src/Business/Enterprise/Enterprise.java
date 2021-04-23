@@ -8,6 +8,7 @@ package Business.Enterprise;
 import Business.Distribution.Distribution;
 import Business.Distribution.DistributionDirectory;
 import Business.FDA.FDA;
+import Business.FDA.FDADirectory;
 import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
@@ -29,7 +30,7 @@ public abstract class Enterprise extends Organization{
     private ManufacturingWarehouseDirectory manufacturingWarehouseDirectory;
     private RetailStoreDirectory retailStoreDirectory;
     private DistributionDirectory distributionDirectory;
-    private FDA fdaInstance = new FDA();
+    private FDADirectory fdas;
     
     
     public Enterprise(String name,EnterpriseType type){
@@ -40,7 +41,7 @@ public abstract class Enterprise extends Organization{
         manufacturingWarehouseDirectory = new ManufacturingWarehouseDirectory();
         retailStoreDirectory = new RetailStoreDirectory();
         distributionDirectory = new DistributionDirectory();
-        
+        fdas = new FDADirectory();
         
     }
     
@@ -94,9 +95,13 @@ public abstract class Enterprise extends Organization{
     public Distribution createDustributionUnit(String name){
         return distributionDirectory.createDistributionUnit(name);
     }
-    
-    public FDA getFDAInstance(){
-        return fdaInstance;
+
+    public FDADirectory getFdas() {
+        return fdas;
+    }
+
+    public void setFdas(FDADirectory fdas) {
+        this.fdas = fdas;
     }
 
     public HospitalDirectory getHospitalDirectory() {

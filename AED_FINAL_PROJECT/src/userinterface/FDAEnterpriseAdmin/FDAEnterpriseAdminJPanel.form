@@ -18,10 +18,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="158" pref="158" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnCreateFDAAdmin" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnDelete" alignment="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="btnCreateFDAAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="183" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -31,9 +28,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
               <Component id="btnCreateFDAAdmin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
+              <EmptySpace pref="225" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,11 +38,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create FDA Admin"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDelete">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete FDA Admin"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateFDAAdminActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

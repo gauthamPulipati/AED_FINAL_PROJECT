@@ -5,10 +5,8 @@
  */
 package userinterface.FDAEnterpriseAdmin;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
-import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -22,18 +20,12 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
     private Enterprise enterprise;
-    private EcoSystem business;
     
-    public FDAEnterpriseAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public FDAEnterpriseAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.business = business;
         this.enterprise = enterprise;
     }
 
@@ -47,11 +39,13 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnCreateFDAAdmin = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
 
         btnCreateFDAAdmin.setText("Create FDA Admin");
-
-        btnDelete.setText("Delete FDA Admin");
+        btnCreateFDAAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateFDAAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -59,9 +53,7 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateFDAAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCreateFDAAdmin)
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -69,15 +61,20 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(144, 144, 144)
                 .addComponent(btnCreateFDAAdmin)
-                .addGap(70, 70, 70)
-                .addComponent(btnDelete)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateFDAAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateFDAAdminActionPerformed
+        // TODO add your handling code here:
+        CreateFDAAdminJPanel CreateFDAAdminJPanel = new CreateFDAAdminJPanel(userProcessContainer,enterprise);
+        userProcessContainer.add("CreateFDAAdminJPanel", CreateFDAAdminJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateFDAAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateFDAAdmin;
-    private javax.swing.JButton btnDelete;
     // End of variables declaration//GEN-END:variables
 }

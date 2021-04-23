@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class FDA extends Organization{
     private String name;
     
-    public FDA(){
+    public FDA(String name){
+        super();
         this.name = "FDA";
     }
 
@@ -29,6 +30,11 @@ public class FDA extends Organization{
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
+    }
+    
+    @Override
+    public String toString(){
+        return this.getFDAName();
     }
     
 }

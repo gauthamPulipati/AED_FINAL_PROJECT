@@ -22,13 +22,11 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    private EcoSystem business;
     
     public HospitalEnterpriseAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.business = business;
         this.enterprise = enterprise;
     }
 
