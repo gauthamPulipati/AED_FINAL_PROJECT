@@ -194,10 +194,12 @@ public class MainJFrame extends javax.swing.JFrame {
             for(Network network:system.getNetworkList()){
                 for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
                     if(enterprise.getHospitalDirectory()!=null){
-                        System.out.println(enterprise.getHospitalDirectory().getHospitals());
+                        System.out.println(enterprise.getHospitalDirectory().getHospitals()+" --hos");
                         for(Hospital hospital: enterprise.getHospitalDirectory().getHospitals()){
                             userAccount = hospital.getUserAccountDirectory().authenticateUser(userName, password);
+                            System.out.println(userAccount);
                             if(userAccount!=null){
+                                System.out.println(userAccount+"  -0-0-0-");
                                 inEnterprise=enterprise;
                                 inOrganization=null;
                                 break;

@@ -5,11 +5,17 @@
  */
 package userinterface.Technician;
 
-import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.Hospital.Hospital;
+import Business.Products.Product;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.TestRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import userinterface.ApproveDoctor.ApproveDoctorJPanel;
 
 /**
  *
@@ -23,18 +29,47 @@ public class TechnicianJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private Hospital hospital;
     
-    public TechnicianJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public TechnicianJPanel(JPanel userProcessContainer, UserAccount account, Hospital hospital) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.organization = organization;
-        this.business = business;
-        this.enterprise = enterprise;
+        this.hospital = hospital;
+        populateTable();
+        populateDoctorJComboBox();
+    }
+    
+    private void populateDoctorJComboBox(){
+        doctorJComboBox.removeAllItems();
+        
+        String del = "Approve Doctor";
+        
+        for(UserAccount ua:hospital.getUserAccountDirectory().getUserAccountList()){
+            if(ua.getRole().toString().equals(del)){
+                doctorJComboBox.addItem(ua);
+            }
+        }
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblRequests.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<WorkRequest> wr = hospital.getWorkQueue().getWorkRequestList2();
+        for(int i=wr.size()-1; i>=0;i--){
+            
+            TestRequest lt = (TestRequest)wr.get(i);
+            Product product = lt.getProduct();
+                Object[] row = new Object[5];
+                row[0] = lt;
+                row[1] = product.getProductName();
+                row[2] = lt.getCustomer().getEmployee().getName();
+                row[3] = lt.getStatus();
+                String result = lt.getTestResult();
+                row[4]  = result == null ? "Waiting" : result;
+                model.addRow(row);
+        }
     }
 
     /**
@@ -47,30 +82,57 @@ public class TechnicianJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblRequests = new javax.swing.JTable();
+        btnPerformTest = new javax.swing.JButton();
+        btnSendResults = new javax.swing.JButton();
+        doctorJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Sample type"
+                "Message", "Test kit", "Customer Name", "Status", "Result"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jButton1.setText("Process Test");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblRequests);
 
-        jLabel1.setText("Enter Result : ");
+        btnPerformTest.setText("Perform Test");
+        btnPerformTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerformTestActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Send Result to Doctor");
+        btnSendResults.setText("Send Result to Doctor");
+        btnSendResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendResultsActionPerformed(evt);
+            }
+        });
+
+        doctorJComboBox.setBackground(new java.awt.Color(153, 191, 170));
+        doctorJComboBox.setForeground(new java.awt.Color(92, 61, 70));
+        doctorJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        doctorJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorJComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Select Doctor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,17 +141,17 @@ public class TechnicianJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(jButton1))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(doctorJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151)
+                        .addComponent(btnSendResults))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnPerformTest)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,24 +162,84 @@ public class TechnicianJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
-                        .addComponent(jButton1)))
-                .addGap(32, 32, 32)
+                        .addComponent(btnPerformTest)))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(93, 93, 93))
+                    .addComponent(btnSendResults)
+                    .addComponent(doctorJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPerformTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerformTestActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = tblRequests.getSelectedRow();
+        
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to process this order");
+            return;
+        }
+        
+        TestRequest request = (TestRequest)tblRequests.getValueAt(selectedRow, 0);
+        
+        if(!request.getStatus().equals("Sent for testing")){
+            if(request.getStatus().equals("Processing")){
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "This test has been processed before");
+                return;
+            }
+            
+        }
+     
+        request.setStatus("Processing");
+        
+        PerformTestJPanel performTestJPanel = new PerformTestJPanel(userProcessContainer,request);
+        userProcessContainer.add("PerformTestJPanel", performTestJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPerformTestActionPerformed
+
+    private void btnSendResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendResultsActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRequests.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+
+        TestRequest request = (TestRequest) tblRequests.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Test finished")){
+            
+            UserAccount ua1 = (UserAccount)doctorJComboBox.getSelectedItem();
+            request.setReceiver(ua1);
+            request.setStatus("Sent to Doctor");
+            populateTable();
+        }
+        else{
+            if(request.getStatus().equals("Sent")){
+                JOptionPane.showMessageDialog(this, "Please accept this request to assign");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Request has been previously assigned/ rejected");
+            }
+        }
+    }//GEN-LAST:event_btnSendResultsActionPerformed
+
+    private void doctorJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doctorJComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPerformTest;
+    private javax.swing.JButton btnSendResults;
+    private javax.swing.JComboBox doctorJComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblRequests;
     // End of variables declaration//GEN-END:variables
 }

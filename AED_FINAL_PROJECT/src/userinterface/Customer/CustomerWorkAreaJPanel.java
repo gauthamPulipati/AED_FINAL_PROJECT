@@ -125,7 +125,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResultsActionPerformed
         // TODO add your handling code here:
-        CustomerViewResultsJPanel customerViewResultsJPanel = new CustomerViewResultsJPanel(userProcessContainer,ecosystem);
+        Customer customer=null;
+        for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
+            if(c.getEmployee() == account.getEmployee()){
+                customer = c;
+            }
+        }
+        CustomerViewResultsJPanel customerViewResultsJPanel = new CustomerViewResultsJPanel(userProcessContainer,account,ecosystem,customer);
         userProcessContainer.add("CustomerViewResultsJPanel", customerViewResultsJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -135,7 +141,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Customer customer=null;
         for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
-            if(c.getEmployee() == account.getEmployee()){
+            if(c.getEmployee().equals(account.getEmployee())){
                 customer = c;
             }
         }
@@ -149,7 +155,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Customer customer=null;
         for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
-            if(c.getEmployee() == account.getEmployee()){
+            System.out.println(c+"  -++++");
+            if(c.getEmployee().getName().equals(account.getEmployee().getName())){
+                System.out.println(c+"  -++++");
                 customer = c;
             }
         }

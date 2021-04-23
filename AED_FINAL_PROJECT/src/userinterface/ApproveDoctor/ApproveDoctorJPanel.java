@@ -5,11 +5,15 @@
  */
 package userinterface.ApproveDoctor;
 
-import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.TestRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,19 +27,38 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private Hospital hospital;
     
-    public ApproveDoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public ApproveDoctorJPanel(JPanel userProcessContainer, UserAccount account, Hospital hospital) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.organization = organization;
-        this.business = business;
-        this.enterprise = enterprise;
+        this.hospital = hospital;
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblTestRequests.getModel();
+        model.setRowCount(0);
         
+        ArrayList<WorkRequest> wr = hospital.getWorkQueue().getWorkRequestList2();
+        
+        for(int i=wr.size()-1; i>=0;i--){
+            TestRequest req = (TestRequest)wr.get(i);
+            
+            if(req.getReceiver()!=account){
+                continue;
+            }
+            if(!req.getStatus().equals("Sent to Doctor")){
+                continue;
+            }
+            Object[] row = new Object[4];
+            row[0] = req;
+            row[2] = req.getCustomer().getName();
+            row[1] = req.getReceiver() == null ? null : req.getReceiver().getEmployee().getName();
+            row[3] = req.getTestResult();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -48,15 +71,10 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        txtRemarks = new javax.swing.JTextField();
-        btnRemarks = new javax.swing.JButton();
+        tblTestRequests = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
-        btnReject = new javax.swing.JButton();
-        btnViewResults = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTestRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,38 +82,15 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Test", "Status", "Lab Results"
+                "Message", "Technician Name", "Customer name", "Lab Results"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblTestRequests);
 
-        jLabel1.setText("Remarks: ");
-
-        btnRemarks.setText("Add Remarks");
-        btnRemarks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemarksActionPerformed(evt);
-            }
-        });
-
-        btnApprove.setText("Approve");
+        btnApprove.setText("Approve Test");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
-            }
-        });
-
-        btnReject.setText("Send Back to Lab");
-        btnReject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRejectActionPerformed(evt);
-            }
-        });
-
-        btnViewResults.setText("View Results");
-        btnViewResults.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewResultsActionPerformed(evt);
             }
         });
 
@@ -104,78 +99,45 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRemarks)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(432, 432, 432)
-                                        .addComponent(btnApprove, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnViewResults)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(btnReject)))
-                                .addGap(35, 35, 35))))))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnApprove)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReject)
-                    .addComponent(btnViewResults))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRemarks))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnApprove)))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnApprove)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRemarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemarksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemarksActionPerformed
-
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblTestRequests.getSelectedRow();
+        
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to process this order");
+            return;
+        }
+        
+        TestRequest request = (TestRequest)tblTestRequests.getValueAt(selectedRow, 0);
+        request.setStatus("Pending Approval");
+        
+        DoctorApproveJPanel doctorApproveJPanel = new DoctorApproveJPanel(userProcessContainer, request);
+        userProcessContainer.add("DoctorApproveJPanel", doctorApproveJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnApproveActionPerformed
-
-    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRejectActionPerformed
-
-    private void btnViewResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResultsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnViewResultsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnReject;
-    private javax.swing.JButton btnRemarks;
-    private javax.swing.JButton btnViewResults;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtRemarks;
+    private javax.swing.JTable tblTestRequests;
     // End of variables declaration//GEN-END:variables
 }

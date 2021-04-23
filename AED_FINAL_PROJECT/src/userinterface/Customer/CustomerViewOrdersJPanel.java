@@ -7,14 +7,21 @@ package userinterface.Customer;
 
 import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
+import Business.Network.Network;
 import Business.Order.Order;
 import Business.Products.Product;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerOrderWorkRequest;
+import Business.WorkQueue.TestRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.Manager.ManagerWorkJPanel;
 
 /**
  *
@@ -36,6 +43,21 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
         this.useraccount = useraccount;
         this.customer = customer;
         populateTable();
+        populateJComboBox();
+    }
+    
+    private void populateJComboBox(){
+        hospitalJComboBox.removeAllItems();
+        for(Network network:ecosystem.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getHospitalDirectory()!=null){
+                        System.out.println(enterprise.getHospitalDirectory().getHospitals());
+                        for(Hospital hospital: enterprise.getHospitalDirectory().getHospitals()){
+                            hospitalJComboBox.addItem(hospital);
+                        }
+                    }
+                }
+            }
     }
     
     private void populateTable(){
@@ -45,8 +67,13 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
         ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList();
         
         for(int i=wr.size()-1; i>=0;i--){
-            
-            CustomerOrderWorkRequest lt = (CustomerOrderWorkRequest)wr.get(i);
+            CustomerOrderWorkRequest lt=null;
+            try {
+                lt = (CustomerOrderWorkRequest)wr.get(i);
+            }
+            catch(Exception e){
+                continue;
+            }
             Order order = lt.getOrder();
             for(Product product:order.getItems()){
                 Object[] row = new Object[5];
@@ -72,7 +99,12 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequest = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        btnSendTesting = new javax.swing.JButton();
+        hospitalJComboBox = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtMessage = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,17 +127,54 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequest);
 
-        jButton2.setText("Send Testing");
+        btnSendTesting.setText("Send Testing");
+        btnSendTesting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendTestingActionPerformed(evt);
+            }
+        });
+
+        hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        hospitalJComboBox.setForeground(new java.awt.Color(48, 60, 108));
+        hospitalJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Select Hospital");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel2.setText("Message");
+
+        btnBack.setText("back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(17, 17, 17)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSendTesting))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,16 +182,61 @@ public class CustomerViewOrdersJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSendTesting)
+                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSendTestingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendTestingActionPerformed
+        // TODO add your handling code here:
+        TestRequest request = new TestRequest();
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        Product product = (Product)model.getValueAt(selectedRow, 0);
+        
+        Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
+        request.setCustomer(customer);
+        System.out.println(customer);
+        request.setHospital(hospital);
+        request.setProduct(product);
+        request.setMessage(txtMessage.getText());
+        request.setStatus("Sample sent");
+        request.setTestResult("");
+        
+        hospital.getWorkQueue().getWorkRequestList2().add(request);
+        useraccount.getWorkQueue().getWorkRequestList2().add(request);
+    }//GEN-LAST:event_btnSendTestingActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerWorkAreaJPanel hentadjp = (CustomerWorkAreaJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSendTesting;
+    private javax.swing.JComboBox hospitalJComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblWorkRequest;
+    private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 }

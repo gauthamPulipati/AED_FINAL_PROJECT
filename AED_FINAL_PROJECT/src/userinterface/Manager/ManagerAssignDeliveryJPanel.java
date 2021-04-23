@@ -248,12 +248,9 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
             populateTable();
         }
         else{
-            if(request.getStatus().equals("Sent")){
-                JOptionPane.showMessageDialog(this, "Please accept this request to assign");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Request has been previously assigned/ rejected");
-            }
+            
+                JOptionPane.showMessageDialog(this, "");
+            
         }
     }//GEN-LAST:event_AssignShippingActionPerformed
 

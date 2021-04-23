@@ -5,11 +5,15 @@
  */
 package userinterface.Laboratory;
 
-import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.Hospital.Hospital;
+import Business.Products.Product;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.TestRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,17 +27,48 @@ public class LabAdminJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private Hospital hospital;
     
-    public LabAdminJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public LabAdminJPanel(JPanel userProcessContainer, UserAccount account, Hospital hospital) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.organization = organization;
-        this.business = business;
-        this.enterprise = enterprise;
+        this.hospital = hospital;
+        populateTable();
+        populateJComboBox();
+    }
+    
+    private void populateJComboBox(){
+        technicianJComboBox.removeAllItems();
+        
+        String del = "Technician";
+        
+        for(UserAccount ua:hospital.getUserAccountDirectory().getUserAccountList()){
+            if(ua.getRole().toString().equals(del)){
+                technicianJComboBox.addItem(ua);
+            }
+        }
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblTestRequest.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<WorkRequest> wr = hospital.getWorkQueue().getWorkRequestList2();
+        for(int i=wr.size()-1; i>=0;i--){
+            
+            TestRequest lt = (TestRequest)wr.get(i);
+            if(lt.getCustomer()==null){
+                continue;
+            }
+            Product product = lt.getProduct();
+                Object[] row = new Object[4];
+                row[0] = lt;
+                row[1] = product.getProductName();
+                row[2] = lt.getCustomer().getEmployee().getName();
+                row[3] = lt.getStatus();
+                model.addRow(row);
+        }
     }
 
     /**
@@ -46,20 +81,15 @@ public class LabAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblTestRequest = new javax.swing.JTable();
+        btnExamine = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboTechnician = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        technicianJComboBox = new javax.swing.JComboBox();
 
-        setBackground(new java.awt.Color(255, 241, 230));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTestRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,76 +97,173 @@ public class LabAdminJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Customer Name", "Test Type", "Title 3", "Title 4"
+                "Message", "Test Kit", "Customer Name", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 206, 470, 164));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblTestRequest);
 
-        jButton1.setBackground(new java.awt.Color(102, 255, 102));
-        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        jButton1.setText("Accept");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 235, 102, 43));
+        btnExamine.setText("Examine");
+        btnExamine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExamineActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        jButton2.setText("Reject");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 296, 102, 41));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel1.setText("Select Lab Technician : ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 398, -1, -1));
 
-        jComboTechnician.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboTechnician, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 394, 155, -1));
+        btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(203, 153, 126));
-        jButton3.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        jButton3.setText("Assign");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 386, 110, 40));
-
-        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel2.setText("Test Sample :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 206, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(203, 153, 126));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 0), 2, true));
+        technicianJComboBox.setBackground(new java.awt.Color(153, 191, 170));
+        technicianJComboBox.setForeground(new java.awt.Color(92, 61, 70));
+        technicianJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        technicianJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                technicianJComboBoxActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
-        jLabel3.setText("Manage Lab Test Samples");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(152, 152, 152))
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)
+                        .addComponent(technicianJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(btnAssign)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnExamine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnReject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(28, 28, 28))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnExamine)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReject))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnAssign)
+                    .addComponent(technicianJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 741, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExamineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExamineActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblTestRequest.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to examine");
+            return;
+        }
+
+        WorkRequest request = (WorkRequest) tblTestRequest.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Sample sent")){
+            request.setStatus("Accepted");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Request has been previously accepted/ rejected");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnExamineActionPerformed
+
+    private void technicianJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_technicianJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_technicianJComboBoxActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblTestRequest.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to reject sample");
+            return;
+        }
+
+        WorkRequest request = (WorkRequest) tblTestRequest.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Sent")){
+            request.setStatus("Rejected");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Request has been previously accepted/ rejected");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblTestRequest.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+
+        TestRequest request = (TestRequest) tblTestRequest.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Accepted")){
+            
+            UserAccount ua1 = (UserAccount)technicianJComboBox.getSelectedItem();
+            request.setReceiver(ua1);
+            request.setStatus("Sent for testing");
+            populateTable();
+        }
+        else{
+            if(request.getStatus().equals("Sent")){
+                JOptionPane.showMessageDialog(this, "Please accept this request to assign");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Request has been previously assigned/ rejected");
+            }
+        }
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboTechnician;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnExamine;
+    private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblTestRequest;
+    private javax.swing.JComboBox technicianJComboBox;
     // End of variables declaration//GEN-END:variables
 }

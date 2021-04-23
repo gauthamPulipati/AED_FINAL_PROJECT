@@ -21,6 +21,7 @@ public class CustomerDirectory {
     
     public Customer createCustomer(int age, Employee employee, long phoneNumber){
         Customer customer = new Customer(age,employee,phoneNumber);
+        customers.add(customer);
         return customer;
     }
 

@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -20,7 +21,25 @@ public class TechnicianRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new TechnicianJPanel(userProcessContainer, account, organization, enterprise, business);
+        
+        Hospital hospital = null;
+        int fl2=0;
+        
+        for(Hospital hos:enterprise.getHospitalDirectory().getHospitals()){
+            
+            for(UserAccount ua:hos.getUserAccountDirectory().getUserAccountList()){
+                if(ua.getUsername().equals(account.getUsername())){
+                    hospital = hos;
+                    fl2=1;
+                    break;
+                }
+            }
+            if(fl2==1){
+                break;
+            }
+        }
+        
+        return new TechnicianJPanel(userProcessContainer, account, hospital);
     }
     
     @Override
