@@ -5,11 +5,15 @@
  */
 package userinterface.Store;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.RetailStore.RetailStore;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.StoreAdminOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,16 +26,37 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private UserAccount useraccount;
+    private ArrayList<Enterprise> dlist;
+    private RetailStore retailStore;
     
-    public StoreAdminJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public StoreAdminJPanel(JPanel userProcessContainer,UserAccount useraccount, ArrayList<Enterprise> dlist, RetailStore retailStore) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.useraccount = useraccount;
+        this.dlist = dlist;
+        this.retailStore = retailStore;
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        
+        model.setRowCount(0);
+        
+        ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList2();
+        
+        for (int i=wr.size()-1; i>=0;i--){
+            StoreAdminOrderWorkRequest req = (StoreAdminOrderWorkRequest)wr.get(i);
+            Object[] row = new Object[4];
+            row[0] = req;
+            row[1] = req.getReceiver();
+            row[2] = req.getDistribution();
+            row[3] = req.getStatus();
+            model.addRow(row);
+        }
+        
     }
 
     /**
@@ -43,85 +68,93 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPlaceorder = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        tblWorkRequest = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnPlaceorder.setText("Place orders");
+        btnPlaceorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceorderActionPerformed(evt);
+            }
+        });
+
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "TestKit Name", "Quantity"
+                "Message", "Receiver", "Distribution", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblWorkRequest);
 
-        jLabel1.setText("Select TestKit :");
-
-        jLabel2.setText("Select Quantity :");
-
-        jButton1.setText("Order TestKits");
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRefresh)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(56, 56, 56)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                            .addGap(218, 218, 218)
+                            .addComponent(btnPlaceorder))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(58, 58, 58)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(jButton1)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnRefresh)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(btnPlaceorder)
+                .addGap(107, 107, 107))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPlaceorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceorderActionPerformed
+        // TODO add your handling code here:
+        PlaceOrderRetaliJPanel placeOrderRetaliJPanel=new PlaceOrderRetaliJPanel(userProcessContainer,useraccount, dlist,retailStore);
+        userProcessContainer.add("PlaceOrderRetaliJPanel",placeOrderRetaliJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPlaceorderActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnPlaceorder;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

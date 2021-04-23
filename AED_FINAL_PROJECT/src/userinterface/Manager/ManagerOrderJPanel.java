@@ -389,6 +389,8 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
 
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed
         // TODO add your handling code here:
+        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        populateJComboBox(enterprise.getManufacturingWarehouseDirectory().getWarehousedirectory());
     }//GEN-LAST:event_enterpriseJComboBoxActionPerformed
 
 

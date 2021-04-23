@@ -64,6 +64,7 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
             row[3] = req.getStatus();
             model.addRow(row);
         }
+        
     }
 
     /**

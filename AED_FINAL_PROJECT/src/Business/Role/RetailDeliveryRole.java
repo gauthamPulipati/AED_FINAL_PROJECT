@@ -5,6 +5,7 @@
  */
 package Business.Role;
 
+import Business.Distribution.Distribution;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -19,7 +20,22 @@ import userinterface.RetailDelivery.RetailDeliveryManJPanel;
 public class RetailDeliveryRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new RetailDeliveryManJPanel(userProcessContainer,enterprise);
+        Distribution distribution =  null;
+        int fl=0;
+        for(Distribution mw:enterprise.getDistributionDirectory().getDistributions()){
+            
+            for(UserAccount ua:mw.getUserAccountDirectory().getUserAccountList()){
+                if(ua.getUsername().equals(account.getUsername())){
+                    distribution = mw;
+                    fl=1;
+                    break;
+                }
+            }
+            if(fl==1){
+                break;
+            }
+        }
+        return new RetailDeliveryManJPanel(userProcessContainer, account, distribution);
     }
     
     @Override
