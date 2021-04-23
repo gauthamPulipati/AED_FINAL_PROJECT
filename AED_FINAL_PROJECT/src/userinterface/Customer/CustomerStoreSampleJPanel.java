@@ -5,7 +5,16 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
+import Business.Network.Network;
+import Business.Order.Order;
+import Business.Products.Product;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerOrderWorkRequest;
+import Business.WorkQueue.TestRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -21,10 +30,30 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public CustomerStoreSampleJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount useraccount;
+    Customer customer;
+    public CustomerStoreSampleJPanel(JPanel userProcessContainer, UserAccount useraccount,EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.useraccount = useraccount;
+        this.customer = customer;
+        populateJComboBox();
+        
+    }
+    
+    private void populateJComboBox(){
+        hospitalJComboBox.removeAllItems();
+        for(Network network:ecosystem.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getHospitalDirectory()!=null){
+                        System.out.println(enterprise.getHospitalDirectory().getHospitals());
+                        for(Hospital hospital: enterprise.getHospitalDirectory().getHospitals()){
+                            hospitalJComboBox.addItem(hospital);
+                        }
+                    }
+                }
+            }
     }
 
     /**
@@ -40,6 +69,13 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtMessage = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        hospitalJComboBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(241, 250, 238));
 
@@ -50,8 +86,7 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Send Store Sample");
 
-        btnBack.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        btnBack.setText("<< Back");
+        btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -65,19 +100,19 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnBack)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(307, 307, 307)
+                        .addComponent(jLabel1)))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(0, 37, Short.MAX_VALUE))
         );
@@ -85,15 +120,67 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(254, 250, 224));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 3, true));
 
+        jLabel2.setText("Test Kit name");
+
+        jLabel3.setText("ID");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jLabel4.setText("Select Hospital :");
+
+        hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        hospitalJComboBox.setForeground(new java.awt.Color(102, 102, 255));
+        hospitalJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 228, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(46, 46, 46)
+                        .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName)
+                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(btnSubmit)))
+                .addGap(199, 199, 199))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(63, 63, 63)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(btnSubmit)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -104,18 +191,18 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(80, 80, 80)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 121, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,11 +217,38 @@ public class CustomerStoreSampleJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        
+        Product product = new Product(txtName.getText(), 0, 0);
+        Hospital hospital = (Hospital) hospitalJComboBox.getSelectedItem();
+        
+        TestRequest request = new TestRequest();
+        
+        request.setCustomer(customer);
+        System.out.println(customer);
+        request.setHospital(hospital);
+        request.setProduct(product);
+        request.setMessage(txtMessage.getText());
+        request.setStatus("Sample sent");
+        request.setTestResult("");
+        
+        hospital.getWorkQueue().getWorkRequestList2().add(request);
+        useraccount.getWorkQueue().getWorkRequestList2().add(request);
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox hospitalJComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtMessage;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

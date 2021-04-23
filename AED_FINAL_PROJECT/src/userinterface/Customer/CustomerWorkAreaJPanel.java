@@ -312,7 +312,15 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSendStoreSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendStoreSampleActionPerformed
         // TODO add your handling code here:
-        CustomerStoreSampleJPanel customerStoreSampleJPanel = new CustomerStoreSampleJPanel(userProcessContainer,ecosystem);
+        Customer customer=null;
+        for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
+            System.out.println(c+"  -++++");
+            if(c.getEmployee().getName().equals(account.getEmployee().getName())){
+                System.out.println(c+"  -++++");
+                customer = c;
+            }
+        }
+        CustomerStoreSampleJPanel customerStoreSampleJPanel = new CustomerStoreSampleJPanel(userProcessContainer, account,ecosystem, customer);
         userProcessContainer.add("CustomerStoreSampleJPanel", customerStoreSampleJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
