@@ -93,7 +93,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageEnterpriseAdmins = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -118,60 +120,70 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         jSplitPane.setLeftComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(210, 253, 255));
+        jPanel2.setBackground(new java.awt.Color(254, 254, 227));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(48, 60, 108));
         jLabel1.setText("Selected Node:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         lblSelectedNode.setForeground(new java.awt.Color(48, 60, 108));
         jPanel2.add(lblSelectedNode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, -1));
 
-        btnManageNetwork.setBackground(new java.awt.Color(180, 223, 229));
-        btnManageNetwork.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        btnManageNetwork.setBackground(new java.awt.Color(255, 201, 185));
+        btnManageNetwork.setFont(new java.awt.Font("Devanagari MT", 1, 24)); // NOI18N
         btnManageNetwork.setForeground(new java.awt.Color(48, 60, 108));
-        btnManageNetwork.setText("Manage Network");
+        btnManageNetwork.setText(" Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageNetworkActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 175, -1));
+        jPanel2.add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 230, 120));
 
-        btnManageEnterprise.setBackground(new java.awt.Color(180, 223, 229));
-        btnManageEnterprise.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        btnManageEnterprise.setBackground(new java.awt.Color(255, 201, 185));
+        btnManageEnterprise.setFont(new java.awt.Font("Devanagari MT", 1, 24)); // NOI18N
         btnManageEnterprise.setForeground(new java.awt.Color(48, 60, 108));
-        btnManageEnterprise.setText("Manage Enterprise");
+        btnManageEnterprise.setText(" Enterprise");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 175, -1));
+        jPanel2.add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 230, 120));
 
-        btnManageEnterpriseAdmins.setBackground(new java.awt.Color(180, 223, 229));
-        btnManageEnterpriseAdmins.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        btnManageEnterpriseAdmins.setBackground(new java.awt.Color(255, 201, 185));
+        btnManageEnterpriseAdmins.setFont(new java.awt.Font("Devanagari MT", 1, 24)); // NOI18N
         btnManageEnterpriseAdmins.setForeground(new java.awt.Color(48, 60, 108));
-        btnManageEnterpriseAdmins.setText("Manage Enterprise Admins");
+        btnManageEnterpriseAdmins.setText(" Enterprise Admins");
         btnManageEnterpriseAdmins.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterpriseAdminsActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageEnterpriseAdmins, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+        jPanel2.add(btnManageEnterpriseAdmins, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 250, 120));
 
-        lblTitle.setFont(new java.awt.Font("ITF Devanagari", 1, 24)); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(255, 201, 185));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 102), 3, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("ITF Devanagari", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(48, 60, 108));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("SYSTEM ADMINISTRATOR");
-        jPanel2.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 520, -1));
+        jPanel3.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 510, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 907, 110));
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jLabel2.setText("Choose Option to Manage :");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 188, -1, -1));
 
         jSplitPane.setRightComponent(jPanel2);
 
@@ -214,8 +226,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageEnterpriseAdmins;
     private javax.swing.JButton btnManageNetwork;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JTree jTree;
