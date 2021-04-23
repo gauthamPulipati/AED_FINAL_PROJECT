@@ -85,6 +85,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(224, 251, 252));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblOrders.setBackground(new java.awt.Color(152, 193, 217));
         tblOrders.setModel(new javax.swing.table.DefaultTableModel(
@@ -108,21 +109,27 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrders);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 334, -1, 148));
+
         btnViewOrder.setBackground(new java.awt.Color(152, 193, 217));
+        btnViewOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnViewOrder.setText("View Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewOrderActionPerformed(evt);
             }
         });
+        add(btnViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 244, 137, 46));
 
         btnProcess.setBackground(new java.awt.Color(152, 193, 217));
+        btnProcess.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnProcess.setText("Process Order");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 170, -1, 42));
 
         tblWorkRequest.setBackground(new java.awt.Color(152, 193, 217));
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -145,6 +152,8 @@ public class ShippingManJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblWorkRequest);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 170, -1, 120));
 
         jPanel1.setBackground(new java.awt.Color(152, 193, 217));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
@@ -169,40 +178,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnViewOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnProcess)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnViewOrder)
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 701, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
