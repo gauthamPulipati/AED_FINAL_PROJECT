@@ -96,9 +96,10 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 111, 96));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Distribution Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 308, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 130, -1));
 
         distributionJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         distributionJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -109,7 +110,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
                 distributionJComboBoxActionPerformed(evt);
             }
         });
-        add(distributionJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 304, 140, -1));
+        add(distributionJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 140, -1));
 
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -119,16 +120,18 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 476, 100, 40));
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 427, 140, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 140, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Password: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 430, 90, -1));
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 386, 140, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 100, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 140, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Username:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 389, 90, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 100, -1));
 
         tblManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,11 +155,12 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblManager);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 139, -1, 137));
-        add(txtManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 348, 140, -1));
+        add(txtManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 140, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Manager Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 348, 90, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, -1));
 
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");

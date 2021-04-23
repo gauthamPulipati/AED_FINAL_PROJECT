@@ -41,69 +41,58 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         btnManageRetail = new javax.swing.JButton();
         btnManageHome = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 111, 96));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnManageDistribution.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageDistribution.setText("Manage Distribution Units");
         btnManageDistribution.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageDistributionActionPerformed(evt);
             }
         });
+        add(btnManageDistribution, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 180, 303, 163));
 
+        btnManageRetail.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageRetail.setText("Manage Retail Delivery Man");
         btnManageRetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageRetailActionPerformed(evt);
             }
         });
+        add(btnManageRetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, 163));
 
+        btnManageHome.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageHome.setText("Manage Home Delivery Man");
         btnManageHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageHomeActionPerformed(evt);
             }
         });
+        add(btnManageHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 410, -1, 163));
 
+        jButton1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jButton1.setText("Manage Manager");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 301, 163));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageRetail, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManageHome, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                    .addComponent(btnManageDistribution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(69, 69, 69))
-        );
+        jPanel3.setBackground(new java.awt.Color(171, 0, 13));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 57, 53), 4));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageDistribution, btnManageHome, btnManageRetail, jButton1});
+        jLabel5.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Distribution Enterprise Admin");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, 53));
 
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageDistribution, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageHome, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageRetail, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageDistribution, btnManageHome, btnManageRetail, jButton1});
-
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 100));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageDistributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDistributionActionPerformed
@@ -147,9 +136,11 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageHome;
     private javax.swing.JButton btnManageRetail;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -95,14 +95,16 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(txtShipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 379, 161, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Username :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 420, 104, 20));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 420, 130, 20));
         add(txtShipUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 420, 161, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Password :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 467, 104, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 467, 130, 20));
         add(txtShipPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 467, 161, -1));
 
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -148,13 +150,15 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 131, -1, 157));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Distribution Name :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 336, 104, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 336, 130, 20));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Delivery Man Name : ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 379, -1, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 150, 20));
 
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
@@ -190,7 +194,7 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Manage Retail Delivery Man");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, 53));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 30, 530, 53));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 722, 100));
     }// </editor-fold>//GEN-END:initComponents

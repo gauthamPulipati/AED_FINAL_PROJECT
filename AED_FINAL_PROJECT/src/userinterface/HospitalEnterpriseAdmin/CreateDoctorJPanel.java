@@ -113,6 +113,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(155, 231, 255));
 
+        tblDoctor.setBackground(new java.awt.Color(204, 204, 255));
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
