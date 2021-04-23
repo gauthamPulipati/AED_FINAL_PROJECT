@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.FDA.FDA;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,7 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private FDA fda;
     
     public CreateFDAUnitJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
@@ -60,6 +62,8 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        btnModify = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(234, 248, 218));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,7 +90,7 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblFDA);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 269, 418, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 418, 170));
 
         jLabel1.setText("FDA unit name:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 414, -1, -1));
@@ -133,19 +137,39 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btnBack)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(67, 67, 67))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 863, 170));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 863, 170));
+
+        btnModify.setBackground(new java.awt.Color(187, 222, 249));
+        btnModify.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnModify.setText("Modify");
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyActionPerformed(evt);
+            }
+        });
+        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, -1, 39));
+
+        btnDelete.setBackground(new java.awt.Color(187, 222, 249));
+        btnDelete.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, -1, 42));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -156,7 +180,15 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String unitName = txtName.getText();
         
+        if(unitName.length()<1){
+          JOptionPane.showMessageDialog(null, "Hospital Name cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         FDA fda = this.enterprise.createFDAUnit(unitName);
+        btnModify.setEnabled(true);
+        btnCreate.setEnabled(true);
+        btnDelete.setEnabled(true);
         txtName.setText("");
         populateTable();
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -172,10 +204,47 @@ public class CreateFDAUnitJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+        // TODO add your handling code here:
+        btnCreate.setEnabled(true);
+        btnDelete.setEnabled(false);
+        btnModify.setEnabled(false);
+        int selectedRowIndex = tblFDA.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Please select a row to Modify", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModify.setEnabled(true);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblFDA.getModel();
+        FDA fd = (FDA)model.getValueAt(selectedRowIndex,0);
+        txtName.setText(fd.getFDAName());
+        fda=fd;
+        this.enterprise.getFdas().deleteFDA(txtName.getText());
+        
+    }//GEN-LAST:event_btnModifyActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblFDA.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Please select a row to Modify", "Warning", JOptionPane.WARNING_MESSAGE);
+            btnModify.setEnabled(true);
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblFDA.getModel();
+        FDA fd = (FDA)model.getValueAt(selectedRowIndex,0);
+        this.enterprise.getFdas().deleteFDA(txtName.getText());
+        populateTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnModify;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
