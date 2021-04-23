@@ -149,7 +149,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 5, true));
 
         jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        jButton1.setText("< Back");
+        jButton1.setText("<< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -168,7 +168,7 @@ public class ManageWarehouseAdminJPanel extends javax.swing.JPanel {
                 .addGap(14, 14, 14)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -106,10 +106,14 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(254, 254, 227));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Enter Username :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 417, -1, -1));
         add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 412, 172, -1));
 
+        jLabel3.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Choose Enterprise: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 370, -1, -1));
 
@@ -119,6 +123,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 366, 172, -1));
 
         submitJButton.setBackground(new java.awt.Color(255, 201, 185));
+        submitJButton.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +132,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 570, 110, 40));
 
+        jLabel4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Enter Password :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 461, -1, -1));
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 510, 172, -1));
@@ -155,10 +162,14 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 189, 523, 95));
 
+        jLabel5.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("Enter Name :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 515, -1, -1));
         add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 456, 172, -1));
 
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Choose Network :");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 319, -1, -1));
 
@@ -177,6 +188,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
         jLabel6.setText("Create Enterprise Admin Details");
 
+        backJButton.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,20 +203,20 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(backJButton)
-                .addGap(55, 55, 55)
+                .addGap(594, 594, 594))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap())
+                .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(backJButton)
-                .addGap(77, 77, 77))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, -1));

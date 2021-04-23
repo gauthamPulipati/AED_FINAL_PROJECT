@@ -53,6 +53,7 @@ public class ProcessRetailOrder extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
         btnSubmit.setBackground(new java.awt.Color(252, 163, 17));
+        btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +64,8 @@ public class ProcessRetailOrder extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(252, 163, 17));
 
-        brnBack.setText("< Back");
+        brnBack.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        brnBack.setText("<< Back");
         brnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 brnBackActionPerformed(evt);
@@ -82,7 +84,7 @@ public class ProcessRetailOrder extends javax.swing.JPanel {
                 .addComponent(brnBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
+                .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(239, 239, 239))
         );

@@ -88,6 +88,7 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Distribution Enterprise Admin");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, 53));
@@ -130,17 +131,11 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnManageDistribution;
     private javax.swing.JButton btnManageHome;
     private javax.swing.JButton btnManageRetail;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -113,7 +113,6 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         enterpriseJComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -121,17 +120,18 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(247, 237, 226));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAddToCart.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnAddToCart.setText("Add to cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddToCartActionPerformed(evt);
             }
         });
-        add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 419, -1, 41));
+        add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, -1, 41));
 
         jLabel5.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel5.setText("Message :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 78, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 78, -1));
 
         tblOrder.setBackground(new java.awt.Color(255, 153, 153));
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
@@ -155,8 +155,8 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblOrder);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 466, 502, 153));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, 183, 69));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 502, 153));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 183, 69));
 
         tblProducts.setBackground(new java.awt.Color(255, 153, 153));
         tblProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,22 +197,27 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
                 btnPlaceOrderActionPerformed(evt);
             }
         });
-        add(btnPlaceOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 650, -1, 40));
+        add(btnPlaceOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 700, -1, 40));
 
         txtTotal.setText("0");
-        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 625, 77, -1));
+        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 77, -1));
 
         jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel2.setText("Total Price");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 630, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 650, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel1.setText("Quantity:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 226, 62, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 70, -1));
 
         txtQuantity.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtQuantity.setText("1");
-        add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 260, 114, -1));
+        txtQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantityActionPerformed(evt);
+            }
+        });
+        add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 114, -1));
 
         distributionJComboBox.setBackground(new java.awt.Color(180, 223, 229));
         distributionJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -246,7 +251,8 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(239, 35, 60));
 
-        btnBack.setText("< Back");
+        btnBack.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -261,11 +267,11 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(btnBack)
-                .addGap(131, 131, 131)
+                .addGap(88, 88, 88)
                 .addComponent(jLabel3)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,27 +281,12 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnBack))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel3)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 900, 130));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
@@ -324,17 +315,6 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         double total = Double.parseDouble(txtTotal.getText()) + Integer.parseInt(txtQuantity.getText())*product.getPrice();
         txtTotal.setText(String.valueOf(total));
     }//GEN-LAST:event_btnAddToCartActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        StoreAdminJPanel hentadjp = (StoreAdminJPanel) component;
-        //sysAdminwjp.populateTree();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         // TODO add your handling code here:
@@ -386,6 +366,21 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         //populateJComboBox(enterprise.getDistributionDirectory().getDistributions());
     }//GEN-LAST:event_enterpriseJComboBoxActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        StoreAdminJPanel hentadjp = (StoreAdminJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToCart;
@@ -399,7 +394,6 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

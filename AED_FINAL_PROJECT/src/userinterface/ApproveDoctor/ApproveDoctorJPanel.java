@@ -79,6 +79,7 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(216, 243, 220));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblTestRequests.setBackground(new java.awt.Color(204, 255, 204));
         tblTestRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

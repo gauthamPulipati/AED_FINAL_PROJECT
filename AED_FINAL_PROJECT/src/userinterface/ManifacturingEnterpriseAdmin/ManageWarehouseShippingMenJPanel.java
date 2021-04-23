@@ -149,10 +149,10 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Shipping Men Details");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 62, 642, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 520, -1));
 
         jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        jButton1.setText("<Back");
+        jButton1.setText("<< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -160,7 +160,7 @@ public class ManageWarehouseShippingMenJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 870, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 870, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void warehouseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseJComboBoxActionPerformed

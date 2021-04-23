@@ -127,6 +127,7 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
         });
         add(distributionJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 335, 161, -1));
 
+        tblHomeDelivery.setBackground(new java.awt.Color(255, 204, 204));
         tblHomeDelivery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -189,9 +190,10 @@ public class ManageRetailDeliveryManJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 92, 35));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Manage Retail Delivery Man");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 30, 530, 53));

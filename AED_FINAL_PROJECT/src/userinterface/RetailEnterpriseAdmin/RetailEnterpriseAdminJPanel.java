@@ -79,9 +79,9 @@ public class RetailEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Retail Store ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 34, 497, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 497, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 870, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 90));
 
         jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
         jLabel2.setText("Choose option to Manage :");

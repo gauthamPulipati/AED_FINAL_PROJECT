@@ -49,7 +49,7 @@ public class DoctorConsultJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(216, 243, 220));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Remarks:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 265, -1, -1));
@@ -65,10 +65,10 @@ public class DoctorConsultJPanel extends javax.swing.JPanel {
         add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 262, 160, -1));
         add(txtTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 224, 160, -1));
 
-        jLabel2.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Test:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 227, 59, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 59, -1));
 
         jPanel1.setBackground(new java.awt.Color(116, 198, 157));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
@@ -93,7 +93,7 @@ public class DoctorConsultJPanel extends javax.swing.JPanel {
                 .addComponent(brnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

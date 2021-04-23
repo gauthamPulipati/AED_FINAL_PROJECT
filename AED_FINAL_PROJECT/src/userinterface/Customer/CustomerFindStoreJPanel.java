@@ -88,7 +88,8 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Find a Store");
 
-        btnBack.setText("< Back");
+        btnBack.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -100,22 +101,22 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(btnBack))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(jLabel2)))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(237, 237, 237)
+                .addComponent(jLabel2)
+                .addContainerGap(367, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -145,7 +146,7 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         btnRefresh.setBackground(new java.awt.Color(255, 104, 107));
         btnRefresh.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnRefresh.setText("Refresh");
-        jPanel2.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel2.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 90, -1));
 
         btnVire.setBackground(new java.awt.Color(255, 104, 107));
         btnVire.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
@@ -155,7 +156,7 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
                 btnVireActionPerformed(evt);
             }
         });
-        jPanel2.add(btnVire, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
+        jPanel2.add(btnVire, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 70, -1));
 
         jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         jLabel1.setText("Retailer Name :");

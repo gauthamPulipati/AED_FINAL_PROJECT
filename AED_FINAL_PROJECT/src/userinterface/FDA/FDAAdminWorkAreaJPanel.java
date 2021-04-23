@@ -109,22 +109,24 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 228, 536, 175));
 
         btnApprove.setBackground(new java.awt.Color(153, 255, 153));
+        btnApprove.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
             }
         });
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 436, -1, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 100, 30));
 
         btnDeny.setBackground(new java.awt.Color(255, 102, 102));
+        btnDeny.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         btnDeny.setText("Deny");
         btnDeny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDenyActionPerformed(evt);
             }
         });
-        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 436, 96, -1));
+        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 110, 30));
 
         jPanel1.setBackground(new java.awt.Color(187, 222, 249));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 3, true));
@@ -137,7 +139,7 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(283, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(279, 279, 279))
         );

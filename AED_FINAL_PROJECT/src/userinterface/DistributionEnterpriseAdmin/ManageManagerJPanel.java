@@ -133,6 +133,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         jLabel3.setText("Username:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 100, -1));
 
+        tblManager.setBackground(new java.awt.Color(255, 204, 204));
         tblManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -185,6 +186,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Manage Manager");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 53));

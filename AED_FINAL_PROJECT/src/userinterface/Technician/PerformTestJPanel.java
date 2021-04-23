@@ -48,8 +48,9 @@ public class PerformTestJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         brnBack.setBackground(new java.awt.Color(40, 75, 99));
+        brnBack.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         brnBack.setForeground(new java.awt.Color(255, 255, 255));
-        brnBack.setText("< Back");
+        brnBack.setText("<< Back");
         brnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 brnBackActionPerformed(evt);
@@ -63,6 +64,7 @@ public class PerformTestJPanel extends javax.swing.JPanel {
         add(txtResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 147, 188, 47));
 
         btnSubmit.setBackground(new java.awt.Color(40, 75, 99));
+        btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {

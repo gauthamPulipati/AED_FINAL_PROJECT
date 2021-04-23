@@ -90,6 +90,7 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(216, 243, 220));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblRequest.setBackground(new java.awt.Color(204, 255, 204));
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -126,6 +127,7 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
         });
         add(viewSymptoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 286, -1, 60));
 
+        tblSymptoms.setBackground(new java.awt.Color(204, 255, 204));
         tblSymptoms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
