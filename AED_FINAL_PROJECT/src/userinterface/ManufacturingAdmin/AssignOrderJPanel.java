@@ -91,10 +91,16 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         AssignShipping = new javax.swing.JButton();
         shippingManJComboBox = new javax.swing.JComboBox();
-        btnBack = new javax.swing.JButton();
         btnAccept = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(237, 246, 249));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblOrder.setBackground(new java.awt.Color(131, 197, 190));
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -116,14 +122,20 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrder);
 
-        jLabel1.setText("Select Shipping Man :");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 178, 536, 175));
 
+        jLabel1.setText("Select Shipping Man :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 371, -1, -1));
+
+        AssignShipping.setBackground(new java.awt.Color(131, 197, 190));
+        AssignShipping.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         AssignShipping.setText("Assign Shipping Man");
         AssignShipping.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AssignShippingActionPerformed(evt);
             }
         });
+        add(AssignShipping, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 431, -1, -1));
 
         shippingManJComboBox.setBackground(new java.awt.Color(153, 191, 170));
         shippingManJComboBox.setForeground(new java.awt.Color(92, 61, 70));
@@ -133,73 +145,65 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
                 shippingManJComboBoxActionPerformed(evt);
             }
         });
+        add(shippingManJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 365, 190, 30));
 
-        btnBack.setText("back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
+        btnAccept.setBackground(new java.awt.Color(153, 255, 153));
+        btnAccept.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
             }
         });
+        add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 228, -1, -1));
 
+        btnReject.setBackground(new java.awt.Color(255, 153, 153));
+        btnReject.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
             }
         });
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 298, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(339, 339, 339)
-                        .addComponent(AssignShipping))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(shippingManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(258, 258, 258))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAccept, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnReject, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(29, 29, 29))
+        jPanel1.setBackground(new java.awt.Color(131, 197, 190));
+
+        btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel2.setText("Assign Order");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnBack)
+                .addGap(197, 197, 197)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(btnAccept)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReject)))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(shippingManJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AssignShipping)
-                    .addComponent(btnBack))
-                .addGap(65, 65, 65))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel2)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 903, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void shippingManJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingManJComboBoxActionPerformed
@@ -284,6 +288,8 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox shippingManJComboBox;
     private javax.swing.JTable tblOrder;

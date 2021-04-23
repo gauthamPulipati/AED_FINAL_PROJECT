@@ -41,41 +41,60 @@ public class ManufacturingAdminJPanel extends javax.swing.JPanel {
 
         btnAssignOrder = new javax.swing.JButton();
         btnCreateProduct = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(237, 246, 249));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAssignOrder.setBackground(new java.awt.Color(131, 197, 190));
+        btnAssignOrder.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
         btnAssignOrder.setText("Assign Order");
         btnAssignOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignOrderActionPerformed(evt);
             }
         });
+        add(btnAssignOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 267, 169, 145));
 
+        btnCreateProduct.setBackground(new java.awt.Color(131, 197, 190));
+        btnCreateProduct.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
         btnCreateProduct.setText("Create Product");
         btnCreateProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateProductActionPerformed(evt);
             }
         });
+        add(btnCreateProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 267, 169, 145));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAssignOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(148, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(131, 197, 190));
+
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel1.setText("Manufacturing Admin");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jLabel1)
+                .addContainerGap(264, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(btnAssignOrder)
-                .addGap(29, 29, 29)
-                .addComponent(btnCreateProduct)
-                .addContainerGap(117, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel1)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 877, -1));
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jLabel2.setText("Choose option to Select :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 218, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignOrderActionPerformed
@@ -98,5 +117,8 @@ public class ManufacturingAdminJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignOrder;
     private javax.swing.JButton btnCreateProduct;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
