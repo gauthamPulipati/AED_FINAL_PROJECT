@@ -40,41 +40,61 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         btnCreateFDAAdmin = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        btnCreateFDAAdmin.setText("Create FDA Admin");
+        setBackground(new java.awt.Color(234, 248, 218));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnCreateFDAAdmin.setBackground(new java.awt.Color(187, 222, 249));
+        btnCreateFDAAdmin.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnCreateFDAAdmin.setText("FDA Admin");
         btnCreateFDAAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateFDAAdminActionPerformed(evt);
             }
         });
+        add(btnCreateFDAAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 284, 159, 142));
 
-        jButton1.setText("Create FDA unit");
+        jButton1.setBackground(new java.awt.Color(187, 222, 249));
+        jButton1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jButton1.setText("FDA unit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 284, 159, 142));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateFDAAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(183, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(187, 222, 249));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 204, 255), 3, true));
+
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel1.setText("Food And Drug Administration");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jLabel1)
+                .addContainerGap(211, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(btnCreateFDAAdmin)
-                .addContainerGap(225, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 18)); // NOI18N
+        jLabel2.setText("Choose Option to Create :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateFDAAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateFDAAdminActionPerformed
@@ -97,5 +117,8 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateFDAAdmin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
