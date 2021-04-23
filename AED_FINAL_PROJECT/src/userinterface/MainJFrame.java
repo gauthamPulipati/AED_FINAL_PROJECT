@@ -62,10 +62,13 @@ public class MainJFrame extends javax.swing.JFrame {
         logoutJButton = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
         container = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(107, 159, 159));
+        jPanel1.setBackground(new java.awt.Color(241, 250, 238));
 
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +142,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         container.setBackground(java.awt.SystemColor.textHighlight);
         container.setLayout(new java.awt.CardLayout());
+
+        loginPanel.setBackground(new java.awt.Color(241, 250, 238));
+        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 3, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel3.setText("Get");
+        loginPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 96, -1));
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 3, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel4.setText("Checked");
+        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 209, -1));
+
+        container.add(loginPanel, "card2");
+
         jSplitPane1.setRightComponent(container);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
@@ -313,7 +332,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         container.removeAll();
         JPanel blankJP = new JPanel();
-        container.add("blank", blankJP);
+        container.add("loginPanel", loginPanel);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
@@ -366,10 +385,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginJButton;
     private javax.swing.JLabel loginJLabel;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField userNameJTextField;
