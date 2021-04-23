@@ -45,6 +45,7 @@ public class CreateFDAAdminJPanel extends javax.swing.JPanel {
                 i++;
                 System.out.println(fda.getFDAName());
             }
+            System.out.println(fda);
             FDAJComboBox.addItem(fda);
         }
     }

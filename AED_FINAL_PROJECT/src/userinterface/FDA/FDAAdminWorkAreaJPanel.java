@@ -5,11 +5,16 @@
  */
 package userinterface.FDA;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.FDA.FDA;
+import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FDAApprovalRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,18 +28,40 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount account;
-    private Organization organization;
-    private Enterprise enterprise;
-    private EcoSystem business;
+    private ArrayList<Enterprise> warehouseEnterprises;
+    private FDA fda;
     
-    public FDAAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
+    public FDAAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ArrayList<Enterprise> warehouseEnterprises, FDA fda) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.organization = organization;
-        this.business = business;
-        this.enterprise = enterprise;
+        this.warehouseEnterprises = warehouseEnterprises;
+        this.fda = fda;
+        populateTable();
+    }
+    
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)tblRequest.getModel();
+        model.setRowCount(0);
+        
+        for(Enterprise e:warehouseEnterprises){
+            for(ManufacturingWarehouse mw:e.getManufacturingWarehouseDirectory().getWarehousedirectory()){
+                ArrayList<WorkRequest> wr = mw.getWorkQueue().getWorkRequestList3();
+                for(int i=wr.size()-1; i>=0;i--){
+                    FDAApprovalRequest lt = (FDAApprovalRequest)wr.get(i);
+                    Object[] row = new Object[4];
+                    row[0] = lt;
+                    row[1] = lt.getProduct();
+                    row[2] = lt.getMw();
+                    row[3] = lt.getStatus();
+                    model.addRow(row);
+                }
+            }
+        }
+        
+        
+        
     }
 
     /**
@@ -46,19 +73,117 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRequest = new javax.swing.JTable();
+        btnApprove = new javax.swing.JButton();
+        btnDeny = new javax.swing.JButton();
+
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Product", "Warehouse", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblRequest);
+
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
+
+        btnDeny.setText("Deny");
+        btnDeny.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDenyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btnApprove)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnDeny, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnApprove)
+                    .addComponent(btnDeny))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRequest.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to accept");
+            return;
+        }
+        FDAApprovalRequest request = (FDAApprovalRequest) tblRequest.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Waiting")){
+            request.setStatus("Approved");
+            request.getProduct().setStatus("Approved");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Previously accepted or denied");
+            return;
+        }
+        
+        
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRequest.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to accept");
+            return;
+        }
+        FDAApprovalRequest request = (FDAApprovalRequest) tblRequest.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Waiting")){
+            request.setStatus("Denied");
+            request.getProduct().setStatus("Denied");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Previously approved or denied");
+            return;
+        }
+    }//GEN-LAST:event_btnDenyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnDeny;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblRequest;
     // End of variables declaration//GEN-END:variables
 }

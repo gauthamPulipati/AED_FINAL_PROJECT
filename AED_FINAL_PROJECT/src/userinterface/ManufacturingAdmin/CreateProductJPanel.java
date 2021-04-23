@@ -8,6 +8,7 @@ package userinterface.ManufacturingAdmin;
 import Business.ManifacturingWarehouse.ManufacturingWarehouse;
 import Business.Products.Product;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FDAApprovalRequest;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,10 +39,11 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Product product: manufacturingWarehouse.getProductDirectory().getProducts()){
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getPrice();
             row[2] = product.getQuantity();
+            row[3] = product.getStatus();
             model.addRow(row);
         }
     }
@@ -82,17 +84,17 @@ public class CreateProductJPanel extends javax.swing.JPanel {
 
         tblProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Product", "Price", "Quantity"
+                "Product", "Price", "Quantity", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -174,7 +176,19 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         String name = txtProductName.getText();
         double price = Double.parseDouble(txtPrice.getText());
         int quantity = Integer.parseInt(txtQuantity.getText());
-        manufacturingWarehouse.getProductDirectory().newProduct(name, price, quantity);
+        Product product = manufacturingWarehouse.getProductDirectory().newProduct(name, price, quantity);
+        product.setStatus("Waiting");
+        
+        FDAApprovalRequest request = new FDAApprovalRequest();
+        request.setStatus("Waiting");
+        request.setProduct(product);
+        request.setMessage("Please approve");
+        request.setSender(useraccount);
+        request.setMw(manufacturingWarehouse);
+        
+        manufacturingWarehouse.getWorkQueue().getWorkRequestList3().add(request);
+        useraccount.getWorkQueue().getWorkRequestList3().add(request);
+        
         populateTable();
     }//GEN-LAST:event_btnCreateActionPerformed
 

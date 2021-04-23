@@ -39,11 +39,19 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnCreateFDAAdmin = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         btnCreateFDAAdmin.setText("Create FDA Admin");
         btnCreateFDAAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateFDAAdminActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Create FDA unit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -53,13 +61,17 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
-                .addComponent(btnCreateFDAAdmin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCreateFDAAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addGap(102, 102, 102)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(btnCreateFDAAdmin)
                 .addContainerGap(225, Short.MAX_VALUE))
         );
@@ -67,14 +79,23 @@ public class FDAEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateFDAAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateFDAAdminActionPerformed
         // TODO add your handling code here:
-        CreateFDAAdminJPanel CreateFDAAdminJPanel = new CreateFDAAdminJPanel(userProcessContainer,enterprise);
-        userProcessContainer.add("CreateFDAAdminJPanel", CreateFDAAdminJPanel);
+        CreateFDAAdminJPanel createFDAAdminJPanel = new CreateFDAAdminJPanel(userProcessContainer,enterprise);
+        userProcessContainer.add("CreateFDAAdminJPanel", createFDAAdminJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateFDAAdminActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CreateFDAUnitJPanel createFDAUnitJPanel = new CreateFDAUnitJPanel(userProcessContainer,enterprise);
+        userProcessContainer.add("CreateFDAAdminJPanel", createFDAUnitJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateFDAAdmin;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

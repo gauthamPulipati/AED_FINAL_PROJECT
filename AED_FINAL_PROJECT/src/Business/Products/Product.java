@@ -19,6 +19,7 @@ public class Product {
     private int quantity;
     private Distribution distribution;
     private Customer customer;
+    private String status;
     
     public Product(String productname, double price, int quantity){
         this.productName = productname;
@@ -33,9 +34,15 @@ public class Product {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
-    
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     public int getQuantity() {
         return quantity;
     }

@@ -18,7 +18,7 @@ public class FDA extends Organization{
     
     public FDA(String name){
         super();
-        this.name = "FDA";
+        this.name = name;
     }
 
     public String getFDAName() {

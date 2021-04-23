@@ -100,8 +100,8 @@ public abstract class Enterprise extends Organization{
         return fdas;
     }
 
-    public void setFdas(FDADirectory fdas) {
-        this.fdas = fdas;
+    public FDA createFDAUnit(String name) {
+        return this.fdas.createFDA(name);
     }
 
     public HospitalDirectory getHospitalDirectory() {
