@@ -54,7 +54,7 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
             }
             Object[] row = new Object[4];
             row[0] = req;
-            row[2] = req.getCustomer().getName();
+            row[2] = req.getCustomer().getEmployee().getName();
             row[1] = req.getReceiver() == null ? null : req.getReceiver().getEmployee().getName();
             row[3] = req.getTestResult();
             model.addRow(row);

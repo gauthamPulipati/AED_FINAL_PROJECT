@@ -169,7 +169,15 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSearchStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchStoreActionPerformed
         // TODO add your handling code here:
-        CustomerFindStoreJPanel customerFindStoreJPanel = new CustomerFindStoreJPanel(userProcessContainer,ecosystem);
+        Customer customer=null;
+        for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
+            System.out.println(c+"  -++++");
+            if(c.getEmployee().getName().equals(account.getEmployee().getName())){
+                System.out.println(c+"  -++++");
+                customer = c;
+            }
+        }
+        CustomerFindStoreJPanel customerFindStoreJPanel = new CustomerFindStoreJPanel(userProcessContainer, account,ecosystem, customer);
         userProcessContainer.add("CustomerFindStoreJPanel", customerFindStoreJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -177,7 +185,15 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnConsultDocorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultDocorActionPerformed
         // TODO add your handling code here:
-        CustomerConsultDoctorJPanel customerConsultDoctorJPanel = new CustomerConsultDoctorJPanel(userProcessContainer,ecosystem);
+        Customer customer=null;
+        for(Customer c:ecosystem.getCustomerDirectory().getCustomers()){
+            System.out.println(c+"  -++++");
+            if(c.getEmployee().getName().equals(account.getEmployee().getName())){
+                System.out.println(c+"  -++++");
+                customer = c;
+            }
+        }
+        CustomerConsultDoctorJPanel customerConsultDoctorJPanel = new CustomerConsultDoctorJPanel(userProcessContainer, account,ecosystem, customer);
         userProcessContainer.add("CustomerConsultDoctorJPanel", customerConsultDoctorJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

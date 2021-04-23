@@ -5,8 +5,14 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.RetailStore.RetailStore;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +25,33 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public CustomerFindStoreJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount useraccount;
+    Customer customer;
+    public CustomerFindStoreJPanel(JPanel userProcessContainer, UserAccount useraccount,EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.useraccount = useraccount;
+        this.customer = customer;
+        populateTable();
+    }
+    
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblRetailerName.getModel();
+
+        model.setRowCount(0);
+        for(Network network:ecosystem.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getRetailStoreDirectory()!=null){
+                        for(RetailStore rs: enterprise.getRetailStoreDirectory().getStores()){
+                            Object[] row = new Object[1];
+                            row[0] = rs;
+                            model.addRow(row);
+                        }
+                    }
+                }
+        }
+        
     }
 
     /**
@@ -34,19 +63,112 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRetailerName = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
+        btnVire = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtLocation = new javax.swing.JTextField();
+
+        tblRetailerName.setBackground(new java.awt.Color(250, 163, 7));
+        tblRetailerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 102), 2, true));
+        tblRetailerName.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Retailer Name"
+            }
+        ));
+        jScrollPane1.setViewportView(tblRetailerName);
+
+        btnRefresh.setText("Refresh");
+
+        btnVire.setText("View");
+        btnVire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVireActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Retailer Name");
+
+        jLabel3.setText("Location");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRefresh)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName)
+                            .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVire)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(btnRefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVire))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 192, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVireActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRetailerName.getSelectedRow();
+        
+        
+        DefaultTableModel model = (DefaultTableModel) tblRetailerName.getModel();
+        RetailStore retailStore = (RetailStore) model.getValueAt(selectedRow, 0);
+        
+        txtName.setText(retailStore.getStoreName());
+        
+    }//GEN-LAST:event_btnVireActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnVire;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblRetailerName;
+    private javax.swing.JTextField txtLocation;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,17 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Hospital.Hospital;
+import Business.Network.Network;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ConsultDoctorRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,11 +28,76 @@ public class CustomerConsultDoctorJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public CustomerConsultDoctorJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount useraccount;
+    Customer customer;
+    ArrayList<String> symptoms;
+    public CustomerConsultDoctorJPanel(JPanel userProcessContainer, UserAccount useraccount,EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.useraccount = useraccount;
+        this.customer = customer;
+        populateJComboBox();
+        symptoms = new ArrayList();
+        populateSuggestionTable();
+        DefaultTableModel model = (DefaultTableModel) tblSymptoms.getModel();
+        model.setRowCount(0);
     }
+    
+    private void populateSuggestionTable(){
+        DefaultTableModel model = (DefaultTableModel) tblSuggestion.getModel();
+        model.setRowCount(0);
+        ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList3();
+        
+        for(int i=wr.size()-1;i>=0;i--){
+            ConsultDoctorRequest request = (ConsultDoctorRequest) wr.get(i);
+//            if(!request.getStatus().equals("Done")){
+//                continue;
+//            }
+            Object[] row = new Object[2];
+            row[0] = request.getTest();
+            row[1] = request.getMessage();
+            model.addRow(row);
+        }
+        
+    }
+    
+    
+    private void populateJComboBox(){
+        hospitalJComboBox.removeAllItems();
+        int ii=0;
+        for(Network network:ecosystem.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(enterprise.getHospitalDirectory()!=null){
+                        System.out.println(enterprise.getHospitalDirectory().getHospitals());
+                        for(Hospital hospital: enterprise.getHospitalDirectory().getHospitals()){
+                            hospitalJComboBox.addItem(hospital);
+                            if(ii==0){
+                                ii=1;
+                                populateDoctorTable(hospital);
+                            }
+                        }
+                    }
+                }
+            }
+    }
+    
+    private void populateDoctorTable(Hospital hospital){
+        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
+
+        model.setRowCount(0);
+        for (UserAccount us : hospital.getUserAccountDirectory().getUserAccountList()) {
+            if(us.getRole().toString().equals("Consulting Doctor")){
+                Object[] row = new Object[1];
+                row[0] = us;
+                model.addRow(row);
+            }
+            
+        }
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,19 +108,197 @@ public class CustomerConsultDoctorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        hospitalJComboBox = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDoctor = new javax.swing.JTable();
+        btnConsult = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtSymptoms = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblSuggestion = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSymptoms = new javax.swing.JTable();
+
+        jLabel1.setText("Select Hospital");
+
+        hospitalJComboBox.setBackground(new java.awt.Color(180, 223, 229));
+        hospitalJComboBox.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        hospitalJComboBox.setForeground(new java.awt.Color(48, 60, 108));
+        hospitalJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Doctor Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblDoctor);
+
+        btnConsult.setText("Consult");
+        btnConsult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Add Symptom");
+
+        btnAdd.setText("add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        tblSuggestion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Suggested Test", "Remarks"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblSuggestion);
+
+        tblSymptoms.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Symptoms"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblSymptoms);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jLabel2)
+                .addGap(36, 36, 36)
+                .addComponent(txtSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsult)
+                .addGap(65, 65, 65))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hospitalJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnConsult))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdd))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
+        // TODO add your handling code here:
+        Hospital hospital = (Hospital)hospitalJComboBox.getSelectedItem();
+        ConsultDoctorRequest request = new ConsultDoctorRequest();
+        for(String s:symptoms){
+            request.addSymptoms(s);
+        }
+        request.setCustomer(customer);
+        request.setHospital(hospital);
+        request.setMessage("Suggest test");
+        request.setStatus("Sent to doctor");
+        request.setSender(useraccount);
+        useraccount.getWorkQueue().getWorkRequestList3().add(request);
+        hospital.getWorkQueue().getWorkRequestList3().add(request);
+    }//GEN-LAST:event_btnConsultActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        symptoms.add(txtSymptoms.getText());
+        DefaultTableModel model = (DefaultTableModel) tblSymptoms.getModel();
+        Object row[] = new Object[1];
+        row[0] = txtSymptoms.getText();
+        model.addRow(row);
+        txtSymptoms.setText("");
+    }//GEN-LAST:event_btnAddActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnConsult;
+    private javax.swing.JComboBox hospitalJComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblDoctor;
+    private javax.swing.JTable tblSuggestion;
+    private javax.swing.JTable tblSymptoms;
+    private javax.swing.JTextField txtSymptoms;
     // End of variables declaration//GEN-END:variables
 }
