@@ -11,6 +11,8 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.RetailStore.RetailStore;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,6 +65,10 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRetailerName = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
@@ -72,8 +78,55 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
 
-        tblRetailerName.setBackground(new java.awt.Color(250, 163, 7));
-        tblRetailerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 102), 2, true));
+        setBackground(new java.awt.Color(241, 250, 238));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(69, 123, 157));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 3, true));
+
+        jLabel2.setFont(new java.awt.Font("Devanagari MT", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Find a Store");
+
+        btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(340, 340, 340)
+                        .addComponent(jLabel2)))
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 920, -1));
+
+        jPanel2.setBackground(new java.awt.Color(254, 250, 224));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 3, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblRetailerName.setBackground(new java.awt.Color(241, 250, 238));
+        tblRetailerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 204, 204), 2, true));
         tblRetailerName.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -87,65 +140,34 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblRetailerName);
 
-        btnRefresh.setText("Refresh");
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, 141));
 
+        btnRefresh.setBackground(new java.awt.Color(255, 104, 107));
+        btnRefresh.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnRefresh.setText("Refresh");
+        jPanel2.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+
+        btnVire.setBackground(new java.awt.Color(255, 104, 107));
+        btnVire.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
         btnVire.setText("View");
         btnVire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVireActionPerformed(evt);
             }
         });
+        jPanel2.add(btnVire, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
 
-        jLabel1.setText("Retailer Name");
+        jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jLabel1.setText("Retailer Name :");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        jPanel2.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 168, -1));
 
-        jLabel3.setText("Location");
+        jLabel3.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        jLabel3.setText("Location :");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+        jPanel2.add(txtLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 168, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRefresh)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName)
-                            .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVire)))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btnRefresh)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVire))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 192, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81))
-        );
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 800, 360));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVireActionPerformed
@@ -160,12 +182,27 @@ public class CustomerFindStoreJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnVireActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerWorkAreaJPanel hentadjp = (CustomerWorkAreaJPanel) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnVire;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRetailerName;
     private javax.swing.JTextField txtLocation;
