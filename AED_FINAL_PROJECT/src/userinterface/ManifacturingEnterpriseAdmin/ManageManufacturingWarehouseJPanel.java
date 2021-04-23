@@ -35,6 +35,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         populateWarehouseTable();
+        btnSubmit.setEnabled(false);
     }
 
     /**
@@ -193,6 +194,7 @@ public class ManageManufacturingWarehouseJPanel extends javax.swing.JPanel {
         btnDelete.setEnabled(true);
         
         populateWarehouseTable();
+        btnSubmit.setEnabled(false);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtwarehouseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtwarehouseNameActionPerformed
