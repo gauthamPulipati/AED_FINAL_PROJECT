@@ -84,6 +84,11 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSymptoms = new javax.swing.JTable();
         btnSuggestTest = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(216, 243, 220));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,12 +115,16 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
             tblRequest.getColumnModel().getColumn(2).setHeaderValue("Status");
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 156, 720, 96));
+
+        viewSymptoma.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         viewSymptoma.setText("View Symptoms");
         viewSymptoma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewSymptomaActionPerformed(evt);
             }
         });
+        add(viewSymptoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 286, -1, 60));
 
         tblSymptoms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,46 +147,41 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSymptoms);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 374, 720, 96));
+
+        btnSuggestTest.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSuggestTest.setText("Suggest Test");
         btnSuggestTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuggestTestActionPerformed(evt);
             }
         });
+        add(btnSuggestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(628, 286, 151, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(163, 163, 163)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSuggestTest)
-                            .addComponent(viewSymptoma))))
-                .addContainerGap(43, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(116, 198, 157));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
+
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel1.setText("Consulting Doctor");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(jLabel1)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewSymptoma)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(btnSuggestTest)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewSymptomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSymptomaActionPerformed
@@ -216,6 +220,8 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSuggestTest;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblRequest;

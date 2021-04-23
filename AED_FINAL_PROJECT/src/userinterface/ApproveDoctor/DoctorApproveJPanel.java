@@ -47,7 +47,7 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(216, 243, 220));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 160, 66));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 280, 66));
 
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -56,7 +56,7 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 265, 100, 40));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel1.setText("Comments:");
@@ -66,10 +66,10 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 239, 239), 4));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("ITF Devanagari", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Lab Doctor");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 250, 40));
+        jLabel3.setText("Lab Test Approving Doctor");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 500, 50));
 
         brnBack.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         brnBack.setText("<<Back");
@@ -78,9 +78,9 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
                 brnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(brnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
+        jPanel1.add(brnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 100));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
