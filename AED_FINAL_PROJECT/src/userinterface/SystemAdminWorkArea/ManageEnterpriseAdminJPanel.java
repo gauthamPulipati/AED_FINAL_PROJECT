@@ -249,7 +249,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                     UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new RetailEnterpriseAdminRole());
                 }
                 populateTable();
-
+                usernameJTextField.setText("");
+                passwordJPasswordField.setText("");
+                nameJTextField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
