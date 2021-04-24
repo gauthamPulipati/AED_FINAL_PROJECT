@@ -68,9 +68,9 @@ public class AssignOrderJPanel extends javax.swing.JPanel {
                 Object[] row = new Object[5];
                 row[0] = lt;
                 row[1] = order.getId();
-                row[2] = lt.getStatus();
+                row[4] = lt.getStatus();
                 row[3] = order.getPrice();
-                row[4] = order.getQuantity();
+                row[2] = order.getQuantity();
                 model.addRow(row);
         }
     }

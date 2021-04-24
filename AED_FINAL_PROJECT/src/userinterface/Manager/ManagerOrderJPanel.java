@@ -309,6 +309,7 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Product unavailable");
             return;
         }
+        product.setQuantity(product.getQuantity()-Integer.parseInt(txtQuantity.getText()));
         
         Object[] row = new Object[3];
         row[0] = product;
@@ -317,7 +318,7 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
         model1.addRow(row);
         
         txtQuantity.setText("1");
-        double total = Double.parseDouble(txtTotal.getText()) + Integer.parseInt(txtQuantity.getText())*product.getPrice();
+        double total = Double.parseDouble(txtTotal.getText()) + (Integer.parseInt(txtQuantity.getText())*product.getPrice());
         txtTotal.setText(String.valueOf(total));
     }//GEN-LAST:event_btnAddToCartActionPerformed
 
