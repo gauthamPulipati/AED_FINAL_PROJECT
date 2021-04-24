@@ -68,7 +68,6 @@ public class MainJFrame extends javax.swing.JFrame {
         loginPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\aksha\\Downloads\\first-aid-kit.png")); // NOI18N
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,7 +110,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnSignUpActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 92, -1));
+        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 92, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -119,8 +118,6 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setLayout(new java.awt.CardLayout());
 
         loginPanel.setBackground(new java.awt.Color(241, 250, 238));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\aksha\\Downloads\\Untitled-1.jpg")); // NOI18N
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
