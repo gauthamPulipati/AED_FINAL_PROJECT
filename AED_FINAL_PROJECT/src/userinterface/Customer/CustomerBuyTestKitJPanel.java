@@ -57,7 +57,7 @@ public class CustomerBuyTestKitJPanel extends javax.swing.JPanel {
                             for(Product product:distribution.getProductDirectory().getProducts()){
                                 Object[] row = new Object[3];
                                 row[0] = product;
-                                row[1] = product.getPrice();
+                                row[1] = product.getQuantity();
                                 row[2] = product.getPrice();
                                 System.out.println(product.getDistribution().getDistributionName()+" ----iiii");
                                 model.addRow(row);

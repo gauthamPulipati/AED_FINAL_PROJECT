@@ -356,7 +356,7 @@ public class ManagerAssignDeliveryJPanel extends javax.swing.JPanel {
         }
         else{
             
-                JOptionPane.showMessageDialog(this, "");
+                JOptionPane.showMessageDialog(this, "Please accept the order");
             
         }
     }//GEN-LAST:event_AssignRetailActionPerformed

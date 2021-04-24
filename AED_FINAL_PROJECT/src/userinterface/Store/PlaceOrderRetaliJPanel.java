@@ -82,7 +82,7 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
         for(Product product:d.getProductDirectory().getProducts()){
             Object[] row = new Object[3];
             row[0] = product;
-            row[1] = product.getPrice();
+            row[1] = product.getQuantity();
             row[2] = product.getPrice();
             model.addRow(row);
         }
@@ -362,8 +362,10 @@ public class PlaceOrderRetaliJPanel extends javax.swing.JPanel {
 
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed
         // TODO add your handling code here:
-        //Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
-        //populateJComboBox(enterprise.getDistributionDirectory().getDistributions());
+        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        if(enterprise!=null){
+            populateJComboBox(enterprise.getDistributionDirectory().getDistributions());
+        }
     }//GEN-LAST:event_enterpriseJComboBoxActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

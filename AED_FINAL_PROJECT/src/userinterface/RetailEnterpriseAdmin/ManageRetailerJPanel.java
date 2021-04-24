@@ -33,6 +33,7 @@ public class ManageRetailerJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         populateRetailerTable();
+        btnSubmit.setEnabled(false);
     }
 
 

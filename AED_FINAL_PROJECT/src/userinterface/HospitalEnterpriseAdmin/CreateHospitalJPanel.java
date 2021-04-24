@@ -31,6 +31,7 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         populateTable();
+        btnSubmit.setEnabled(false);
     }
     
     private void populateTable(){
