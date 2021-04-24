@@ -18,6 +18,8 @@ import Business.RetailStore.RetailStore;
 
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.Customer.CustomerSignUpJPanel;
@@ -38,7 +40,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         //system = ConfigureASystem.configure();
         system = dB4OUtil.retrieveSystem();
-        
+         
         this.setSize(1680, 1050);
     }
 
@@ -51,6 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         loginJButton = new javax.swing.JButton();
@@ -64,7 +67,9 @@ public class MainJFrame extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\aksha\\Downloads\\first-aid-kit.png")); // NOI18N
+        jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,17 +119,25 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setLayout(new java.awt.CardLayout());
 
         loginPanel.setBackground(new java.awt.Color(241, 250, 238));
-        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 3, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel3.setText("Get");
-        loginPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 96, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\aksha\\Downloads\\Untitled-1.jpg")); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 3, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel4.setText("Checked");
-        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 209, -1));
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
         container.add(loginPanel, "card2");
 
@@ -356,7 +369,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginJButton;
