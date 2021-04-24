@@ -62,11 +62,12 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
             if(req.getStatus().equals("Completed")){
                 continue;
             }
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = req;
             row[1] = req.getSender().getEmployee().getName();
             row[2] = req.getReceiver() == null ? null : req.getReceiver().getEmployee().getName();
             row[3] = req.getStatus();
+            row[4] = req.getCustomer().getAddress();
             model.addRow(row);
         }
     }
@@ -95,17 +96,17 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
 
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Reciever", "Order Status"
+                "Message", "Sender", "Reciever", "Order Status", "Address"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

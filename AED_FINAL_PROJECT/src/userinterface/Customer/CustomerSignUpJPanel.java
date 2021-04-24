@@ -5,6 +5,7 @@
  */
 package userinterface.Customer;
 
+import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Employee.Employee;
@@ -63,6 +64,10 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
         txtAge = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
         btnSignup = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
 
@@ -137,6 +142,10 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setText("email");
+
+        jLabel11.setText("Address");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -144,6 +153,8 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel8)
                     .addComponent(jLabel6)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
@@ -159,7 +170,9 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
                         .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtFirstName)))
+                        .addComponent(txtFirstName)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,11 +203,19 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnSignup)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 193, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 193, -1, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
@@ -204,13 +225,16 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
         String password = txtPassword.getText();
         String name = txtFirstName.getText()+" "+txtName.getText();
         Long phoneNumber = Long.parseLong(txtPhoneNumber.getText());
+        String email = txtEmail.getText();
+        String address = txtAddress.getText();
         int age = Integer.parseInt(txtAge.getText());
         
         Employee employee = system.getEmployeeDirectory().createEmployee(name);
         UserAccount useraccount = system.getUserAccountDirectory().createUserAccount(userName, password, employee, new CustomerRole());
         
-        system.getCustomerDirectory().createCustomer(age, employee, phoneNumber);
-        
+        Customer customer = system.getCustomerDirectory().createCustomer(age, employee, phoneNumber);
+        customer.setEmailID(email);
+        customer.setAddress(address);
         
         userProcessContainer.removeAll();
         JPanel blankJP = new JPanel();
@@ -218,7 +242,7 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
-        JOptionPane.showMessageDialog(this, "You have successfully signed up at GET CHECKED. Login now");
+        JOptionPane.showMessageDialog(this, "You have successfully signed up at GET CHECKED\nYou can login now");
     }//GEN-LAST:event_btnSignupActionPerformed
 
 
@@ -226,18 +250,22 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSignup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;

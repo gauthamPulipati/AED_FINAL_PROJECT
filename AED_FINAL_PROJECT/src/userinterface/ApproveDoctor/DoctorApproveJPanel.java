@@ -8,7 +8,15 @@ package userinterface.ApproveDoctor;
 import Business.WorkQueue.TestRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.Properties;
 import javax.swing.JPanel;
+
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -86,8 +94,38 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        request.setMessage(txtMessage.getText());
+        request.setRemarks(txtMessage.getText());
         request.setStatus("Completed");
+        String email = request.getCustomer().getEmailID();
+        
+//        String fromEmail = "pulipatirajsimha@gmail.com";
+//        String pass = "Spring_2021";
+//        String subject = "You have test results waiting";
+//        
+//        Properties properties =  new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.startls.enable", "true");
+//        properties.put("mail.smtp.host", "smpt.gmail.com");
+//        properties.put("mail.smtp.port", "587");
+//        
+//        Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
+//            protected PasswordAuthentication getPasswordAuthentication(){
+//                return new PasswordAuthentication(fromEmail, pass);
+//            }
+//        });
+//        try{
+//            MimeMessage message1 = new MimeMessage(session);
+//            message1.setFrom(new InternetAddress(fromEmail));
+//            message1.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+//            message1.setSubject(subject);
+//            message1.setText("Your tests are approved by the doctor. Please check your results on our app");
+//            Transport.send(message1);
+//        }
+//        catch (Exception ex){
+//            System.out.println(""+ex);
+//        }
+        
+    
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 

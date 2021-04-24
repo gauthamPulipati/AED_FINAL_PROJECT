@@ -275,7 +275,7 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
         TestRequest request = (TestRequest) tblRequest.getValueAt(selectedRow, 0);
         txtTestKit.setText(request.getProduct().getProductName());
         txtResult.setText(request.getTestResult());
-        txtRemarks.setText(request.getMessage());
+        txtRemarks.setText(request.getRemarks());
     }//GEN-LAST:event_btnViewResultsActionPerformed
 
     private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed

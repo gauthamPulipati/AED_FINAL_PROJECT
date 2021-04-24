@@ -20,6 +20,8 @@ public class Customer extends Organization{
     private int age;
     private Employee employee;
     private long phoneNumber;
+    private String emailID;
+    private String address;
     
     public Customer(int age, Employee employee, long phoneNumber){
         this.age = age;
@@ -32,6 +34,22 @@ public class Customer extends Organization{
         ArrayList<Role> roles = new ArrayList();
         roles.add(new CustomerRole());
         return roles;
+    }
+
+    public String getEmailID() {
+        return emailID;
+    }
+
+    public void setEmailID(String emailID) {
+        this.emailID = emailID;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getAge() {

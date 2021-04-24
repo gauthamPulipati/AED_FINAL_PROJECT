@@ -16,6 +16,7 @@ import Business.Products.Product;
  */
 public class TestRequest extends WorkRequest{
     private String message;
+    private String remarks;
     private Customer customer;
     private Product product;
     private Hospital hospital;
@@ -29,6 +30,16 @@ public class TestRequest extends WorkRequest{
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+    
+    
 
     public Customer getCustomer() {
         return customer;
