@@ -89,6 +89,7 @@ public class TechnicianJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        btnPerformTest1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(197, 222, 221));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,7 +126,7 @@ public class TechnicianJPanel extends javax.swing.JPanel {
                 btnPerformTestActionPerformed(evt);
             }
         });
-        add(btnPerformTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 292, -1, 55));
+        add(btnPerformTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, 55));
 
         btnSendResults.setBackground(new java.awt.Color(40, 75, 99));
         btnSendResults.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
@@ -177,6 +178,17 @@ public class TechnicianJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 742, -1));
+
+        btnPerformTest1.setBackground(new java.awt.Color(40, 75, 99));
+        btnPerformTest1.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnPerformTest1.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerformTest1.setText("Refresh");
+        btnPerformTest1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerformTest1ActionPerformed(evt);
+            }
+        });
+        add(btnPerformTest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerformTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerformTestActionPerformed
@@ -238,11 +250,18 @@ public class TechnicianJPanel extends javax.swing.JPanel {
 
     private void doctorJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorJComboBoxActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_doctorJComboBoxActionPerformed
+
+    private void btnPerformTest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerformTest1ActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnPerformTest1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPerformTest;
+    private javax.swing.JButton btnPerformTest1;
     private javax.swing.JButton btnSendResults;
     private javax.swing.JComboBox doctorJComboBox;
     private javax.swing.JLabel jLabel1;

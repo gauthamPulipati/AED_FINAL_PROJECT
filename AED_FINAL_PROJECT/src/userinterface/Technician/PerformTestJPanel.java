@@ -80,7 +80,7 @@ public class PerformTestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        LabAdminJPanel hentadjp = (LabAdminJPanel) component;
+        TechnicianJPanel hentadjp = (TechnicianJPanel) component;
         //sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -88,7 +88,7 @@ public class PerformTestJPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        request.setMessage(txtResult.getText());
+        request.setTestResult(txtResult.getText());
         request.setStatus("Test finished");
         
     }//GEN-LAST:event_btnSubmitActionPerformed

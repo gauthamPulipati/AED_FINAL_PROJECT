@@ -88,6 +88,7 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
         btnViewOrder = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(231, 207, 205));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,7 +137,7 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrders);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, 164));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, 164));
 
         btnProcess.setText("Process Order");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +168,7 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(213, 213, 213)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +179,14 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 897, -1));
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -234,9 +243,15 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewOrderActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

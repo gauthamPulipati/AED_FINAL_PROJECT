@@ -262,7 +262,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         
         Employee employee = hospital.getEmployeeDirectory().createEmployee(name);
         UserAccount ua = hospital.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAdminRole());
-        //System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
+        System.out.println(hospital.getUserAccountDirectory().getUserAccountList().size()+" ---- aaa");
         populateTable(hospital);
         
         txtLabAdminUsername.setText("");

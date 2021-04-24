@@ -83,6 +83,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         tblWorkRequest = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnrefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(224, 251, 252));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,7 +110,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrders);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 334, -1, 148));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, 148));
 
         btnViewOrder.setBackground(new java.awt.Color(152, 193, 217));
         btnViewOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -119,7 +120,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
                 btnViewOrderActionPerformed(evt);
             }
         });
-        add(btnViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 244, 137, 46));
+        add(btnViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 137, 46));
 
         btnProcess.setBackground(new java.awt.Color(152, 193, 217));
         btnProcess.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -168,7 +169,7 @@ public class ShippingManJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(192, 192, 192)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,6 +180,16 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 701, -1));
+
+        btnrefresh.setBackground(new java.awt.Color(152, 193, 217));
+        btnrefresh.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        btnrefresh.setText("Refresh");
+        btnrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrefreshActionPerformed(evt);
+            }
+        });
+        add(btnrefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
@@ -235,10 +246,16 @@ public class ShippingManJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void btnrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefreshActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnrefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnViewOrder;
+    private javax.swing.JButton btnrefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

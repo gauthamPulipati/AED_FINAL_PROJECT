@@ -79,6 +79,7 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnDeny = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(234, 248, 218));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -152,6 +153,14 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 911, -1));
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -192,10 +201,18 @@ public class FDAAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDenyActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnDeny;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
