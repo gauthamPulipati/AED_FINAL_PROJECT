@@ -96,6 +96,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(155, 231, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSubmit.setBackground(new java.awt.Color(204, 153, 255));
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +170,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         });
         add(hospitalJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 348, 140, -1));
 
+        btnDelete.setBackground(new java.awt.Color(204, 153, 255));
         btnDelete.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +180,7 @@ public class CreateLabAdminJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 274, 100, 40));
 
+        btnModify.setBackground(new java.awt.Color(204, 153, 255));
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {

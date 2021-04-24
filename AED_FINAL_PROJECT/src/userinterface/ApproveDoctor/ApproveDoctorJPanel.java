@@ -95,6 +95,7 @@ public class ApproveDoctorJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 605, 121));
 
+        btnApprove.setBackground(new java.awt.Color(116, 198, 157));
         btnApprove.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnApprove.setText("Approve Test");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {

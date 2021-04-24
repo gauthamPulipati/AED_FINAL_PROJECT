@@ -50,17 +50,19 @@ public class ProcessCustomerOrder extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Devanagari MT", 1, 20)); // NOI18N
-        jLabel1.setText("Delivery Message");
+        jLabel1.setText("Delivery Message:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 256, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 257, 184, 88));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 184, 88));
 
+        btnSubmit.setBackground(new java.awt.Color(204, 204, 204));
+        btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 423, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 423, 90, 40));
 
         jPanel1.setBackground(new java.awt.Color(159, 154, 164));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 3, true));

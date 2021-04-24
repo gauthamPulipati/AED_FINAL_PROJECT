@@ -112,6 +112,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         });
         add(distributionJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 140, -1));
 
+        btnSubmit.setBackground(new java.awt.Color(204, 255, 255));
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +164,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         jLabel2.setText("Manager Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, -1));
 
+        btnModify.setBackground(new java.awt.Color(204, 255, 255));
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +174,7 @@ public class ManageManagerJPanel extends javax.swing.JPanel {
         });
         add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 139, 100, 40));
 
+        btnDelete.setBackground(new java.awt.Color(204, 255, 255));
         btnDelete.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {

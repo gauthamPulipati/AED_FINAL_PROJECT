@@ -139,21 +139,25 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, 164));
 
+        btnProcess.setBackground(new java.awt.Color(204, 204, 204));
+        btnProcess.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnProcess.setText("Process Order");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 217, -1, 50));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 217, -1, 50));
 
+        btnViewOrder.setBackground(new java.awt.Color(204, 204, 204));
+        btnViewOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnViewOrder.setText("View Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewOrderActionPerformed(evt);
             }
         });
-        add(btnViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 314, 131, 50));
+        add(btnViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(707, 314, 140, 50));
 
         jPanel1.setBackground(new java.awt.Color(159, 154, 164));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 3, true));
@@ -180,13 +184,14 @@ public class HomeDeliveryManJPanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 897, -1));
 
+        btnRefresh.setFont(new java.awt.Font("Georgia", 1, 11)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 90, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

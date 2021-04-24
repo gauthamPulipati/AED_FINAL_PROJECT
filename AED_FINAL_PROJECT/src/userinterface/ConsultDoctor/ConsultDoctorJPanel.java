@@ -118,6 +118,7 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 156, 720, 96));
 
+        viewSymptoma.setBackground(new java.awt.Color(116, 198, 157));
         viewSymptoma.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         viewSymptoma.setText("View Symptoms");
         viewSymptoma.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +152,7 @@ public class ConsultDoctorJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 374, 720, 96));
 
+        btnSuggestTest.setBackground(new java.awt.Color(116, 198, 157));
         btnSuggestTest.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSuggestTest.setText("Suggest Test");
         btnSuggestTest.addActionListener(new java.awt.event.ActionListener() {

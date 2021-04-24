@@ -49,6 +49,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(155, 231, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnCreateHospAdmin.setBackground(new java.awt.Color(204, 153, 255));
         btnCreateHospAdmin.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateHospAdmin.setText("Create Lab Technician");
         btnCreateHospAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +59,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnCreateHospAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 357, -1, 107));
 
+        btnCreateHospital.setBackground(new java.awt.Color(204, 153, 255));
         btnCreateHospital.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateHospital.setText("Create Hospital");
         btnCreateHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +69,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnCreateHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 195, 227, 107));
 
+        btnCreateLabAdmin.setBackground(new java.awt.Color(204, 153, 255));
         btnCreateLabAdmin.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateLabAdmin.setText("Create Lab Admin");
         btnCreateLabAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +79,7 @@ public class HospitalEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnCreateLabAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 357, 216, 107));
 
+        btnCreateDoctor.setBackground(new java.awt.Color(204, 153, 255));
         btnCreateDoctor.setFont(new java.awt.Font("Georgia", 1, 17)); // NOI18N
         btnCreateDoctor.setText("Create Doctor");
         btnCreateDoctor.addActionListener(new java.awt.event.ActionListener() {

@@ -164,7 +164,7 @@ public class ManageRetailerAdminJPanel extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(134, 134, 134)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

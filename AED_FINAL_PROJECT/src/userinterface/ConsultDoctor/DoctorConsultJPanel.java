@@ -54,6 +54,7 @@ public class DoctorConsultJPanel extends javax.swing.JPanel {
         jLabel1.setText("Remarks:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 265, -1, -1));
 
+        btnSubmit.setBackground(new java.awt.Color(116, 198, 157));
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {

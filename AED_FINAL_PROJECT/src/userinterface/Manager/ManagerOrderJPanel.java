@@ -177,6 +177,7 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 363, 616, 146));
 
+        btnAddToCart.setBackground(new java.awt.Color(203, 186, 131));
         btnAddToCart.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnAddToCart.setText("Add to cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +202,7 @@ public class ManagerOrderJPanel extends javax.swing.JPanel {
         txtTotal.setText("0");
         add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 520, 101, -1));
 
+        btnPlaceOrder.setBackground(new java.awt.Color(203, 186, 131));
         btnPlaceOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnPlaceOrder.setText("Place Order");
         btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {

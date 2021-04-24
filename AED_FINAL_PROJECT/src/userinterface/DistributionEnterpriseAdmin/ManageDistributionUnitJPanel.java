@@ -71,6 +71,7 @@ public class ManageDistributionUnitJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 111, 96));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSubmit.setBackground(new java.awt.Color(204, 255, 255));
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +116,7 @@ public class ManageDistributionUnitJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 126, -1, 146));
 
+        btnModify.setBackground(new java.awt.Color(204, 255, 255));
         btnModify.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +126,7 @@ public class ManageDistributionUnitJPanel extends javax.swing.JPanel {
         });
         add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 126, 100, 40));
 
+        btnDelete.setBackground(new java.awt.Color(204, 255, 255));
         btnDelete.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {

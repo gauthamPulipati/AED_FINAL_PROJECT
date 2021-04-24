@@ -120,6 +120,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 201, 185));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 3, true));
 
+        btnBack.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

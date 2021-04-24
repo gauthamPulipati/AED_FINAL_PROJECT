@@ -47,6 +47,7 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 111, 96));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnManageDistribution.setBackground(new java.awt.Color(204, 255, 255));
         btnManageDistribution.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageDistribution.setText("Manage Distribution Units");
         btnManageDistribution.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +57,7 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnManageDistribution, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 180, 303, 163));
 
+        btnManageRetail.setBackground(new java.awt.Color(204, 255, 255));
         btnManageRetail.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageRetail.setText("Manage Retail Delivery Man");
         btnManageRetail.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +67,7 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnManageRetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, 163));
 
+        btnManageHome.setBackground(new java.awt.Color(204, 255, 255));
         btnManageHome.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         btnManageHome.setText("Manage Home Delivery Man");
         btnManageHome.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +77,7 @@ public class DistributionEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(btnManageHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 410, -1, 163));
 
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
         jButton1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jButton1.setText("Manage Manager");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

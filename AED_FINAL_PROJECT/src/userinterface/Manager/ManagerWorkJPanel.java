@@ -87,6 +87,7 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 236, 179));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnShippingOrder.setBackground(new java.awt.Color(203, 186, 131));
         btnShippingOrder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnShippingOrder.setText("Place Shipping Order");
         btnShippingOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +97,7 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
         });
         add(btnShippingOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 426, -1, 60));
 
+        btnDeliveryMan.setBackground(new java.awt.Color(203, 186, 131));
         btnDeliveryMan.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnDeliveryMan.setText("Assign Delivery Man");
         btnDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +130,7 @@ public class ManagerWorkJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 174, 588, 208));
 
+        btnRefresh.setBackground(new java.awt.Color(203, 186, 131));
         btnRefresh.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {

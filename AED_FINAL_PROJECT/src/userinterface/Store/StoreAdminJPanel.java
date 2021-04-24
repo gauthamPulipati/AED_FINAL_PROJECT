@@ -77,6 +77,8 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(247, 237, 226));
 
+        btnPlaceorder.setBackground(new java.awt.Color(239, 35, 60));
+        btnPlaceorder.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnPlaceorder.setText("Place orders");
         btnPlaceorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +108,8 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequest);
 
+        btnRefresh.setBackground(new java.awt.Color(239, 35, 60));
+        btnRefresh.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,8 +153,8 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
                 .addGap(173, 173, 173)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(400, 400, 400)
-                .addComponent(btnPlaceorder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(379, 379, 379)
+                .addComponent(btnPlaceorder, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +165,9 @@ public class StoreAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(btnPlaceorder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPlaceorder, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

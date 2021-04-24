@@ -49,6 +49,7 @@ public class DoctorApproveJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 280, 66));
 
+        btnSubmit.setBackground(new java.awt.Color(116, 198, 157));
         btnSubmit.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
