@@ -11,6 +11,7 @@ import Business.Employee.Employee;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -217,6 +218,7 @@ public class CustomerSignUpJPanel extends javax.swing.JPanel {
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
+        JOptionPane.showMessageDialog(this, "You have successfully signed up at GET CHECKED. Login now");
     }//GEN-LAST:event_btnSignupActionPerformed
 
 

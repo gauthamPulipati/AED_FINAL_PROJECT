@@ -17,6 +17,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+import java.io.FileOutputStream;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gauthamrajsimhapulipati
@@ -82,6 +91,7 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         btnViewResults = new javax.swing.JButton();
+        btnDownload = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(241, 250, 238));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,17 +180,21 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDownload.setBackground(new java.awt.Color(255, 104, 107));
+        btnDownload.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
+        btnDownload.setText("Download Test Results");
+        btnDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownloadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnViewResults))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -193,13 +207,23 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
                                 .addGap(63, 63, 63)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDownload))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtTestKit, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(txtTestKit, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewResults)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,8 +246,9 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(btnDownload))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 730, 400));
@@ -253,9 +278,40 @@ public class CustomerViewResultsJPanel extends javax.swing.JPanel {
         txtRemarks.setText(request.getMessage());
     }//GEN-LAST:event_btnViewResultsActionPerformed
 
+    private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
+        // TODO add your handling code here:
+        ArrayList<WorkRequest> wr = useraccount.getWorkQueue().getWorkRequestList2();
+        String str="Test name       | Result       |\n";
+        str+="-------------------------------------\n";
+        
+        for(int i=wr.size()-1; i>=0;i--){
+            
+                TestRequest lt = (TestRequest)wr.get(i);
+                str=str+"  "+lt.getProduct().getProductName()+"       | "+lt.getTestResult()+"      \n";
+                str+="-------------------------------------\n";
+                
+            }
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Test Results.pfd"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CustomerViewResultsJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(CustomerViewResultsJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.open();
+        try {
+            document.add(new Paragraph(str));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CustomerViewResultsJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.close();
+    }//GEN-LAST:event_btnDownloadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDownload;
     private javax.swing.JButton btnViewResults;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
