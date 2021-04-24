@@ -67,8 +67,6 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduct = new javax.swing.JTable();
-        btnDelete = new javax.swing.JButton();
-        btnModify = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
@@ -125,24 +123,6 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblProduct);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 149, 536, 155));
-
-        btnDelete.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 256, -1, -1));
-
-        btnModify.setFont(new java.awt.Font("Devanagari MT", 1, 14)); // NOI18N
-        btnModify.setText("Modify");
-        btnModify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifyActionPerformed(evt);
-            }
-        });
-        add(btnModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 183, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(131, 197, 190));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 3, true));
@@ -214,11 +194,6 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
@@ -229,10 +204,6 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnModifyActionPerformed
-
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateTable();
@@ -242,8 +213,6 @@ public class CreateProductJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
